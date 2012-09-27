@@ -7,6 +7,7 @@
 <title>eXceed vote</title>
 </head>
 <body>
+Hello , time is now <%= new java.util.Date() %>
 
 </body>
 </html>
