@@ -19,8 +19,8 @@ public class UserData {
     public int getScore() {
        return score;
 	}
-    public void setScore(int newScore) {
-       score = newScore;
+    public void setScore(String newScore) {
+       score = Integer.valueOf(newScore);
 	}
 
     public String getPassword() {

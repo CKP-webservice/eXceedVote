@@ -20,7 +20,6 @@ public class LoginServlet extends HttpServlet {
 		     user.setPassword(request.getParameter("pass"));
 		
 		     user = UserAuthentication.login(user);
-			   		    
 		     if (user.isValid())
 		     {
 			        
@@ -37,5 +36,6 @@ public class LoginServlet extends HttpServlet {
 		     System.out.println(theException); 
 		}
      }
+	
 }
 
