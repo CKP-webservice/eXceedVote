@@ -16,7 +16,7 @@ public class ConnectionHandler {
    private static String databaseName;
   
    private void DBConnectionPool() {
-		ConfigProperties.initialize("/Users/chanonkhamronyitha/Dropbox/SKE-WORKING/SoftSpec/Loginjsp-example/WebContent/config/DB.properties");
+		ConfigProperties.initialize("/Users/chanonkhamronyitha/Desktop/eXceedVote/src/Loginjsp-example/WebContent/config/DB.properties");
 		Properties propObj =ConfigProperties.getInstance();
 		hostAddress = propObj.getProperty("DBHostAddress"); 
 		userName = propObj.getProperty("UserName");
