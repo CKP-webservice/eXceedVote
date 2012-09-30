@@ -5,7 +5,7 @@ public class UserData {
     private String username;
     private String password;
     private String realName;
-    private String location;
+    private String score;
     public boolean valid;
 	
 	
@@ -16,11 +16,11 @@ public class UserData {
        realName = newRealName;
 	}
 	
-    public String getLocation() {
-       return location;
+    public String getScore() {
+       return score;
 	}
-    public void setLocation(String newLocation) {
-       location = newLocation;
+    public void setScore(String newScore) {
+       score = newScore;
 	}
 
     public String getPassword() {

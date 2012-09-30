@@ -28,9 +28,9 @@ public class UserAuthentication
 	      else if (present) 
 	      {
 	         String RealName = rs.getString("name");
-	         String location = rs.getString("location");
+	         String score = rs.getString("score");
 		     user.setRealName(RealName);
-	         user.setLocation(location);
+	         user.setScore(score);
 	         user.setValid(true);
 	      }
 	   }

@@ -39,8 +39,8 @@
           			<td> <%= currentUser.getUserName() %></td>
           		</tr>
           		<tr>
-          			<td>Location</td>
-          			<td><%= currentUser.getLocation() %></td>
+          			<td>Current Score</td>
+          			<td><%= currentUser.getScore() %></td>
           		</tr>
           	</tbody>
           </table>
