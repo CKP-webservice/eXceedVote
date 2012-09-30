@@ -7,6 +7,16 @@ public class Account {
 	private String userName;
 	private String passWord;
 	private AccountType type;
+	
+	public static Account getAccount(String userName,String passWord){
+		return new Account(userName,passWord);
+	}
+	
+	private Account(String userName,String passWord){
+		this.userName = userName;
+		this.passWord = passWord;
+		this.type = AccountType.VOTER;
+	}
 
 	public String getUserName() {
 		return userName;

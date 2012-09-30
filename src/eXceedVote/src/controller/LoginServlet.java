@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Model.Account;
+
 /**
  * Servlet implementation class LoginServlet
  */
@@ -33,7 +35,18 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println(request.getParameter("uname"));
+		String userName = request.getParameter("uname");
+		String passWord = request.getParameter("password");
+		if(userName == null || userName == "" || passWord == null || passWord == "") {
+			request.setAttribute("message", "Please enter Username and password");
+			request.getRequestDispatcher("LoginPage-ckp.jsp").forward(request, response);
+		}
+		else {
+			Account account = Account.getAccount(userName, passWord);
+			request.setAttribute("message", "Login Successfull AccountName : " + account.getUserName());
+			request.getRequestDispatcher("LoginPage-ckp.jsp").forward(request, response);
+		}
+		
 	}
 
 }
