@@ -44,7 +44,8 @@ public class LoginServlet extends HttpServlet {
 		else {
 			Account account = Account.getAccount(userName, passWord);
 			request.setAttribute("message", "Login Successfull AccountName : " + account.getUserName());
-			request.getRequestDispatcher("LoginPage-ckp.jsp").forward(request, response);
+			//request.getRequestDispatcher("LoginPage-ckp.jsp").forward(request, response);
+			response.sendRedirect("VotePage.jsp");
 		}
 		
 	}

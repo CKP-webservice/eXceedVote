@@ -7,6 +7,9 @@ public class Account {
 	private String userName;
 	private String passWord;
 	private AccountType type;
+	private String name;
+	private String lastName;
+	private String studentID;
 	
 	public static Account getAccount(String userName,String passWord){
 		return new Account(userName,passWord);
@@ -40,5 +43,29 @@ public class Account {
 
 	public void setType(AccountType type) {
 		this.type = type;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getStudentID() {
+		return studentID;
+	}
+
+	public void setStudentID(String studentID) {
+		this.studentID = studentID;
 	}
 }
