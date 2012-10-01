@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import Model.Account;
 
@@ -45,6 +46,10 @@ public class LoginServlet extends HttpServlet {
 			Account account = Account.getAccount(userName, passWord);
 			request.setAttribute("message", "Login Successfull AccountName : " + account.getUserName());
 			//request.getRequestDispatcher("LoginPage-ckp.jsp").forward(request, response);
+			account.setName("Kanin");// for test
+			account.setLastName("Sirisith");// for test
+			HttpSession session = request.getSession(true);
+			session.setAttribute("account", account);
 			response.sendRedirect("VotePage.jsp");
 		}
 		

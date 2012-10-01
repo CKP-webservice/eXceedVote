@@ -31,7 +31,6 @@
   </head>
 
   <body>
-
     <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
@@ -46,11 +45,10 @@
               <li class="active"><a href="#">Home</a></li>
               <li><a href="#about">Vote</a></li>
               <li><a href="#contact">Project Details</a></li>
-              
             </ul>
             <ul class="nav pull-right">
             	<li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Firstname Lastname <b class="caret"></b></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">${account.getName() } ${account.getLastName() } <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   <li><a href="#">Edit Profile</a></li>
                   <li><a href="#">Log out</a></li>
