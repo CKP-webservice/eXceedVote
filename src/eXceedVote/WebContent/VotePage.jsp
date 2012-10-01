@@ -28,6 +28,7 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../bootstrap/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../bootstrap/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="../bootstrap/ico/apple-touch-icon-57-precomposed.png">
+
   </head>
 
   <body>
@@ -47,8 +48,13 @@
               <li><a href="#contact">Project Details</a></li>
             </ul>
             <ul class="nav pull-right">
-            	<li class="dropdown">
+<<<<<<< HEAD
+              <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">${account.getName() } ${account.getLastName() } <b class="caret"></b></a>
+=======
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Firstname Lastname <b class="caret"></b></a>
+>>>>>>> Edit VotePage.jsp and Create new js "vote.js"
                 <ul class="dropdown-menu">
                   <li><a href="#">Edit Profile</a></li>
                   <li><a href="#">Log out</a></li>
@@ -64,8 +70,8 @@
 
       <!-- Main hero unit for a primary marketing message or call to action -->
       <div class="row">
-	      <div class="span3">
-	      	<ul class="nav nav-list">
+        <div class="span3">
+          <ul class="nav nav-list">
                 <li class="nav-header">Main Page</li>
                 <li class="active"><a href="#">Vote Project</a></li>
                 <li><a href="#">Project Details</a></li>
@@ -75,25 +81,50 @@
                 <li class="divider"></li>
                 <li><a href="#">Log out</a></li>
               </ul>
-		</div>
-		<div class="span9">
-			<div class="hero-unit">
-				<h1> TEST </h1>
-			</div>
-			<div class="hero-unit">
-				<h1> TEST </h1>
-			</div>
-			<div class="hero-unit">
-				<h1> TEST </h1>
-			</div>
-			<div class="hero-unit">
-				<h1> TEST </h1>
-			</div>
-			<div class="hero-unit">
-				<h1> TEST </h1>
-			</div>
-		</div>
-	</div>
+    </div>
+    <div class="span9">
+      <div class="hero-unit">
+        <div class="pull-right" style="margin-right: 20px; margin-top: 20px">
+            <button class="btn btn-large btn-primary" type="button" id="vote"><h2>Vote Project</h2></button>
+          </div>
+          <h1> Popular Vote </h1><br><br>
+          
+        <select class="span3" id="projects">
+          <option> Project#1 </option>
+          <option> Project#2 </option>
+          <option> Project#3 </option>
+          <option> Project#4 </option>
+          <option> Project#5 </option>
+          <option> Project#6 </option>
+          <option> Project#7 </option>
+          <option> Project#8 </option>
+          <option> Project#9 </option>
+          <option> Project#10 </option>
+        </select>
+        <br><br>
+        <div id="project1">
+          <img src="http://mobi-wall.brothersoft.com/files/320240/p/1282293128223.jpg" class="img-polaroid">
+          <div class="pull-right" style="margin: 0px 30px; width: 300px"><p>testtesttesttesttesttesttesttest</p></div>
+        </div>
+        <div id="project2" style="display: none;">
+          <img src="http://mobi-wall.brothersoft.com/files/320240/p/1282293128223.jpg" class="img-polaroid">
+          <div class="pull-right" style="margin: 0px 30px; width: 300px"><p>gggggggggggggggggggggggggggggggg</p></div>
+        </div>
+      </div>
+      <div class="hero-unit">
+        <h1> TEST </h1>
+      </div>
+      <div class="hero-unit">
+        <h1> TEST </h1>
+      </div>
+      <div class="hero-unit">
+        <h1> TEST </h1>
+      </div>
+      <div class="hero-unit">
+        <h1> TEST </h1>
+      </div>
+    </div>
+  </div>
 
       <hr>
 
@@ -119,6 +150,8 @@
     <script src="bootstrap/js/bootstrap-collapse.js"></script>
     <script src="bootstrap/js/bootstrap-carousel.js"></script>
     <script src="bootstrap/js/bootstrap-typeahead.js"></script>
-
+    <script src="js/vote.js"></script>
   </body>
 </html>
+
+
