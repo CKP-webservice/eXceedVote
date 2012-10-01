@@ -1,15 +1,14 @@
 $(document).ready(function() {
-  $('#projects').change(function() {
-    alert('test');
-      var optionValue = $("#projects").val();
-    $('#project1, #project2').hide();
+  $('select').change(function() {
+      var optionValue = $('select').val();
+    $('#project1, #project2').hide(500);
     switch(optionValue)
     {
-    case 1:
-      $("#project1").show();
+    case "Project#1":
+      $("#project1").show(500);
       break;
-    case 2:
-      $("#project2").show();
+    case "Project#2":
+      $("#project2").show(500);
       break;
     }
   });

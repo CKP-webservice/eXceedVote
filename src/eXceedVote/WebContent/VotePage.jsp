@@ -47,13 +47,8 @@
               <li><a href="#contact">Project Details</a></li>
             </ul>
             <ul class="nav pull-right">
-<<<<<<< HEAD
               <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">${account.getName() } ${account.getLastName() } <b class="caret"></b></a>
-=======
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Firstname Lastname <b class="caret"></b></a>
->>>>>>> Edit VotePage.jsp and Create new js "vote.js"
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">${account.getName() } ${account.getLastName() }<b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   <li><a href="#">Edit Profile</a></li>
                   <li><a href="#">Log out</a></li>
@@ -88,7 +83,7 @@
           </div>
           <h1> Popular Vote </h1><br><br>
           
-        <select class="span3" id="projects">
+        <select class="span3">
           <option> Project#1 </option>
           <option> Project#2 </option>
           <option> Project#3 </option>
@@ -103,11 +98,11 @@
         <br><br>
         <div id="project1">
           <img src="http://mobi-wall.brothersoft.com/files/320240/p/1282293128223.jpg" class="img-polaroid">
-          <div class="pull-right" style="margin: 0px 30px; width: 300px"><p>testtesttesttesttesttesttesttest</p></div>
+          <div class="pull-right" style="margin: 0px 30px; width: 300px"><p>Project#1 Details</p></div>
         </div>
         <div id="project2" style="display: none;">
           <img src="http://mobi-wall.brothersoft.com/files/320240/p/1282293128223.jpg" class="img-polaroid">
-          <div class="pull-right" style="margin: 0px 30px; width: 300px"><p>gggggggggggggggggggggggggggggggg</p></div>
+          <div class="pull-right" style="margin: 0px 30px; width: 300px"><p>Project#2 Details</p></div>
         </div>
       </div>
       <div class="hero-unit">
@@ -136,7 +131,8 @@
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="bootstrap/js/jquery.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="bootstrap/js/bootstrap.js"></script>
     <script src="bootstrap/js/bootstrap-transition.js"></script>
     <script src="bootstrap/js/bootstrap-alert.js"></script>
     <script src="bootstrap/js/bootstrap-modal.js"></script>
@@ -152,5 +148,6 @@
     <script src="js/vote.js"></script>
   </body>
 </html>
+
 
 
