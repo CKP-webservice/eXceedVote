@@ -105,6 +105,11 @@
           <div class="pull-right" style="margin: 0px 30px; width: 300px"><p>Project#2 Details</p></div>
         </div>
       </div>
+      	<div id="project3" style="display: none;">
+          <img src="http://mobi-wall.brothersoft.com/files/320240/p/1282293128223.jpg" class="img-polaroid">
+          <div class="pull-right" style="margin: 0px 30px; width: 300px"><p>Project#3 Details</p></div>
+        </div>
+      </div>
       <div class="hero-unit">
         <h1> TEST </h1>
       </div>
