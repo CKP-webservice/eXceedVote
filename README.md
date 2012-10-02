@@ -1,8 +1,8 @@
 eXceedVote Project
 ==========
 
-develop by CKP
-eXceed Vote Project
+develop by CKP<br>
+eXceed Vote Project<br>
 01219243 Software Specification and Design
 
 Member
