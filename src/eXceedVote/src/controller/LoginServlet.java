@@ -50,6 +50,7 @@ public class LoginServlet extends HttpServlet {
 			account.setLastName("Sirisith");// for test
 			HttpSession session = request.getSession(true);
 			session.setAttribute("account", account);
+			session.setAttribute("islogin", "yes");
 			response.sendRedirect("VotePage.jsp");
 		}
 		

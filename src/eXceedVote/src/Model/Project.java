@@ -4,6 +4,13 @@ public class Project {
 	private String projectName;
 	private String projectDetail;
 	private String imgURL;
+	
+	private Project(String projectName, String projectDetail, String imgURL) {
+		this.projectName = projectName;
+		this.projectDetail = projectDetail;
+		this.imgURL = imgURL;
+	}
+	
 	public String getProjectName() {
 		return projectName;
 	}
@@ -21,5 +28,8 @@ public class Project {
 	}
 	public void setImgURL(String imgURL) {
 		this.imgURL = imgURL;
+	}
+	public static Project getProject(String projectName, String projectDetail, String imgURL){
+		return new Project(projectName,projectDetail,imgURL);
 	}
 }
