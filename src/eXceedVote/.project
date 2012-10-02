@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>eXceedvote</name>
+<<<<<<< HEAD
+	<name>eXceedVote</name>
+=======
+	<name>eXceedVot</name>
+>>>>>>> Createnew project again
 	<comment></comment>
 	<projects>
 	</projects>
