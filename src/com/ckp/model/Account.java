@@ -4,36 +4,18 @@ public class Account {
 	public enum AccountType{
 		VOTER,ADMIN
 	}
-	private String userName;
-	private String passWord;
 	private AccountType type;
 	private String name;
 	private String lastName;
 	
-	public static Account getAccount(String userName,String passWord){
-		return new Account(userName,passWord);
+	public static Account getAccount(String name,String lastName, AccountType type){
+		return new Account(name,lastName,type);
 	}
 	
-	private Account(String userName,String passWord){
-		this.userName = userName;
-		this.passWord = passWord;
-		this.type = AccountType.VOTER;
-	}
-
-	public String getUserName() {
-		return userName;
-	}
-
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
-
-	public String getPassWord() {
-		return passWord;
-	}
-
-	public void setPassWord(String passWord) {
-		this.passWord = passWord;
+	private Account(String name,String lastName, AccountType type){
+		this.name = name;
+		this.lastName = lastName;
+		this.type = type;
 	}
 
 	public AccountType getType() {

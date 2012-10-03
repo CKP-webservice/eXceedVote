@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.ckp.model.Account;
+import com.ckp.model.Account.AccountType;
+import com.ckp.model.DataManager;
 
 /**
  * Servlet implementation class LoginServlet
@@ -36,22 +38,24 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String userName = request.getParameter("uname");
-		String passWord = request.getParameter("password");
-		if(userName == null || userName == "" || passWord == null || passWord == "") {
+		String username = request.getParameter("uname");
+		String password = request.getParameter("password");
+		if(username == null || username == "" || password == null || password == "") {
 			request.setAttribute("message", "Please enter Username and password");
 			request.getRequestDispatcher("LoginPage.jsp").forward(request, response);
 		}
 		else {
-			Account account = Account.getAccount(userName, passWord);
-			request.setAttribute("message", "Login Successfull AccountName : " + account.getUserName());
-			//request.getRequestDispatcher("LoginPage-ckp.jsp").forward(request, response);
-			account.setName("Kanin");// for test
-			account.setLastName("Sirisith");// for test
-			HttpSession session = request.getSession(true);
-			session.setAttribute("account", account);
-			session.setAttribute("islogin", "yes");
-			response.sendRedirect("VotePage.jsp");
+			Account account = DataManager.loadAccount(username, password);
+			if(account != null){
+				HttpSession session = request.getSession(true);
+				session.setAttribute("account", account);
+				session.setAttribute("islogin", "yes");
+				response.sendRedirect("VotePage.jsp");
+			}
+			else {
+				request.setAttribute("message", "Username or Password is incorrect.");
+				request.getRequestDispatcher("LoginPage.jsp").forward(request, response);
+			}
 		}
 		
 	}
