@@ -75,7 +75,7 @@
                 <li><a href="#">Project Details</a></li>
                 <li class="nav-header">Help Page</li>
                 <li><a href="#">Add Project</a></li>
-                <li><a href="#">Administrtor Page</a></li>
+                <li><a href="#">Administrator Page</a></li>
                 <li class="divider"></li>
                 <li><a href="#">Log out</a></li>
               </ul>
@@ -87,20 +87,6 @@
 	            <button class="btn btn-large btn-primary" name="vote1" type="submit" id="question1-vote"><h2>Vote Project</h2></button>
 	          </div>
 	          <h1> Popular Vote </h1><br><br>
-	          
-<<<<<<< HEAD
-	        <select name="question1-select" class="span3">
-	          <option> Project#1 </option>
-	          <option> Project#2 </option>
-	          <option> Project#3 </option>
-	          <option> Project#4 </option>
-	          <option> Project#5 </option>
-	          <option> Project#6 </option>
-	          <option> Project#7 </option>
-	          <option> Project#8 </option>
-	          <option> Project#9 </option>
-	          <option> Project#10 </option>
-=======
 	        <select name="question1-select" id="question1-select" class="span3">
 	          <option value="1"> Project#1 </option>
 	          <option value="2"> Project#2 </option>
@@ -112,7 +98,6 @@
 	          <option value="8"> Project#8 </option>
 	          <option value="9"> Project#9 </option>
 	          <option value="10"> Project#10 </option>
->>>>>>> Add name to select and button
 	        </select>
 	        <br><br>
 	        <div id="project1">
