@@ -1,3 +1,7 @@
+<%@ page language="java" 
+    contentType="text/html; charset=windows-1256"
+    pageEncoding="windows-1256"
+%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -48,7 +52,7 @@
             </ul>
             <ul class="nav pull-right">
               <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">${account.getName() } ${account.getLastName() }<b class="caret"></b></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Firstname Lastname <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   <li><a href="#">Edit Profile</a></li>
                   <li><a href="#">Log out</a></li>
@@ -105,11 +109,6 @@
           <div class="pull-right" style="margin: 0px 30px; width: 300px"><p>Project#2 Details</p></div>
         </div>
       </div>
-      	<div id="project3" style="display: none;">
-          <img src="http://mobi-wall.brothersoft.com/files/320240/p/1282293128223.jpg" class="img-polaroid">
-          <div class="pull-right" style="margin: 0px 30px; width: 300px"><p>Project#3 Details</p></div>
-        </div>
-      </div>
       <div class="hero-unit">
         <h1> TEST </h1>
       </div>
@@ -138,21 +137,8 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="js/jquery.js"></script>
     <script src="bootstrap/js/bootstrap.js"></script>
-    <script src="bootstrap/js/bootstrap-transition.js"></script>
-    <script src="bootstrap/js/bootstrap-alert.js"></script>
-    <script src="bootstrap/js/bootstrap-modal.js"></script>
-    <script src="bootstrap/js/bootstrap-dropdown.js"></script>
-    <script src="bootstrap/js/bootstrap-scrollspy.js"></script>
-    <script src="bootstrap/js/bootstrap-tab.js"></script>
-    <script src="bootstrap/js/bootstrap-tooltip.js"></script>
-    <script src="bootstrap/js/bootstrap-popover.js"></script>
-    <script src="bootstrap/js/bootstrap-button.js"></script>
-    <script src="bootstrap/js/bootstrap-collapse.js"></script>
-    <script src="bootstrap/js/bootstrap-carousel.js"></script>
-    <script src="bootstrap/js/bootstrap-typeahead.js"></script>
     <script src="js/vote.js"></script>
   </body>
 </html>
-
 
 
