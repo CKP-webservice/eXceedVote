@@ -52,7 +52,7 @@
             </ul>
             <ul class="nav pull-right">
               <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Firstname Lastname <b class="caret"></b></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">${account.getName() } ${account.getLastName() } <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   <li><a href="#">Edit Profile</a></li>
                   <li><a href="#">Log out</a></li>
