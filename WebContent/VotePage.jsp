@@ -84,11 +84,11 @@
     	<form id="question1" method="post" action="VoteServlet">
 	      <div class="hero-unit">
 	        <div class="pull-right" style="margin-right: 20px; margin-top: 20px">
-	            <button class="btn btn-large btn-primary" type="button" id="vote"><h2>Vote Project</h2></button>
+	            <button class="btn btn-large btn-primary" type="submit" id="question1-vote"><h2>Vote Project</h2></button>
 	          </div>
 	          <h1> Popular Vote </h1><br><br>
 	          
-	        <select class="span3">
+	        <select id="question1-select" class="span3">
 	          <option> Project#1 </option>
 	          <option> Project#2 </option>
 	          <option> Project#3 </option>
@@ -108,6 +108,42 @@
 	        <div id="project2" style="display: none;">
 	          <img src="http://mobi-wall.brothersoft.com/files/320240/p/1282293128223.jpg" class="img-polaroid">
 	          <div class="pull-right" style="margin: 0px 30px; width: 300px"><p>Project#2 Details</p></div>
+	        </div>
+	        <div id="project3" style="display: none;">
+	          <img src="http://mobi-wall.brothersoft.com/files/320240/p/1282293128223.jpg" class="img-polaroid">
+	          <div class="pull-right" style="margin: 0px 30px; width: 300px"><p>Project#3 Details</p></div>
+	        </div>
+	        <div id="project4" style="display: none;">
+	          <img src="http://mobi-wall.brothersoft.com/files/320240/p/1282293128223.jpg" class="img-polaroid">
+	          <div class="pull-right" style="margin: 0px 30px; width: 300px"><p>Project#4 Details</p></div>
+	        </div>
+	        <div id="project5" style="display: none;">
+	          <img src="http://mobi-wall.brothersoft.com/files/320240/p/1282293128223.jpg" class="img-polaroid">
+	          <div class="pull-right" style="margin: 0px 30px; width: 300px"><p>Project#5 Details</p></div>
+	        </div>
+	        <div id="project6" style="display: none;">
+	          <img src="http://mobi-wall.brothersoft.com/files/320240/p/1282293128223.jpg" class="img-polaroid">
+	          <div class="pull-right" style="margin: 0px 30px; width: 300px"><p>Project#6 Details</p></div>
+	        </div>
+	        <div id="project6" style="display: none;">
+	          <img src="http://mobi-wall.brothersoft.com/files/320240/p/1282293128223.jpg" class="img-polaroid">
+	          <div class="pull-right" style="margin: 0px 30px; width: 300px"><p>Project#6 Details</p></div>
+	        </div>
+	        <div id="project7" style="display: none;">
+	          <img src="http://mobi-wall.brothersoft.com/files/320240/p/1282293128223.jpg" class="img-polaroid">
+	          <div class="pull-right" style="margin: 0px 30px; width: 300px"><p>Project#7 Details</p></div>
+	        </div>
+	        <div id="project8" style="display: none;">
+	          <img src="http://mobi-wall.brothersoft.com/files/320240/p/1282293128223.jpg" class="img-polaroid">
+	          <div class="pull-right" style="margin: 0px 30px; width: 300px"><p>Project#8 Details</p></div>
+	        </div>
+	        <div id="project9" style="display: none;">
+	          <img src="http://mobi-wall.brothersoft.com/files/320240/p/1282293128223.jpg" class="img-polaroid">
+	          <div class="pull-right" style="margin: 0px 30px; width: 300px"><p>Project#9 Details</p></div>
+	        </div>
+	        <div id="project10" style="display: none;">
+	          <img src="http://mobi-wall.brothersoft.com/files/320240/p/1282293128223.jpg" class="img-polaroid">
+	          <div class="pull-right" style="margin: 0px 30px; width: 300px"><p>Project#10 Details</p></div>
 	        </div>
 	      </div>
 	  </form>
