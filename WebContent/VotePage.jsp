@@ -88,7 +88,7 @@
 	          </div>
 	          <h1> Popular Vote </h1><br><br>
 	          
-	        <select id="question1-select" class="span3">
+	        <select name="question1-select" class="span3">
 	          <option> Project#1 </option>
 	          <option> Project#2 </option>
 	          <option> Project#3 </option>

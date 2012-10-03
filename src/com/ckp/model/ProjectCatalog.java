@@ -2,7 +2,7 @@ package com.ckp.model;
 import java.util.*;
 
 public class ProjectCatalog {
-	ArrayList<Project> projectList;
+	private ArrayList<Project> projectList;
 	public ProjectCatalog()
 	{
 		projectList = new ArrayList<Project>();

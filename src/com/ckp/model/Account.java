@@ -7,15 +7,17 @@ public class Account {
 	private AccountType type;
 	private String name;
 	private String lastName;
+	private boolean isVote;
 	
-	public static Account getAccount(String name,String lastName, AccountType type){
-		return new Account(name,lastName,type);
+	public static Account getAccount(String name,String lastName, AccountType type, boolean isVote){
+		return new Account(name,lastName,type,isVote);
 	}
 	
-	private Account(String name,String lastName, AccountType type){
+	private Account(String name,String lastName, AccountType type, boolean isVote){
 		this.name = name;
 		this.lastName = lastName;
 		this.type = type;
+		this.setVote(isVote);
 	}
 
 	public AccountType getType() {
@@ -40,5 +42,13 @@ public class Account {
 
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
+	}
+
+	public boolean isVote() {
+		return isVote;
+	}
+
+	public void setVote(boolean isVote) {
+		this.isVote = isVote;
 	}
 }
