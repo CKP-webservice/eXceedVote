@@ -40,7 +40,7 @@ public class LoginServlet extends HttpServlet {
 		String passWord = request.getParameter("password");
 		if(userName == null || userName == "" || passWord == null || passWord == "") {
 			request.setAttribute("message", "Please enter Username and password");
-			request.getRequestDispatcher("LoginPage-ckp.jsp").forward(request, response);
+			request.getRequestDispatcher("LoginPage.jsp").forward(request, response);
 		}
 		else {
 			Account account = Account.getAccount(userName, passWord);
