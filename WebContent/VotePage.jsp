@@ -84,10 +84,11 @@
     	<form id="question1" method="post" action="VoteServlet">
 	      <div class="hero-unit">
 	        <div class="pull-right" style="margin-right: 20px; margin-top: 20px">
-	            <button class="btn btn-large btn-primary" type="submit" id="question1-vote"><h2>Vote Project</h2></button>
+	            <button class="btn btn-large btn-primary" name="vote1" type="submit" id="question1-vote"><h2>Vote Project</h2></button>
 	          </div>
 	          <h1> Popular Vote </h1><br><br>
 	          
+<<<<<<< HEAD
 	        <select name="question1-select" class="span3">
 	          <option> Project#1 </option>
 	          <option> Project#2 </option>
@@ -99,6 +100,19 @@
 	          <option> Project#8 </option>
 	          <option> Project#9 </option>
 	          <option> Project#10 </option>
+=======
+	        <select name="question1-select" id="question1-select" class="span3">
+	          <option value="1"> Project#1 </option>
+	          <option value="2"> Project#2 </option>
+	          <option value="3"> Project#3 </option>
+	          <option value="4"> Project#4 </option>
+	          <option value="5"> Project#5 </option>
+	          <option value="6"> Project#6 </option>
+	          <option value="7"> Project#7 </option>
+	          <option value="8"> Project#8 </option>
+	          <option value="9"> Project#9 </option>
+	          <option value="10"> Project#10 </option>
+>>>>>>> Add name to select and button
 	        </select>
 	        <br><br>
 	        <div id="project1">
