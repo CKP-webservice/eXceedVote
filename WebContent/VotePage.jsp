@@ -81,46 +81,36 @@
               </ul>
     </div>
     <div class="span9">
-      <div class="hero-unit">
-        <div class="pull-right" style="margin-right: 20px; margin-top: 20px">
-            <button class="btn btn-large btn-primary" type="button" id="vote"><h2>Vote Project</h2></button>
-          </div>
-          <h1> Popular Vote </h1><br><br>
-          
-        <select class="span3">
-          <option> Project#1 </option>
-          <option> Project#2 </option>
-          <option> Project#3 </option>
-          <option> Project#4 </option>
-          <option> Project#5 </option>
-          <option> Project#6 </option>
-          <option> Project#7 </option>
-          <option> Project#8 </option>
-          <option> Project#9 </option>
-          <option> Project#10 </option>
-        </select>
-        <br><br>
-        <div id="project1">
-          <img src="http://mobi-wall.brothersoft.com/files/320240/p/1282293128223.jpg" class="img-polaroid">
-          <div class="pull-right" style="margin: 0px 30px; width: 300px"><p>Project#1 Details</p></div>
-        </div>
-        <div id="project2" style="display: none;">
-          <img src="http://mobi-wall.brothersoft.com/files/320240/p/1282293128223.jpg" class="img-polaroid">
-          <div class="pull-right" style="margin: 0px 30px; width: 300px"><p>Project#2 Details</p></div>
-        </div>
-      </div>
-      <div class="hero-unit">
-        <h1> TEST </h1>
-      </div>
-      <div class="hero-unit">
-        <h1> TEST </h1>
-      </div>
-      <div class="hero-unit">
-        <h1> TEST </h1>
-      </div>
-      <div class="hero-unit">
-        <h1> TEST </h1>
-      </div>
+    	<form id="question1" method="post" action="VoteServlet">
+	      <div class="hero-unit">
+	        <div class="pull-right" style="margin-right: 20px; margin-top: 20px">
+	            <button class="btn btn-large btn-primary" type="button" id="vote"><h2>Vote Project</h2></button>
+	          </div>
+	          <h1> Popular Vote </h1><br><br>
+	          
+	        <select class="span3">
+	          <option> Project#1 </option>
+	          <option> Project#2 </option>
+	          <option> Project#3 </option>
+	          <option> Project#4 </option>
+	          <option> Project#5 </option>
+	          <option> Project#6 </option>
+	          <option> Project#7 </option>
+	          <option> Project#8 </option>
+	          <option> Project#9 </option>
+	          <option> Project#10 </option>
+	        </select>
+	        <br><br>
+	        <div id="project1">
+	          <img src="http://mobi-wall.brothersoft.com/files/320240/p/1282293128223.jpg" class="img-polaroid">
+	          <div class="pull-right" style="margin: 0px 30px; width: 300px"><p>Project#1 Details</p></div>
+	        </div>
+	        <div id="project2" style="display: none;">
+	          <img src="http://mobi-wall.brothersoft.com/files/320240/p/1282293128223.jpg" class="img-polaroid">
+	          <div class="pull-right" style="margin: 0px 30px; width: 300px"><p>Project#2 Details</p></div>
+	        </div>
+	      </div>
+	  </form>
     </div>
   </div>
 
