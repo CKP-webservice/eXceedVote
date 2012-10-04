@@ -1,15 +1,6 @@
 package com.ckp.model;
 
-import javax.servlet.http.HttpSession;
-
-import com.ckp.controller.UserAuthentication;
-import com.ckp.model.Account;
-
 public class DataManager {
-	
-	public static Account loadAccount(String username, String password) {
-		return null;
-	}
 	
 	public static QuestionSet loadQuestionSet() {
 		
