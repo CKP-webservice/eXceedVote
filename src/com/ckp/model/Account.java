@@ -8,6 +8,7 @@ public class Account {
 	private String name;
 	private String lastName;
 	private boolean isVote;
+	private boolean valid;
 	
 	public static Account getAccount(String name,String lastName, AccountType type, boolean isVote){
 		return new Account(name,lastName,type,isVote);
@@ -51,4 +52,13 @@ public class Account {
 	public void setVote(boolean isVote) {
 		this.isVote = isVote;
 	}
+	
+	public boolean isValid(){
+		return valid;
+	}
+	
+	public void setValid(boolean valid) {
+		this.valid = valid;
+	}
+	
 }
