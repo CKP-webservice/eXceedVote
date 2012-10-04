@@ -43,7 +43,7 @@ public class VoteServlet extends HttpServlet {
 		StringBuilder sb = new StringBuilder();
 		sb.append(account.getName()).append(" ").append(account.getLastName()).append(" ").append("vote for project").append(" ").append(request.getParameter("question1-select"));
 		System.out.println(sb);
-		response.sendRedirect("#");
+		response.sendRedirect("http://localhost:8080/eXceedVote/LoginPage.jsp");
 	}
 
 }
