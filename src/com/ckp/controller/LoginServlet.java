@@ -58,27 +58,18 @@ public class LoginServlet extends HttpServlet {
 				if (user.isValid()) {
 
 					HttpSession session = request.getSession(true);
-					session.setAttribute("currentSessionUser", user);
-					response.sendRedirect("dashBoard.jsp");
+					session.setAttribute("account", user);
+					session.setAttribute("islogin", "yes");
+					response.sendRedirect("VotePage.jsp");
 				}
 
 				else
-					response.sendRedirect("badLogin.jsp");
+					request.setAttribute("message",
+							"Username or Password is incorrect.");
+					request.getRequestDispatcher("LoginPage.jsp").forward(request,
+							response);
 			} catch (Throwable theException) {
 				System.out.println(theException);
-			}
-
-			Account account = DataManager.loadAccount(username, password);
-			if (account != null) {
-				HttpSession session = request.getSession(true);
-				session.setAttribute("account", account);
-				session.setAttribute("islogin", "yes");
-				response.sendRedirect("VotePage.jsp");
-			} else {
-				request.setAttribute("message",
-						"Username or Password is incorrect.");
-				request.getRequestDispatcher("LoginPage.jsp").forward(request,
-						response);
 			}
 		}
 
