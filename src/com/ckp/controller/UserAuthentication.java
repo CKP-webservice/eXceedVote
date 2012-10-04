@@ -26,7 +26,7 @@ public class UserAuthentication {
 				user.setValid(false);
 			else if (present) {
 				String name = rs.getString("name");
-				String score = rs.getString("score");
+				//String score = rs.getString("score");
 				user.setName(name);
 				user.setLastName(name);
 				user.setValid(true);

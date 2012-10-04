@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
+import java.sql.*;
 
 import com.ckp.util.ConfigProperties;
 
@@ -16,7 +17,7 @@ public class ConnectionHandler {
    private static String databaseName;
   
    private void DBConnectionPool() {
-	    ConfigProperties.initialize("/Users/chanonkhamronyitha/Desktop/eXceedVote/src/Loginjsp-example/WebContent/config/DB.properties");
+	    ConfigProperties.initialize("/Users/Joe/Desktop/eXceedVote/WebContent/config/DB.properties");
 		Properties propObj =ConfigProperties.getInstance();
 		hostAddress = propObj.getProperty("DBHostAddress"); 
 		userName = propObj.getProperty("UserName");
