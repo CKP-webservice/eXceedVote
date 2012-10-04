@@ -33,4 +33,11 @@
 		<nature>org.eclipse.jdt.core.javanature</nature>
 		<nature>org.eclipse.wst.jsdt.core.jsNature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>src/com/ckp/util</name>
+			<type>2</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Desktop/util</locationURI>
+		</link>
+	</linkedResources>
 </projectDescription>
