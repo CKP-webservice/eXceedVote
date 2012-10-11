@@ -9,10 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.ckp.model.Account;
-import com.ckp.model.Account.AccountType;
-import com.ckp.model.DataManager;
 import com.ckp.controller.UserAuthentication;
-import com.ckp.model.Account;
 
 /**
  * @author Kanin Sirisith
