@@ -15,6 +15,7 @@ import com.ckp.controller.UserAuthentication;
 import com.ckp.model.Account;
 
 /**
+ * @author Kanin Sirisith
  * Servlet implementation class LoginServlet
  */
 @WebServlet("/LoginServlet")
@@ -30,26 +31,31 @@ public class LoginServlet extends HttpServlet {
 	}
 
 	/**
+	 * doGet
+	 * Auto-generate method do nothing
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 	}
 
 	/**
+	 * Method doPost
+	 * get username and password from form sent by loginPage.jsp then authenticate user by sent call login() method
+	 * from UserAuthentication class then set session for user
+	 * @param
+	 * @return
+	 * @exception throw ServletException , IOException
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
 		String username = request.getParameter("uname");
 		String password = request.getParameter("password");
 		if (username == null || username == "" || password == null
 				|| password == "") {
-			request.setAttribute("message",
-					"Please enter Username and password");
+			request.setAttribute("message","Please enter Username and password");
 			request.getRequestDispatcher("LoginPage.jsp").forward(request,
 					response);
 		} else {
