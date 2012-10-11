@@ -13,28 +13,42 @@
 
     <!-- Le styles -->
     <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+ 
     <style type="text/css">
       body {
         padding-top: 60px;
         padding-bottom: 40px;
       }
     </style>
+
+	<!-- Add jQuery library -->
+	<script type="text/javascript" src="fancybox/lib/jquery-1.7.2.min.js"></script>
+
+	<!-- Add mousewheel plugin (this is optional) -->
+	<script type="text/javascript" src="fancybox/lib/jquery.mousewheel-3.0.6.pack.js"></script>
+
+	<!-- Add fancyBox main JS and CSS files -->
+	<script type="text/javascript" src="fancybox/source/jquery.fancybox.js?v=2.0.6"></script>
+	<link rel="stylesheet" type="text/css" href="fancybox/source/jquery.fancybox.css?v=2.0.6" media="screen" />
+
+	<!-- Add Button helper (this is optional) -->
+	<link rel="stylesheet" type="text/css" href="fancybox/source/helpers/jquery.fancybox-buttons.css?v=1.0.2" />
+	<script type="text/javascript" src="fancybox/source/helpers/jquery.fancybox-buttons.js?v=1.0.2"></script>
+
+	<!-- Add Thumbnail helper (this is optional) -->
+	<link rel="stylesheet" type="text/css" href="fancybox/source/helpers/jquery.fancybox-thumbs.css?v=1.0.2" />
+	<script type="text/javascript" src="fancybox/source/helpers/jquery.fancybox-thumbs.js?v=1.0.2"></script>
+
+	<!-- Add Media helper (this is optional) -->
+	<script type="text/javascript" src="fancybox/source/helpers/jquery.fancybox-media.js?v=1.0.0"></script>
+	<script type="text/javascript" src="js/web.js"></script>
+	<style type="text/css">
+		.fancybox-custom .fancybox-skin {
+			box-shadow: 0 0 50px #222;
+		}
+	</style>
     <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
-
-    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
-    <!-- Le fav and touch icons -->
-    <link rel="shortcut icon" href="../bootstrap/ico/favicon.ico">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../bootstrap/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../bootstrap/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../bootstrap/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="../bootstrap/ico/apple-touch-icon-57-precomposed.png">
-
   </head>
-
   <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
@@ -101,8 +115,11 @@
 	        </select>
 	        <br><br>
 	        <div id="project1">
-	          <img src="http://mobi-wall.brothersoft.com/files/320240/p/1282293128223.jpg" class="img-polaroid">
-	          <div class="pull-right" style="margin: 0px 30px; width: 300px"><p>Project#1 Details</p></div>
+			<a class="fancybox" href="http://farm5.static.flickr.com/4058/4252054277_f0fa91e026.jpg" data-fancybox-group="gallery"><img src="http://farm5.static.flickr.com/4058/4252054277_f0fa91e026_m.jpg" alt="" width="220px" height="140px" style="border-radius: 7px; margin: 10px" /></a>
+			<a class="fancybox" href="http://farm3.static.flickr.com/2489/4234944202_0fe7930011.jpg" data-fancybox-group="gallery"><img src="http://farm3.static.flickr.com/2489/4234944202_0fe7930011_m.jpg" alt="" width="220px" height="140px" style="border-radius: 7px; margin: 10px" /></a>
+			<a class="fancybox" href="http://farm3.static.flickr.com/2647/3867677191_04d8d52b1a.jpg" data-fancybox-group="gallery"><img src="http://farm3.static.flickr.com/2647/3867677191_04d8d52b1a_m.jpg" alt="" width="220px" height="140px" style="border-radius: 7px; margin: 10px" /></a>
+	        <br><br>
+	        <div style="margin-top: 0px; margin-bottom: 0px; margin-left: 20px; margin-right: 20px; width: 720px"><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate </p></div>
 	        </div>
 	        <div id="project2" style="display: none;">
 	          <img src="http://mobi-wall.brothersoft.com/files/320240/p/1282293128223.jpg" class="img-polaroid">
@@ -160,7 +177,6 @@
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="js/jquery.js"></script>
     <script src="bootstrap/js/bootstrap.js"></script>
     <script src="js/vote.js"></script>
   </body>

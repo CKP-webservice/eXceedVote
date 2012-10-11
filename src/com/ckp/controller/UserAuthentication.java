@@ -26,9 +26,9 @@ public class UserAuthentication {
 				user.setValid(false);
 			else if (present) {
 				String name = rs.getString("name");
-				//String score = rs.getString("score");
+				String lastName = rs.getString("lastname");
 				user.setName(name);
-				user.setLastName(name);
+				user.setLastName(lastName);
 				user.setValid(true);
 				user.setType(Account.AccountType.VOTER);
 			}
