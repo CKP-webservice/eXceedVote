@@ -1,0 +1,5 @@
+eXceed Vote Project by CKP
+
+- use Web Application
+- JAVA servlet
+- JDBC & JPA
