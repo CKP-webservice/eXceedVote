@@ -20,9 +20,9 @@
         padding-bottom: 40px;
       }
     </style>
-
+	
 	<!-- Add jQuery library -->
-	<script type="text/javascript" src="fancybox/lib/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="fancybox/lib/jquery-1.8.2.min.js"></script>
 
 	<!-- Add mousewheel plugin (this is optional) -->
 	<script type="text/javascript" src="fancybox/lib/jquery.mousewheel-3.0.6.pack.js"></script>
@@ -31,15 +31,15 @@
 	<script type="text/javascript" src="fancybox/source/jquery.fancybox.js?v=2.0.6"></script>
 	<link rel="stylesheet" type="text/css" href="fancybox/source/jquery.fancybox.css?v=2.0.6" media="screen" />
 
-	<!-- Add Button helper (this is optional) -->
+	<!-- Add Button helper -->
 	<link rel="stylesheet" type="text/css" href="fancybox/source/helpers/jquery.fancybox-buttons.css?v=1.0.2" />
 	<script type="text/javascript" src="fancybox/source/helpers/jquery.fancybox-buttons.js?v=1.0.2"></script>
 
-	<!-- Add Thumbnail helper (this is optional) -->
+	<!-- Add Thumbnail helper -->
 	<link rel="stylesheet" type="text/css" href="fancybox/source/helpers/jquery.fancybox-thumbs.css?v=1.0.2" />
 	<script type="text/javascript" src="fancybox/source/helpers/jquery.fancybox-thumbs.js?v=1.0.2"></script>
 
-	<!-- Add Media helper (this is optional) -->
+	<!-- Add Media helper -->
 	<script type="text/javascript" src="fancybox/source/helpers/jquery.fancybox-media.js?v=1.0.0"></script>
 	<script type="text/javascript" src="js/web.js"></script>
 	<style type="text/css">
@@ -47,6 +47,8 @@
 			box-shadow: 0 0 50px #222;
 		}
 	</style>
+	<script src="bootstrap/js/bootstrap.js"></script>
+    <script src="js/vote.js"></script>
     <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
   </head>
   <body>
@@ -115,15 +117,22 @@
 	        </select>
 	        <br><br>
 	        <div id="project1">
-			<a class="fancybox" href="http://farm5.static.flickr.com/4058/4252054277_f0fa91e026.jpg" data-fancybox-group="gallery"><img src="http://farm5.static.flickr.com/4058/4252054277_f0fa91e026_m.jpg" alt="" width="220px" height="140px" style="border-radius: 7px; margin: 10px" /></a>
-			<a class="fancybox" href="http://farm3.static.flickr.com/2489/4234944202_0fe7930011.jpg" data-fancybox-group="gallery"><img src="http://farm3.static.flickr.com/2489/4234944202_0fe7930011_m.jpg" alt="" width="220px" height="140px" style="border-radius: 7px; margin: 10px" /></a>
-			<a class="fancybox" href="http://farm3.static.flickr.com/2647/3867677191_04d8d52b1a.jpg" data-fancybox-group="gallery"><img src="http://farm3.static.flickr.com/2647/3867677191_04d8d52b1a_m.jpg" alt="" width="220px" height="140px" style="border-radius: 7px; margin: 10px" /></a>
-	        <br><br>
-	        <div style="margin-top: 0px; margin-bottom: 0px; margin-left: 20px; margin-right: 20px; width: 720px"><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate </p></div>
+	        	<h2 style="margin: 10px">Project#1</h2>
+	        	<br>
+				<a class="fancybox" href="http://farm5.static.flickr.com/4058/4252054277_f0fa91e026.jpg" data-fancybox-group="gallery"><img src="http://farm5.static.flickr.com/4058/4252054277_f0fa91e026_m.jpg" alt="" width="220px" height="140px" style="border-radius: 7px; margin: 10px" /></a>
+				<a class="fancybox" href="http://farm3.static.flickr.com/2489/4234944202_0fe7930011.jpg" data-fancybox-group="gallery"><img src="http://farm3.static.flickr.com/2489/4234944202_0fe7930011_m.jpg" alt="" width="220px" height="140px" style="border-radius: 7px; margin: 10px" /></a>
+				<a class="fancybox" href="http://farm3.static.flickr.com/2647/3867677191_04d8d52b1a.jpg" data-fancybox-group="gallery"><img src="http://farm3.static.flickr.com/2647/3867677191_04d8d52b1a_m.jpg" alt="" width="220px" height="140px" style="border-radius: 7px; margin: 10px" /></a>
+	        	<br><br>
+	        	<div style="margin: 0px 10px; width: 720px"><p>	Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate </p></div>
 	        </div>
 	        <div id="project2" style="display: none;">
-	          <img src="http://mobi-wall.brothersoft.com/files/320240/p/1282293128223.jpg" class="img-polaroid">
-	          <div class="pull-right" style="margin: 0px 30px; width: 300px"><p>Project#2 Details</p></div>
+	        	<h2 style="margin: 10px">Project#2</h2>
+	        	<br>
+	        	<a class="fancybox" href="http://exceed.cpe.ku.ac.th/wiki/images/e/ec/Interface_with_pdf.png" data-fancybox-group="gallery"><img src="http://exceed.cpe.ku.ac.th/wiki/images/e/ec/Interface_with_pdf.png" alt="" width="220px" height="140px" style="border-radius: 7px; margin: 10px" /></a>
+				<a class="fancybox" href="http://farm3.static.flickr.com/2489/4234944202_0fe7930011.jpg" data-fancybox-group="gallery"><img src="http://farm3.static.flickr.com/2489/4234944202_0fe7930011_m.jpg" alt="" width="220px" height="140px" style="border-radius: 7px; margin: 10px" /></a>
+				<a class="fancybox" href="http://farm3.static.flickr.com/2647/3867677191_04d8d52b1a.jpg" data-fancybox-group="gallery"><img src="http://farm3.static.flickr.com/2647/3867677191_04d8d52b1a_m.jpg" alt="" width="220px" height="140px" style="border-radius: 7px; margin: 10px" /></a>
+	        	<br><br>
+	        	<div style="margin-top: 0px; margin-bottom: 0px; margin-left: 20px; margin-right: 20px; width: 720px"><p>A part of everyone life is “Reading”, When you read you’ll more understand if you take some note. But how bad of taking notes in your normal life. For example when you circle a word, hi-light some text or paste some sticky notes. You can see that it’s hard to edit without dirtiness or save it permanently. That’s very DIRTY!!!. Moreover, unsharable is also a big problem. These problem drive us create "World Note" , a new form application to become a perfect software to note to write to share.</p></div>
 	        </div>
 	        <div id="project3" style="display: none;">
 	          <img src="http://mobi-wall.brothersoft.com/files/320240/p/1282293128223.jpg" class="img-polaroid">
@@ -165,20 +174,10 @@
 	  </form>
     </div>
   </div>
-
       <hr>
-
       <footer>
         <p>&copy; develop by CKP</p>
       </footer>
-
-    </div> <!-- /container -->
-
-    <!-- Le javascript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="bootstrap/js/bootstrap.js"></script>
-    <script src="js/vote.js"></script>
   </body>
 </html>
 
