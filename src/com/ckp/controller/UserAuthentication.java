@@ -14,19 +14,24 @@ public class UserAuthentication {
 	public static Account login(String username, String password) {
 		Account user = Account.getAccount("","",Account.AccountType.VOTER,false);
 		Statement stmt = null;
-		String searchQuery = "SELECT * FROM users WHERE username='" + username
-				+ "' AND password='" + password + "'";
+		// ? represent placeholders for inserting arguments
+		String prepQuery = "SELECT * FROM account WHERE username=? AND password=?";
 		try {
 
 			con = ConnectionHandler.getConnection();
 			stmt = con.createStatement();
-			rs = stmt.executeQuery(searchQuery);
+			// use a prepared statement to avoid sql injection
+			PreparedStatement pstmt = con.prepareStatement(prepQuery);
+			pstmt.setString(1, username);
+			pstmt.setString(2, password);
+			rs = pstmt.executeQuery();
+			//rs = stmt.executeQuery(searchQuery);
 			boolean present = rs.next();
 			if (!present)
 				user.setValid(false);
 			else if (present) {
-				String name = rs.getString("name");
-				String lastName = rs.getString("lastname");
+				String name = rs.getString("acc_id");
+				String lastName = rs.getString("acc_id");
 				user.setName(name);
 				user.setLastName(lastName);
 				user.setValid(true);

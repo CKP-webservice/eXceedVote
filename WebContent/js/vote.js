@@ -37,7 +37,14 @@ $(document).ready(function() {
         break;
     }
   });
-  $('#vote').click(function() {
-    alert('voted');
+  $('button').click(function() {
+    if(confirm('Are you sure?')) {
+    	alert('Vote Successful');
+    	return true;
+    }
+    else {
+    	return false;
+    }
+   
   });
 });
