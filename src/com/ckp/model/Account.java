@@ -6,14 +6,14 @@ package com.ckp.model;
  */
 public class Account {
 	public enum AccountType{
-		VOTER,ADMIN
+		VOTER,ADMIN;
 	}
 	private AccountType type;
 	private String name;
 	private String lastName;
 	private boolean isVote;
 	private boolean valid;
-	
+	private int id;
 	/*
 	 * get Account from this class
 	 * @return Account object

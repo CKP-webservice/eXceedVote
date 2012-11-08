@@ -15,7 +15,8 @@ public class UserAuthentication {
 		Account user = Account.getAccount("","",Account.AccountType.VOTER,false);
 		Statement stmt = null;
 		// ? represent placeholders for inserting arguments
-		String prepQuery = "SELECT * FROM account WHERE username=? AND password=?";
+		//String prepQuery = "SELECT * FROM account WHERE username=? AND password=?";
+		String prepQuert = "SELECT user.first_name,user.last_name FROM account,user WHERE username = ? AND password = ? AND user.user_id = account.acc_id;";
 		try {
 
 			con = ConnectionHandler.getConnection();
@@ -30,8 +31,8 @@ public class UserAuthentication {
 			if (!present)
 				user.setValid(false);
 			else if (present) {
-				String name = rs.getString("acc_id");
-				String lastName = rs.getString("acc_id");
+				String name = rs.getString("user.first_name");
+				String lastName = rs.getString("user.last_name");
 				user.setName(name);
 				user.setLastName(lastName);
 				user.setValid(true);
