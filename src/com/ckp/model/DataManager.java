@@ -4,12 +4,13 @@ import javax.servlet.http.HttpSession;
 
 import com.ckp.controller.UserAuthentication;
 import com.ckp.model.Account;
-
+import java.util.List;
+import java.util.ArrayList;
 /*
  * manager all file for database
  */
 public class DataManager {
-	
+	private static Statement stmt = null;
 	/*
 	 * load account from database
 	 * @param string name and string password
@@ -24,7 +25,50 @@ public class DataManager {
 	 * @return QuestionSet 
 	 */
 	public static QuestionSet loadQuestionSet() {
-		
+		List<String> questionList = new ArrayList<String>();
+		String prepQuery = "SELECT * FROM question"; 
+		try {
+			con = ConnectionHandler.getConnection();
+			stmt = con.createStatement();
+			// use a prepared statement to avoid sql injection
+			PreparedStatement pstmt = con.prepareStatement(prepQuery);
+			rs = pstmt.executeQuery();
+			boolean present = rs.next();
+			if (!present)
+				System.err.println("No Result Found");
+				System.exit(1);
+			else if (present) {
+				do {
+					System.out.println("{0}",rs.getString("title"));
+				} while (present = rs.next());
+			}
+		} catch (Exception ex) {
+			System.out.println(ex.getMessage());
+		} finally {
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch (Exception e) {
+				}
+				rs = null;
+			}
+			if (stmt != null) {
+				try {
+					stmt.close();
+				} catch (Exception e) {
+				}
+				stmt = null;
+			}
+
+			if (con != null) {
+				try {
+					con.close();
+				} catch (Exception e) {
+				}
+
+				con = null;
+			}
+		}
 		return null;
 	}
 	
