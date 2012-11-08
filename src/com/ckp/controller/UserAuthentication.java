@@ -33,9 +33,11 @@ public class UserAuthentication {
 			else if (present) {
 				String name = rs.getString("user.first_name");
 				String lastName = rs.getString("user.last_name");
+				String type = rs.getString("account.type")
 				user.setName(name);
 				user.setLastName(lastName);
 				user.setValid(true);
+				type == "v" ? user.setType(Account.AccountType.VOTER) : user.setType(Account.AccountType.ADMIN);
 				user.setType(Account.AccountType.VOTER);
 			}
 		} catch (Exception ex) {
