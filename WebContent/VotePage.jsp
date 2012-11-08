@@ -5,9 +5,11 @@
 
 <%
 	String s = (String)session.getAttribute("islogin");
+	System.out.println(s);
 	if(s == null || s == "" || s == "no")
 	{
 		session.setAttribute("message", "Please Login");
+		
 %>
 	<jsp:forward page="LoginPage.jsp">
       <jsp:param name="message" value="Please Login"/>
@@ -113,7 +115,7 @@
     </div>
     <div class="span9">
     	<div class="hero-unit">
-    	<h4 class="pull-right" id="date_time"></h4>
+    	<h3 	class="pull-right" id="date_time"></h3>
     	<script type="text/javascript"> window.onload = date_time('date_time'); </script>
     	</div>
     	<form id="question1" method="post" action="VoteServlet">
