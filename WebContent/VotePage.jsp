@@ -2,6 +2,20 @@
     contentType="text/html; charset=windows-1256"
     pageEncoding="windows-1256"
 %>
+
+<%
+	String s = (String)session.getAttribute("islogin");
+	if(s == null || s == "" || s == "no")
+	{
+		session.setAttribute("message", "Please Login");
+%>
+	<jsp:forward page="LoginPage.jsp">
+      <jsp:param name="message" value="Please Login"/>
+    </jsp:forward>
+<%
+	}
+%>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
