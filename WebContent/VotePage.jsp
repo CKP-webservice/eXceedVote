@@ -56,6 +56,7 @@
 	<!-- Add Media helper -->
 	<script type="text/javascript" src="fancybox/source/helpers/jquery.fancybox-media.js?v=1.0.0"></script>
 	<script type="text/javascript" src="js/web.js"></script>
+	<script type="text/javascript" src="js/date_time.js"></script>
 	<style type="text/css">
 		.fancybox-custom .fancybox-skin {
 			box-shadow: 0 0 50px #222;
@@ -111,6 +112,10 @@
               </ul>
     </div>
     <div class="span9">
+    	<div class="hero-unit">
+    	<h4 class="pull-right" id="date_time"></h4>
+    	<script type="text/javascript"> window.onload = date_time('date_time'); </script>
+    	</div>
     	<form id="question1" method="post" action="VoteServlet">
 	      <div class="hero-unit">
 	        <div class="pull-right" style="margin-right: 20px; margin-top: 20px">
