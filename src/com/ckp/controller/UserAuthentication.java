@@ -16,7 +16,7 @@ public class UserAuthentication {
 		Statement stmt = null;
 		// ? represent placeholders for inserting arguments
 		//String prepQuery = "SELECT * FROM account WHERE username=? AND password=?";
-		String prepQuert = "SELECT user.first_name,user.last_name FROM account,user WHERE username = ? AND password = ? AND user.user_id = account.acc_id;";
+		String prepQuery = "SELECT user.first_name,user.last_name FROM account,user WHERE username = ? AND password = ? AND user.user_id = account.acc_id;";
 		try {
 
 			con = ConnectionHandler.getConnection();
