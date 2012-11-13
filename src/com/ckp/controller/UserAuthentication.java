@@ -1,8 +1,5 @@
 package com.ckp.controller;
 
-import java.io.UnsupportedEncodingException;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.sql.*;
 
 import com.ckp.model.Account;
@@ -16,7 +13,7 @@ public class UserAuthentication {
 		Statement stmt = null;
 		// ? represent placeholders for inserting arguments
 		//String prepQuery = "SELECT * FROM account WHERE username=? AND password=?";
-		String prepQuery = "SELECT user.first_name,user.last_name FROM account,user WHERE username = ? AND password = ? AND user.user_id = account.acc_id;";
+		String prepQuery = "SELECT user.first_name,user.last_name,account.type FROM account,user WHERE username = ? AND password = ? AND user.user_id = account.acc_id;";
 		try {
 
 			con = ConnectionHandler.getConnection();
@@ -33,12 +30,18 @@ public class UserAuthentication {
 			else if (present) {
 				String name = rs.getString("user.first_name");
 				String lastName = rs.getString("user.last_name");
-				String type = rs.getString("account.type")
+				String type = rs.getString("account.type");
 				user.setName(name);
 				user.setLastName(lastName);
 				user.setValid(true);
-				type == "v" ? user.setType(Account.AccountType.VOTER) : user.setType(Account.AccountType.ADMIN);
-				user.setType(Account.AccountType.VOTER);
+				if(type.equals("v")) {
+					user.setType(Account.AccountType.VOTER);
+				}
+				else if (type.equals("a")) {
+					user.setType(Account.AccountType.ADMIN);
+				}
+				//type == "v" ? user.setType(Account.AccountType.VOTER) : user.setType(Account.AccountType.ADMIN);
+				//user.setType(Account.AccountType.VOTER);
 			}
 		} catch (Exception ex) {
 			System.out.println(ex.getMessage());

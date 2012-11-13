@@ -2,8 +2,12 @@ package com.ckp.model;
 
 import javax.servlet.http.HttpSession;
 
-import com.ckp.controller.UserAuthentication;
+import com.ckp.controller.*;
 import com.ckp.model.Account;
+import java.sql.*;
+import java.sql.Statement;
+
+import com.ckp.controller.ConnectionHandler;
 import java.util.List;
 import java.util.ArrayList;
 /*
@@ -26,7 +30,9 @@ public class DataManager {
 	 */
 	public static QuestionSet loadQuestionSet() {
 		List<String> questionList = new ArrayList<String>();
-		String prepQuery = "SELECT * FROM question"; 
+		String prepQuery = "SELECT * FROM question";
+		Connection con = null;
+		ResultSet rs = null;
 		try {
 			con = ConnectionHandler.getConnection();
 			stmt = con.createStatement();
@@ -34,12 +40,13 @@ public class DataManager {
 			PreparedStatement pstmt = con.prepareStatement(prepQuery);
 			rs = pstmt.executeQuery();
 			boolean present = rs.next();
-			if (!present)
+			if (!present) {
 				System.err.println("No Result Found");
 				System.exit(1);
+			}
 			else if (present) {
 				do {
-					System.out.println("{0}",rs.getString("title"));
+					System.out.println(rs.getString("title").toString());
 				} while (present = rs.next());
 			}
 		} catch (Exception ex) {
