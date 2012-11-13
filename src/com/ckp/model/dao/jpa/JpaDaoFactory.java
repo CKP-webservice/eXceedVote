@@ -1,5 +1,7 @@
 package com.ckp.model.dao.jpa;
 
-public class JpaDaoFactory {
+import com.ckp.model.dao.DaoFactory;
+
+public class JpaDaoFactory extends DaoFactory{
 
 }
