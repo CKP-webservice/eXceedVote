@@ -30,6 +30,7 @@ public class ConnectionHandler {
       try
       {
          String url = "jdbc:mysql://"+hostAddress+"/"+databaseName+"?autoReconnect=true";
+         System.out.println(url);
          Class.forName("com.mysql.jdbc.Driver");
          try
          {            	
