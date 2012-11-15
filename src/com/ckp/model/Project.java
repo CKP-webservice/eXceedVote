@@ -1,24 +1,27 @@
 package com.ckp.model;
 
+import javax.persistence.*;
+
 /*
  * @author Kanin Sirisith
  * Model from project
  */
+@Entity
 public class Project {
 	private String projectName;
 	private String projectDetail;
-	private String imgURL;
-	private int projectNumber;
+	private String imgURL1;
+	private String imgURL2;
+	private String imgURL3;
+	@Id
+	private int id;
 	
 	/*
 	 * Constructor for Project class
 	 * @param string project name, project detail, image URL, and project number
 	 */
-	private Project(String projectName, String projectDetail, String imgURL, int  projectNumber) {
-		this.projectName = projectName;
-		this.projectDetail = projectDetail;
-		this.imgURL = imgURL;
-		this.projectNumber = projectNumber;
+	public Project() {
+
 	}
 	
 	/*
@@ -48,43 +51,28 @@ public class Project {
 	public void setProjectDetail(String projectDetail) {
 		this.projectDetail = projectDetail;
 	}
-	
-	/*
-	 * @return image URL
-	 */
-	public String getImgURL() {
-		return imgURL;
-	}
-	
-	/*
-	 * set Image URL
-	 * @param string URL Image
-	 */
-	public void setImgURL(String imgURL) {
-		this.imgURL = imgURL;
-	}
-	
-	/*
-	 * factory method when create new object
-	 * @param string project name, project details, image URL and project number
-	 * @return object Project
-	 */
-	public static Project getProject(String projectName, String projectDetail, String imgURL, int  projectNumber){
-		return new Project(projectName,projectDetail,imgURL, projectNumber);
+
+	public String getImgURL1() {
+		return imgURL1;
 	}
 
-	/*
-	 * @return project number
-	 */
-	public int getProjectNumber() {
-		return projectNumber;
+	public void setImgURL1(String imgURL1) {
+		this.imgURL1 = imgURL1;
 	}
 
-	/*
-	 * set project number to attribute
-	 * @param integer project number
-	 */
-	public void setProjectNumber(int projectNumber) {
-		this.projectNumber = projectNumber;
+	public String getImgURL2() {
+		return imgURL2;
+	}
+
+	public void setImgURL2(String imgURL2) {
+		this.imgURL2 = imgURL2;
+	}
+
+	public String getImgURL3() {
+		return imgURL3;
+	}
+
+	public void setImgURL3(String imgURL3) {
+		this.imgURL3 = imgURL3;
 	}
 }

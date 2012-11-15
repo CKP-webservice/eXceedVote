@@ -1,35 +1,30 @@
 package com.ckp.model;
 
+import javax.persistence.*;
+
 /**
  * Model from Question
  * @author Kanin Sirisith
  *
  */
+@Entity
 public class Question {
-	private String question;
-	
+	private String title;
+	@Id
+	private int id;
 	/**
 	 * Constructor for Question class
 	 * @param question
 	 */
-	private Question(String question) {
-		this.question = question;
-	}
-	
-	/**
-	 * 
-	 * @param question
-	 * @return
-	 */
-	public static Question getQuestion(String question) {
-		return new Question(question);
+	public Question() {
+		
 	}
 
-	public String getQuestion() {
-		return question;
+	public String getTitle() {
+		return title;
 	}
 
-	public void setQuestion(String question) {
-		this.question = question;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 }

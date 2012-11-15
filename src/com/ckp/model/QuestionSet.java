@@ -12,7 +12,4 @@ public class QuestionSet {
 		questionList.add(question);
 	}
 	
-	public void addQuestion(String question) {
-		questionList.add(Question.getQuestion(question));
-	}
 }

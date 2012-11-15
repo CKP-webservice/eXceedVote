@@ -1,27 +1,18 @@
 package com.ckp.model;
 
+import javax.persistence.*;
+
+@Entity
 public class User {
-	public int userID;
-	public String firstName;
-	public String lastName;
-	public int accountID;
+	@Id
+	private int id;
+	private String firstName;
+	private String lastName;
+	private int accountID;
 	
-	public User(int userID, String firstName, String lastName, int accountID)
+	public User()
 	{
-		this.userID = userID;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.accountID = accountID;
-	}
-	
-	public void setUserID(int id)
-	{
-		this.userID = id;
-	}
-	
-	public int getUserID()
-	{
-		return userID;
+		
 	}
 	
 	public void setFirstName(String name)

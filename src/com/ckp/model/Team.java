@@ -1,13 +1,16 @@
 package com.ckp.model;
 
+import javax.persistence.*;
+
+@Entity
 public class Team {
-	public String name;
-	public int id;
+	private String name;
+	@Id
+	private int id;
 	
-	public Team(String name, int id)
+	public Team()
 	{
-		this.name = name;
-		this.id = id;
+		
 	}
 	
 	public void setName(String name)
