@@ -2,11 +2,18 @@ package com.ckp.model.dao.jpa;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
+
 import com.ckp.model.Vote;
 import com.ckp.model.dao.VoteDAO;
 
 public class JpaVoteDAO implements VoteDAO {
 
+	private EntityManager em;
+	public JpaVoteDAO(EntityManager em)
+	{
+		this.em = em;
+	}
 	@Override
 	public Vote find(int id) {
 		// TODO Auto-generated method stub

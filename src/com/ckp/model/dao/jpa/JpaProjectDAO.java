@@ -2,11 +2,18 @@ package com.ckp.model.dao.jpa;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
+
 import com.ckp.model.Project;
 import com.ckp.model.dao.ProjectDAO;
 
 public class JpaProjectDAO implements ProjectDAO {
 
+	private EntityManager em;
+	public JpaProjectDAO(EntityManager em)
+	{
+		this.em = em;
+	}
 	@Override
 	public Project find(int id) {
 		// TODO Auto-generated method stub

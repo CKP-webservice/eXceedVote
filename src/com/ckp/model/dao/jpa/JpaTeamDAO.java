@@ -2,11 +2,18 @@ package com.ckp.model.dao.jpa;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
+
 import com.ckp.model.Team;
 import com.ckp.model.dao.TeamDAO;
 
 public class JpaTeamDAO implements TeamDAO {
 
+	private EntityManager em;
+	public JpaTeamDAO(EntityManager em)
+	{
+		this.em = em;
+	}
 	@Override
 	public Team find(int id) {
 		// TODO Auto-generated method stub

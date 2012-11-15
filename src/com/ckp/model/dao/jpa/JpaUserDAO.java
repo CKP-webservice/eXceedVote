@@ -2,11 +2,18 @@ package com.ckp.model.dao.jpa;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
+
 import com.ckp.model.User;
 import com.ckp.model.dao.UserDAO;
 
 public class JpaUserDAO implements UserDAO {
 
+	private EntityManager em;
+	public JpaUserDAO(EntityManager em)
+	{
+		this.em = em;
+	}
 	@Override
 	public User find(int id) {
 		// TODO Auto-generated method stub
