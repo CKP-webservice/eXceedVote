@@ -1,8 +1,5 @@
 package com.ckp.model;
 
-import javax.servlet.http.HttpSession;
-
-import com.ckp.controller.*;
 import com.ckp.model.Account;
 import java.sql.*;
 import java.sql.Statement;
@@ -29,7 +26,7 @@ public class DataManager {
 	 * @return QuestionSet 
 	 */
 	public static QuestionSet loadQuestionSet() {
-		List<String> questionList = new ArrayList<String>();
+		//List<String> questionList = new ArrayList<String>();
 		String prepQuery = "SELECT * FROM question";
 		Connection con = null;
 		ResultSet rs = null;

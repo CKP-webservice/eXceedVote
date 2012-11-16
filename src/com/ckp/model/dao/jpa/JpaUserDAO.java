@@ -3,6 +3,7 @@ package com.ckp.model.dao.jpa;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 
 import com.ckp.model.User;
 import com.ckp.model.dao.UserDAO;
@@ -10,34 +11,38 @@ import com.ckp.model.dao.UserDAO;
 public class JpaUserDAO implements UserDAO {
 
 	private EntityManager em;
-	public JpaUserDAO(EntityManager em)
-	{
+	public JpaUserDAO(EntityManager em) {
 		this.em = em;
 	}
 	@Override
 	public User find(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return em.find(User.class, id);
 	}
 
 	@Override
 	public void save(User user) {
-		// TODO Auto-generated method stub
+		EntityTransaction tx = em.getTransaction();
+		tx.begin();
+		em.persist(user);
+		tx.commit();
 		
 	}
 
 	@Override
 	public void delete(User user) {
-		// TODO Auto-generated method stub
-		
+		EntityTransaction tx = em.getTransaction();
+		tx.begin();
+		em.remove(user);
+		tx.commit();
 	}
-
+	
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<User> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		String query = "SELECT * FROM user";
+		return em.createQuery(query).getResultList();
 	}
-
+	
 	@Override
 	public List<User> query(String q) {
 		// TODO Auto-generated method stub

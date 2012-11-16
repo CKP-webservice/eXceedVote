@@ -1,8 +1,5 @@
 package com.ckp.model.dao.jpa;
 
-import javax.persistence.*;
-import javax.persistence.Persistence;
-
 import com.ckp.model.dao.AccountDAO;
 import com.ckp.model.dao.DaoFactory;
 import com.ckp.model.dao.ProjectDAO;
@@ -14,60 +11,46 @@ import com.ckp.model.dao.VoteDAO;
 
 public class JpaDaoFactory extends DaoFactory{
 
-	private EntityManager em;
-	private EntityManagerFactory emf;
-	private JpaAccountDAO accountDAO;
-	private JpaProjectDAO projectDAO;
-	private JpaQuestionDAO questionDAO;
-	private JpaTeamDAO teamDAO;
-	private JpaTeamMemberDAO teamMemberDAO;
-	private JpaUserDAO userDAO;
-	private JpaVoteDAO voteDAO;
-	public JpaDaoFactory()
-	{
-		emf = Persistence.createEntityManagerFactory("eXceedVote");
-		em = emf.createEntityManager();
-	}
 	@Override
 	public AccountDAO getAccountDAO() {
-		if(accountDAO == null) accountDAO = new JpaAccountDAO(em);
-		return accountDAO;
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
 	public ProjectDAO getProjectDAO() {
-		if(projectDAO == null) projectDAO = new JpaProjectDAO(em);
-		return projectDAO;
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
 	public QuestionDAO getQuestionDAO() {
-		if(questionDAO == null) questionDAO = new JpaQuestionDAO(em);
-		return questionDAO;
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
 	public TeamDAO getTeamDAO() {
-		if(teamDAO == null) teamDAO = new JpaTeamDAO(em);
-		return teamDAO;
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
 	public TeamMemberDAO getTeamMemberDAO() {
-		if(teamMemberDAO == null) teamMemberDAO = new JpaTeamMemberDAO(em);
-		return teamMemberDAO;
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
 	public UserDAO getUserDAO() {
-		if(userDAO == null) userDAO = new JpaUserDAO(em);
-		return userDAO;
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
 	public VoteDAO getVoteDAO() {
-		if(voteDAO == null) voteDAO = new JpaVoteDAO(em);
-		return voteDAO;
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

@@ -5,7 +5,7 @@ import java.util.List;
 import com.ckp.model.Account;
 
 public interface AccountDAO {
-	public Account find(String username,String password);
+	public Account find(int id);
 	public void save(Account account);
 	public void delete(Account account);
 	public List<Account> findAll();
