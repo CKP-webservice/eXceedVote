@@ -38,12 +38,12 @@ public class VoteServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("Vote!");
 		HttpSession session = request.getSession(true);
 		Account account = (Account) session.getAttribute("account");
 		StringBuilder sb = new StringBuilder();
 		sb.append(account.getName()).append(" ").append(account.getLastName()).append(" ").append("vote for project").append(" ").append(request.getParameter("question1-select"));
 		System.out.println(sb);
-		response.sendRedirect("http://localhost:8080/eXceedVote/VotePage.jsp");
 	}
 
 }

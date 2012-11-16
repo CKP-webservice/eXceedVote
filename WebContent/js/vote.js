@@ -37,14 +37,10 @@ $(document).ready(function() {
         break;
     }
   });
+ 
   $('button').click(function() {
-    if(confirm('Are you sure?')) {
-    	alert('Vote Successful');
-    	return true;
-    }
-    else {
-    	return false;
-    }
-   
-  });
+	    alert("test");
+	    
+	  });
+  
 });
