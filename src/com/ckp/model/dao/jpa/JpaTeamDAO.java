@@ -35,10 +35,11 @@ public class JpaTeamDAO implements TeamDAO {
 		tx.commit();
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Team> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		String query = "SELECT * FROM team";
+		return em.createQuery(query).getResultList();
 	}
 
 	@Override

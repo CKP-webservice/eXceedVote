@@ -37,10 +37,11 @@ public class JpaProjectDAO implements ProjectDAO {
 		tx.commit();
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Project> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		String query = "SELECT * FROM project";
+		return em.createQuery(query).getResultList();
 	}
 
 	@Override

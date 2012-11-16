@@ -36,10 +36,11 @@ public class JpaQuestionDAO implements QuestionDAO {
 		tx.commit();
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Question> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		String query = "SELECT * FROM question";
+		return em.createQuery(query).getResultList();
 	}
 
 	@Override

@@ -35,10 +35,11 @@ public class JpaVoteDAO implements VoteDAO {
 		tx.commit();
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Vote> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		String query = "SELECT * FROM vote";
+		return em.createQuery(query).getResultList();
 	}
 
 	@Override
