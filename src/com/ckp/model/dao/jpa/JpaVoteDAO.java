@@ -3,6 +3,7 @@ package com.ckp.model.dao.jpa;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 
 import com.ckp.model.Vote;
 import com.ckp.model.dao.VoteDAO;
@@ -10,32 +11,35 @@ import com.ckp.model.dao.VoteDAO;
 public class JpaVoteDAO implements VoteDAO {
 
 	private EntityManager em;
-	public JpaVoteDAO(EntityManager em)
-	{
+	public JpaVoteDAO(EntityManager em) {
 		this.em = em;
 	}
 	@Override
 	public Vote find(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return em.find(Vote.class, id);
 	}
 
 	@Override
 	public void save(Vote vote) {
-		// TODO Auto-generated method stub
-		
+		EntityTransaction tx = em.getTransaction();
+		tx.begin();
+		em.persist(vote);
+		tx.commit();
 	}
 
 	@Override
 	public void delete(Vote vote) {
-		// TODO Auto-generated method stub
-		
+		EntityTransaction tx = em.getTransaction();
+		tx.begin();
+		em.remove(vote);
+		tx.commit();
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Vote> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		String query = "SELECT * FROM vote";
+		return em.createQuery(query).getResultList();
 	}
 
 	@Override

@@ -1,6 +1,7 @@
 package com.ckp.model;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 /**
  * Model from Question
@@ -8,23 +9,32 @@ import javax.persistence.*;
  *
  */
 @Entity
+@Table(name ="question")
 public class Question {
-	private String title;
-	@Id
-	private int id;
+	private String question;
+	
 	/**
 	 * Constructor for Question class
 	 * @param question
 	 */
-	public Question() {
-		
+	private Question(String question) {
+		this.question = question;
+	}
+	
+	/**
+	 * 
+	 * @param question
+	 * @return
+	 */
+	public static Question getQuestion(String question) {
+		return new Question(question);
 	}
 
-	public String getTitle() {
-		return title;
+	public String getQuestion() {
+		return question;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
+	public void setQuestion(String question) {
+		this.question = question;
 	}
 }

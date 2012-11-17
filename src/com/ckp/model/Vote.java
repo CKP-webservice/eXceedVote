@@ -1,19 +1,15 @@
 package com.ckp.model;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="vote")
 public class Vote {
-	private int questionID;
-	private int projectID;
-	private int userID;
-	@Id
-	private int id;
+	public int questionID;
+	public int projectID;
+	public int userID;
 	
-	public Vote()
-	{
-		
-	}
 	public Vote(int questionID, int projectID, int userID)
 	{
 		this.questionID = questionID;
