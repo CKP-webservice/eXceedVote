@@ -36,9 +36,10 @@
         padding-bottom: 40px;
       }
     </style>
-
+	
 	<!-- Add jQuery library -->
 	<script type="text/javascript" src="fancybox/lib/jquery-1.8.2.min.js"></script>
+	
 	<!-- Add mousewheel plugin (this is optional) -->
 	<script type="text/javascript" src="fancybox/lib/jquery.mousewheel-3.0.6.pack.js"></script>
 
@@ -201,4 +202,5 @@
       </footer>
   </body>
 </html>
+
 
