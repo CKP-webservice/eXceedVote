@@ -1,14 +1,12 @@
 package com.ckp.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * Model for Account
  * @author Kanin Sirisith
  */
 @Entity
-@Table(name = "account")
 public class Account {
 	public enum AccountType{
 		VOTER,ADMIN;
@@ -18,23 +16,14 @@ public class Account {
 	private String lastName;
 	private boolean isVote;
 	private boolean valid;
+	@Id
 	private int id;
-	/*
-	 * get Account from this class
-	 * @return Account object
-	 */
-	public static Account getAccount(String name,String lastName, AccountType type, boolean isVote){
-		return new Account(name,lastName,type,isVote);
-	}
 	
 	/*
 	 * Constructor for Account Class
 	 */
-	private Account(String name,String lastName, AccountType type, boolean isVote){
-		this.name = name;
-		this.lastName = lastName;
-		this.type = type;
-		this.setVote(isVote);
+	public Account(){
+		
 	}
 
 	/*
