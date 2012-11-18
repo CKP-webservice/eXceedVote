@@ -10,13 +10,14 @@
 	<title>eXceed Vote</title>
 	<!-- Style -->
     <link href="css/loginstyle.css" rel="stylesheet">
+    <link href="css/alert_bootstrap.css" rel="stylesheet">
 </head>
 <body>
 	<div class="container">
     	<section class="login">
     		<h1>eXceed Vote</h1>
+    	${message}
     		<form method="post" action="LoginServlet">
-    		${message}
     		<p><input type="text" name="uname" value="" placeholder="Username or Email"></p>
     		<p><input type="password" name="password" value="" placeholder="Password"></p>
     		<p class="remember_me">
