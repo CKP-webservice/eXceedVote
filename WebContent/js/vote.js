@@ -37,12 +37,16 @@ $(document).ready(function() {
         break;
     }
   });
-  $('button').click(function() {
+  /*$('button').click(function() {
     if(confirm('Are you sure?'))
     {
     	return true;
     }
     else return false;
+  });*/
+  $('button').click(function()
+  {
+	  $('#example').modal();
   });
 });
 

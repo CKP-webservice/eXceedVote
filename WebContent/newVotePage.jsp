@@ -86,7 +86,7 @@
           <div class="hero-unit" id="t1">
             <div class="row-fluid"><h1>Popular Vote</h1></div><br><br>
             <div class="row-fluid">	
-	           	<select name="question1-select" id="question1-select" class="span3">
+	           	<select name="question1-select" id="question1-select" class="span5">
 	            	<option value="1"> Project#1 </option>
 	            	<option value="2"> Project#2 </option>
 	            	<option value="3"> Project#3 </option>
@@ -98,7 +98,19 @@
 	            	<option value="9"> Project#9 </option>
 	            	<option value="10"> Project#10 </option>
 	            </select>
-	            <button class="btn btn-large btn-primary pull-right" type="button" id="question1-vote" onclick='ajaxSendPost("question1-select", "question1-vote")' style="margin-top: -15px"><h2>Vote Project</h2></button>           
+	            <button class="btn btn-large btn-primary pull-right" type="button" id="question1-vote" style="margin-top: -15px"><h2>Vote Project</h2></button>
+  				<div id="example" class="modal hide fade in" style="display: none; ">  
+					<div class="modal-header">  
+						<a class="close" data-dismiss="modal">×</a>  
+						<h3>Popular Vote</h3>  
+					</div>  
+					<div class="modal-body">    
+						<p>Are you sure?</p>                
+					</div>  
+					<div class="modal-footer">  
+						<button type="submit" class="btn btn-primary" onclick='ajaxSendPost("question1-select", "question1-vote")' data-dismiss="modal">Save Changes</button>  
+						<button class="btn" data-dismiss="modal">Close</button>  
+					</div>
             </div>
             <div id="project1">
 	        	<h2>Project#1</h2>
@@ -109,6 +121,7 @@
 	        	<br><br>
 	        	<p>	Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate 		</p>
 	        </div>
+	      </div>
 	      </div>
           <div class="row-fluid" id="t2">
           	<div class="hero-unit">
