@@ -31,19 +31,22 @@ public class VoteServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		response.setHeader("Cache-Control", "no-cache");
+		response.setHeader("Pragma", "no-cache");
+		System.out.println("vote");
+		System.out.println(request.getParameter("data"));
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession(true);
+		doGet(request, response);
+		/*HttpSession session = request.getSession(true);
 		Account account = (Account) session.getAttribute("account");
 		StringBuilder sb = new StringBuilder();
 		sb.append(account.getName()).append(" ").append(account.getLastName()).append(" ").append("vote for project").append(" ").append(request.getParameter("question1-select"));
 		System.out.println(sb);
-		response.sendRedirect("http://localhost:8080/eXceedVote/VotePage.jsp");
+		response.sendRedirect("http://localhost:8080/eXceedVote/VotePage.jsp");*/
 	}
-
 }

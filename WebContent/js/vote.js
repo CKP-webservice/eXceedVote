@@ -48,3 +48,34 @@ $(document).ready(function() {
    
   });
 });
+
+function getRequestObject()
+{
+	if(window.XMLHttpRequest)
+	{
+		return (new XMLHttpRequest());
+	}
+	else if(window.ActiveXObject())
+	{
+		return (new ActiveXObject("Microsoft.XMLHTTP"));
+	}
+	else return (null);
+}
+
+function ajaxSendPost(selected, button)
+{
+	var address = "vote-servlet";
+	var data = $('#' + selected).val();
+	var request = getRequestObject();
+	request.open("POST", address, true);
+	request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+	request.send(data);
+	voteSuccessed(button);
+}
+
+function voteSuccessed(button)
+{
+	$('#' + button).attr("disabled", "disabled");
+	$('#' + button).removeClass("btn btn-large btn-primary").addClass("btn btn-large btn-danger");
+	$('#' + button).html("<h2>Vote Successed</h2>");
+}

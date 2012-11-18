@@ -18,6 +18,7 @@
 	}
 %>
 
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -36,27 +37,13 @@
         padding-bottom: 40px;
       }
     </style>
-	
 	<!-- Add jQuery library -->
 	<script type="text/javascript" src="fancybox/lib/jquery-1.8.2.min.js"></script>
-	
-	<!-- Add mousewheel plugin (this is optional) -->
-	<script type="text/javascript" src="fancybox/lib/jquery.mousewheel-3.0.6.pack.js"></script>
 
 	<!-- Add fancyBox main JS and CSS files -->
 	<script type="text/javascript" src="fancybox/source/jquery.fancybox.js?v=2.0.6"></script>
 	<link rel="stylesheet" type="text/css" href="fancybox/source/jquery.fancybox.css?v=2.0.6" media="screen" />
 
-	<!-- Add Button helper -->
-	<link rel="stylesheet" type="text/css" href="fancybox/source/helpers/jquery.fancybox-buttons.css?v=1.0.2" />
-	<script type="text/javascript" src="fancybox/source/helpers/jquery.fancybox-buttons.js?v=1.0.2"></script>
-
-	<!-- Add Thumbnail helper -->
-	<link rel="stylesheet" type="text/css" href="fancybox/source/helpers/jquery.fancybox-thumbs.css?v=1.0.2" />
-	<script type="text/javascript" src="fancybox/source/helpers/jquery.fancybox-thumbs.js?v=1.0.2"></script>
-
-	<!-- Add Media helper -->
-	<script type="text/javascript" src="fancybox/source/helpers/jquery.fancybox-media.js?v=1.0.0"></script>
 	<script type="text/javascript" src="js/web.js"></script>
 	<script type="text/javascript" src="js/date_time.js"></script>
 	<style type="text/css">
@@ -118,13 +105,14 @@
     	<h3 	class="pull-right" id="date_time"></h3>
     	<script type="text/javascript"> window.onload = date_time('date_time'); </script>
     	</div>
-    	<form id="question1" method="post" action="VoteServlet">
+    	<form id="question1">
 	      <div class="hero-unit">
 	        <div class="pull-right" style="margin-right: 20px; margin-top: 20px">
-	            <button class="btn btn-large btn-primary" name="vote1" type="submit" id="question1-vote"><h2>Vote Project</h2></button>
+	            <button class="btn btn-large btn-primary" type="button" id="question1-vote" onclick='ajaxSendPost("question1-select", "question1-vote")'><h2>Vote Project</h2></button>
 	          </div>
 	          <h1> Popular Vote </h1><br><br>
 	        <select name="question1-select" id="question1-select" class="span3">
+	        
 	          <option value="1"> Project#1 </option>
 	          <option value="2"> Project#2 </option>
 	          <option value="3"> Project#3 </option>
