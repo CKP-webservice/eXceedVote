@@ -38,14 +38,8 @@ $(document).ready(function() {
     }
   });
   $('button').click(function() {
-    if(confirm('Are you sure?')) {
-    	alert('Vote Successful');
-    	return true;
-    }
-    else {
-    	return false;
-    }
-   
+    if(confirm('Are you sure?')) return true;
+    else return false;
   });
 });
 
