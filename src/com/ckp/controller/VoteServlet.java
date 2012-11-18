@@ -1,6 +1,8 @@
 package com.ckp.controller;
 
 import java.io.IOException;
+import java.util.Enumeration;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -33,8 +35,7 @@ public class VoteServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setHeader("Cache-Control", "no-cache");
 		response.setHeader("Pragma", "no-cache");
-		System.out.println("vote");
-		System.out.println(request.getParameter("data"));
+		System.out.println("vote project: " + request.getParameter("select"));
 	}
 
 	/**
@@ -46,7 +47,6 @@ public class VoteServlet extends HttpServlet {
 		Account account = (Account) session.getAttribute("account");
 		StringBuilder sb = new StringBuilder();
 		sb.append(account.getName()).append(" ").append(account.getLastName()).append(" ").append("vote for project").append(" ").append(request.getParameter("question1-select"));
-		System.out.println(sb);
-		response.sendRedirect("http://localhost:8080/eXceedVote/VotePage.jsp");*/
+		System.out.println(sb);*/
 	}
 }

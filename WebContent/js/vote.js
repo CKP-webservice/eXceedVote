@@ -38,32 +38,18 @@ $(document).ready(function() {
     }
   });
   $('button').click(function() {
-    if(confirm('Are you sure?')) return true;
+    if(confirm('Are you sure?'))
+    {
+    	return true;
+    }
     else return false;
   });
 });
 
-function getRequestObject()
-{
-	if(window.XMLHttpRequest)
-	{
-		return (new XMLHttpRequest());
-	}
-	else if(window.ActiveXObject())
-	{
-		return (new ActiveXObject("Microsoft.XMLHTTP"));
-	}
-	else return (null);
-}
-
 function ajaxSendPost(selected, button)
 {
-	var address = "vote-servlet";
 	var data = $('#' + selected).val();
-	var request = getRequestObject();
-	request.open("POST", address, true);
-	request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-	request.send(data);
+    $.post('vote-servlet', {select:data}, voteSuccessed());
 	voteSuccessed(button);
 }
 

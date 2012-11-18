@@ -86,19 +86,19 @@
           <div class="hero-unit" id="t1">
             <div class="row-fluid"><h1>Popular Vote</h1></div><br><br>
             <div class="row-fluid">	
-            	<select name="question1-select" id="question1-select" class="span3">
-            		<option value="1"> Project#1 </option>
-            		<option value="2"> Project#2 </option>
-            		<option value="3"> Project#3 </option>
-            		<option value="4"> Project#4 </option>
-            		<option value="5"> Project#5 </option>
-            		<option value="6"> Project#6 </option>
-            		<option value="7"> Project#7 </option>
-            		<option value="8"> Project#8 </option>
-            		<option value="9"> Project#9 </option>
-            		<option value="10"> Project#10 </option>
-            	</select> 
-            	<button class="btn btn-large btn-primary pull-right" type="button" id="question1-vote" onclick='ajaxSendPost("question1-select", "question1-vote")' style="margin-top: -15px"><h2>Vote Project</h2></button> 
+	           	<select name="question1-select" id="question1-select" class="span3">
+	            	<option value="1"> Project#1 </option>
+	            	<option value="2"> Project#2 </option>
+	            	<option value="3"> Project#3 </option>
+	            	<option value="4"> Project#4 </option>
+	            	<option value="5"> Project#5 </option>
+	            	<option value="6"> Project#6 </option>
+	            	<option value="7"> Project#7 </option>
+	            	<option value="8"> Project#8 </option>
+	            	<option value="9"> Project#9 </option>
+	            	<option value="10"> Project#10 </option>
+	            </select>
+	            <button class="btn btn-large btn-primary pull-right" type="button" id="question1-vote" onclick='ajaxSendPost("question1-select", "question1-vote")' style="margin-top: -15px"><h2>Vote Project</h2></button>           
             </div>
             <div id="project1">
 	        	<h2>Project#1</h2>
