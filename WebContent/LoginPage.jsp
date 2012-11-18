@@ -16,7 +16,7 @@
 	<div class="container">
     	<section class="login">
     		<h1>eXceed Vote</h1>
-    	${message}
+    		${message}
     		<form method="post" action="LoginServlet">
     		<p><input type="text" name="uname" value="" placeholder="Username or Email"></p>
     		<p><input type="password" name="password" value="" placeholder="Password"></p>

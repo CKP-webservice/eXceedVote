@@ -46,8 +46,11 @@ $(document).ready(function() {
   });*/
   $('button').click(function()
   {
+  	  var project = $('select').val();
 	  $('#example').modal();
+	  $('.modal-body p').text('Are you sure to vote ' + 'Project ' + project + '?');
   });
+  
 });
 
 function ajaxSendPost(selected, button)

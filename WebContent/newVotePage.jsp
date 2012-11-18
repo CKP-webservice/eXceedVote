@@ -100,11 +100,11 @@
 	            </select>
 	            <button class="btn btn-large btn-primary pull-right" type="button" id="question1-vote" style="margin-top: -15px"><h2>Vote Project</h2></button>
   				<div id="example" class="modal hide fade in" style="display: none; ">  
-					<div class="modal-header">  
+					<div class="modal-header" id="modal-header1">  
 						<a class="close" data-dismiss="modal">×</a>  
 						<h3>Popular Vote</h3>  
 					</div>  
-					<div class="modal-body">    
+					<div class="modal-body" id="modal-header1">    
 						<p>Are you sure?</p>                
 					</div>  
 					<div class="modal-footer">  
