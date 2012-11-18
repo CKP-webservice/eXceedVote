@@ -36,7 +36,6 @@
 		}
 	</style>
 	<script src="bootstrap/js/bootstrap.js"></script>
-    <script src="js/vote.js"></script>
     <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
   </head>
 
@@ -80,7 +79,7 @@
             </ul>
         </div><!--/span-->
         <div class="span9">
-        	 <form class="form-horizontal">
+        	 <form class="form-horizontal" method="post" action="addproject-servlet">
 	        	 <fieldset>
 	        	 <div id="legend"class="">
 		        	 <legend class="" id="t1">Project Detail</legend>
@@ -89,7 +88,7 @@
 		         <!-- Text input-->
 		         	<label class="control-label" for="input01">Project Name</label>
 		         	<div class="controls">
-		         		<input type="text" placeholder="" class="input-xxlarge">
+		         		<input name="name" type="text" placeholder="" class="input-xxlarge">
 		         	</div>
 		         </div>
 		<div class="control-group">
@@ -97,7 +96,7 @@
           <label class="control-label">Description</label>
           <div class="controls">
             <div class="textarea">
-                  <textarea rows="8" style="width: 530px"> </textarea>
+                  <textarea name="description" rows="8" style="width: 530px"> </textarea>
             </div>
           </div>
         </div>
@@ -106,7 +105,7 @@
           <label class="control-label">Short Description</label>
           <div class="controls">
             <div class="textarea">
-                  <textarea rows="5" style="width: 530px"> </textarea>
+                  <textarea name="short_description" rows="5" style="width: 530px"> </textarea>
             </div>
           </div>
         </div>
@@ -117,26 +116,26 @@
           <label class="control-label">Screenshot #1</label>
           <!-- File Upload -->
           <div class="controls">
-            <input class="input-file" id="fileInput1" type="file">
+            <input name="imageurl1" class="input-file" id="fileInput1" type="file">
           </div>
         </div>
         <div class="control-group">
           <label class="control-label">Screenshot #2</label>
           <!-- File Upload -->
           <div class="controls">
-            <input class="input-file" id="fileInput2" type="file">
+            <input name="imageurl2" class="input-file" id="fileInput2" type="file">
           </div>
         </div>
         <div class="control-group">
           <label class="control-label">Screenshot #3</label>
           <!-- File Upload -->
           <div class="controls">
-            <input class="input-file" id="fileInput3" type="file">
+            <input name="imageurl3" class="input-file" id="fileInput3" type="file">
           </div>
         </div>
 	        <div class="form-actions">
-		        <button type="submit" class="btn btn-primary">Save changes</button>
-		        <button type="button" class="btn">Cancel</button>
+		        <button id="save" type="submit" class="btn btn-primary">Save changes</button>
+		        <button id="reset" type="reset" class="btn">Cancel</button>
 		    </div>
     </fieldset>
   </form>
