@@ -1,9 +1,18 @@
 package com.ckp.model;
 
+import javax.persistence.*;
+
+@Entity
 public class TeamMember {
-	public int teamID;
-	public int userID;
+	private int teamID;
+	private int userID;
+	@Id
+	private int id;
 	
+	public TeamMember()
+	{
+		
+	}
 	public TeamMember(int teamID, int userID)
 	{
 		this.teamID = teamID;

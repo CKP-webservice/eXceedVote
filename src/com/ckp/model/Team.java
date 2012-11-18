@@ -1,14 +1,18 @@
 package com.ckp.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name="team")
 public class Team {
-	public String name;
-	public int id;
+	private String name;
+	@Id
+	private int id;
 	
+	public Team()
+	{
+		
+	}
 	public Team(String name, int id)
 	{
 		this.name = name;

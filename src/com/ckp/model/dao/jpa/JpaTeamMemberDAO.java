@@ -4,9 +4,16 @@ import java.util.List;
 
 import com.ckp.model.TeamMember;
 import com.ckp.model.dao.TeamMemberDAO;
+import javax.persistence.EntityManager;
 
 public class JpaTeamMemberDAO implements TeamMemberDAO {
 
+	private EntityManager em;
+	public JpaTeamMemberDAO(EntityManager em)
+	{
+		this.em = em;
+	}
+	
 	@Override
 	public TeamMember find(int userId) {
 		// TODO Auto-generated method stub

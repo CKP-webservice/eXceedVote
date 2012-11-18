@@ -48,5 +48,10 @@ public class JpaAccountDAO implements AccountDAO {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	@Override
+	public Account find(String username, String password) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }
