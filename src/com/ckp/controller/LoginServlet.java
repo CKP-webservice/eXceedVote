@@ -63,7 +63,7 @@ public class LoginServlet extends HttpServlet {
 					session.setAttribute("user", user);
 					//session.setAttribute("", "yes");
 					//System.out.println("hello,  world");
-					response.sendRedirect("newVotePage.jsp");
+					response.sendRedirect("VotePage.jsp");
 				}
 				else {
 					request.setAttribute("message","Username or Password is incorrect.");

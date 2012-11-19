@@ -12,12 +12,12 @@
 			<property name="eclipselink.target-database" value="MYSQL" />
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/exceedvote" />
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
-			<property name="javax.persistence.jdbc.password" value="exceedvote" />
+			<property name="javax.persistence.jdbc.password" value="exceed9" />
 			<!-- Only enable on first time you run the program (create database tables from entity class) -->
 			<property name="eclipselink.ddl-generation" value="create-tables" />
 			<property name="eclipselink.ddl-generation.output-mode"
 				value="both" />
-			<property name="javax.persistence.jdbc.user" value="exceedvote"/>
+			<property name="javax.persistence.jdbc.user" value="exceedapp"/>
 		</properties>
 	</persistence-unit>
 </persistence>
