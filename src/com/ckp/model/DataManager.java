@@ -1,6 +1,5 @@
 package com.ckp.model;
 
-import com.ckp.model.Account;
 import java.sql.*;
 import java.sql.Statement;
 
@@ -12,14 +11,7 @@ import java.util.ArrayList;
  */
 public class DataManager {
 	private static Statement stmt = null;
-	/*
-	 * load account from database
-	 * @param string name and string password
-	 * @return Account
-	 */
-	public static Account loadAccount(String username, String password) {
-		return null;
-	}
+
 	
 	/*
 	 * load questionset from database

@@ -7,48 +7,44 @@ public class User {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
-	private String firstName;
+	private String username;
+	private String password;
+	private String name;
 	private String lastName;
-	private int accountID;
+	private String role;
 	
 	public User()
 	{
 		
 	}
-	public User(String firstName, String lastName, int accountID)
+	public User(String name,String lastname,String username, String password,String role)
 	{
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.accountID = accountID;
+		this.name = name;
+		this.password = password;
+		this.username = username;
+		this.password = password;
+		this.role = role;
 	}
-	
-	public void setFirstName(String name)
-	{
-		this.firstName = name;
+	public String getName() {
+		return name;
 	}
-	
-	public String getFirstName()
-	{
-		return firstName;
+	public void setName(String name) {
+		this.name = name;
 	}
-	
-	public void setLastName(String name)
-	{
-		this.lastName = name;
-	}
-	
-	public String getLastName()
-	{
+	public String getLastName() {
 		return lastName;
 	}
-	
-	public void setAccountID(int id)
-	{
-		this.accountID = id;
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+	public String getUsername() {
+		return username;
+	}
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		this.role = role;
 	}
 	
-	public int getAccountID()
-	{
-		return accountID;
-	}
 }

@@ -5,7 +5,6 @@
 	 	<class>com.ckp.model.User</class>
 	 	<class>com.ckp.model.Project</class>
 	 	<class>com.ckp.model.Question</class>
-	 	<class>com.ckp.model.Account</class>
 	 	<class>com.ckp.model.Team</class>
 	 	<class>com.ckp.model.TeamMember</class>
 	 	<class>com.ckp.model.Vote</class>
@@ -13,12 +12,12 @@
 			<property name="eclipselink.target-database" value="MYSQL" />
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/exceedvote" />
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
-			<property name="javax.persistence.jdbc.password" value="exceed9" />
+			<property name="javax.persistence.jdbc.password" value="exceedvote" />
 			<!-- Only enable on first time you run the program (create database tables from entity class) -->
 			<property name="eclipselink.ddl-generation" value="create-tables" />
 			<property name="eclipselink.ddl-generation.output-mode"
 				value="both" />
-			<property name="javax.persistence.jdbc.user" value="exceedapp"/>
+			<property name="javax.persistence.jdbc.user" value="exceedvote"/>
 		</properties>
 	</persistence-unit>
 </persistence>

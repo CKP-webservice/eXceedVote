@@ -8,9 +8,6 @@ import javax.persistence.*;
  */
 @Entity
 public class Account {
-	public enum AccountType{
-		VOTER,ADMIN;
-	}
 	private AccountType type;
 	private String name;
 	private String lastName;

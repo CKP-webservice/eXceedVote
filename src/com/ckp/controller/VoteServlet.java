@@ -12,11 +12,10 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.catalina.Session;
 
-import com.ckp.model.Account;
-import com.ckp.model.Account.AccountType;
-import com.ckp.model.dao.AccountDAO;
+import com.ckp.model.*;
 import com.ckp.model.dao.DaoFactory;
-
+import com.ckp.model.dao.VoteDAO;
+import com.ckp.controller.*;
 /**
  * Servlet implementation class VoteServlet
  */
@@ -41,6 +40,10 @@ public class VoteServlet extends HttpServlet {
 		response.setHeader("Pragma", "no-cache");
 		System.out.println("vote project: " + request.getParameter("select"));
 		System.out.println("test : " + request.getParameter("question"));
+		int questionId = Integer.parseInt(String.valueOf(request.getParameter("question").charAt(8)));
+		Vote vote = new Vote(questionId, Integer.parseInt(request.getParameter("select")), 0);
+		VoteDAO votedao = DaoFactory.getInstance().getVoteDAO();
+		votedao.save(vote);
 	}
 
 	/**

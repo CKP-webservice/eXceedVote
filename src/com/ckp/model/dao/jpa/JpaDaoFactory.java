@@ -1,6 +1,5 @@
 package com.ckp.model.dao.jpa;
 
-import com.ckp.model.dao.AccountDAO;
 import com.ckp.model.dao.DaoFactory;
 import com.ckp.model.dao.ProjectDAO;
 import com.ckp.model.dao.QuestionDAO;
@@ -8,31 +7,29 @@ import com.ckp.model.dao.TeamDAO;
 import com.ckp.model.dao.TeamMemberDAO;
 import com.ckp.model.dao.UserDAO;
 import com.ckp.model.dao.VoteDAO;
-import javax.persistence.*;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 public class JpaDaoFactory extends DaoFactory{
 
 	private EntityManager em;
 	private EntityManagerFactory emf;
-	private JpaAccountDAO accountDAO;
 	private JpaProjectDAO projectDAO;
 	private JpaQuestionDAO questionDAO;
 	private JpaTeamDAO teamDAO;
 	private JpaTeamMemberDAO teamMemberDAO;
 	private JpaUserDAO userDAO;
 	private JpaVoteDAO voteDAO;
+	
 	public JpaDaoFactory()
 	{
 		emf = Persistence.createEntityManagerFactory("eXceedVote");
+		System.out.println(emf.toString());
 		em = emf.createEntityManager();
 	}
 	
-	@Override
-	public AccountDAO getAccountDAO() {
-		if(accountDAO == null) accountDAO = new JpaAccountDAO(em);
-		return accountDAO;
-	}
 
 	@Override
 	public ProjectDAO getProjectDAO() {

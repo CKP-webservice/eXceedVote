@@ -10,7 +10,6 @@ public abstract class DaoFactory {
 		if(daoFactory == null) daoFactory = new JpaDaoFactory();
 		return daoFactory;
 	}
-	public abstract AccountDAO getAccountDAO();
 	public abstract ProjectDAO getProjectDAO();
 	public abstract QuestionDAO getQuestionDAO();
 	public abstract TeamDAO getTeamDAO();

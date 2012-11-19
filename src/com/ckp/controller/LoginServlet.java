@@ -8,9 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.ckp.model.Account;
 import com.ckp.controller.UserAuthentication;
-
+import com.ckp.model.User;
 /**
  * @author Kanin Sirisith
  * Servlet implementation class LoginServlet
@@ -48,32 +47,32 @@ public class LoginServlet extends HttpServlet {
 	 *      response)
 	 */
 	protected void doPost(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
-//		String username = request.getParameter("uname");
-//		String password = request.getParameter("password");
-//		if (username == null || username == "" || password == null
-//				|| password == "") {
-//			request.setAttribute("message","Please enter Username and password");
-//			request.getRequestDispatcher("LoginPage.jsp").forward(request,
-//					response);
-//		} else {
-//			try {
-//				Account user = UserAuthentication.login(username, password);
-//				if (user.isValid()) {
-//
-//					HttpSession session = request.getSession(true);
-//					session.setAttribute("account", user);
-//					session.setAttribute("islogin", "yes");
-//					response.sendRedirect("VotePage.jsp");
-//				}
-//				else {
-//					request.setAttribute("message","Username or Password is incorrect.");
-//					request.getRequestDispatcher("LoginPage.jsp").forward(request,response);
-//				}
-//			} catch (Throwable theException) {
-//				System.out.println(theException);
-//			}
-//		}
-//
+		String username = request.getParameter("uname");
+		String password = request.getParameter("password");
+		if (username == null || username == "" || password == null
+				|| password == "") {
+			request.setAttribute("message","Please enter Username and password");
+			request.getRequestDispatcher("LoginPage.jsp").forward(request,
+					response);
+		} else {
+			try {
+				User user = UserAuthentication.login(username,password);
+				if (user != null) {
+					HttpSession session = request.getSession(true);
+					System.out.println(session.toString());
+					session.setAttribute("user", user);
+					//session.setAttribute("", "yes");
+					//System.out.println("hello,  world");
+					response.sendRedirect("newVotePage.jsp");
+				}
+				else {
+					request.setAttribute("message","Username or Password is incorrect.");
+					request.getRequestDispatcher("LoginPage.jsp").forward(request,response);
+				}
+			} catch (Throwable theException) {
+				System.out.println(theException);
+			}
+		}
 	}
 
 }
