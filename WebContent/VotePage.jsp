@@ -55,7 +55,7 @@
           <div class="nav-collapse collapse">
             <ul class="nav pull-right">
               <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">${user.getName()} ${user.getLastName() } <b class="caret"></b></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><strong>${user.getName()} ${user.getLastName() } </strong></a>
                 <ul class="dropdown-menu">
                   <li><a href="#">Administrator Page</a></li>
                   <li><a href="#">Log out</a></li>
@@ -63,9 +63,9 @@
               </li>
             </ul>
             <ul class="nav">
-              <li class="active"><a href="#">Home</a></li>
-              <li><a href="#projectdetails">Project Details</a></li>
-              <li><a href="#addproject">Add/Edit Project</a></li>
+              <li class="active"><a href="VotePage.jsp">Home</a></li>
+              <li><a href="ProjectDetails.jsp">Project Details</a></li>
+              <li><a href="AddProjectPage.jsp">Add/Edit Project</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
