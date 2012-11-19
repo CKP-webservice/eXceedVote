@@ -13,6 +13,9 @@ import javax.servlet.http.HttpSession;
 import org.apache.catalina.Session;
 
 import com.ckp.model.Account;
+import com.ckp.model.Account.AccountType;
+import com.ckp.model.dao.AccountDAO;
+import com.ckp.model.dao.DaoFactory;
 
 /**
  * Servlet implementation class VoteServlet
@@ -33,9 +36,11 @@ public class VoteServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//HttpSession session = request.getSession(true);
 		response.setHeader("Cache-Control", "no-cache");
 		response.setHeader("Pragma", "no-cache");
 		System.out.println("vote project: " + request.getParameter("select"));
+		System.out.println("test : " + request.getParameter("question"));
 	}
 
 	/**

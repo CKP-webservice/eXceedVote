@@ -3,9 +3,9 @@ package com.ckp.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name="vote")
 public class User {
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 	private String firstName;
 	private String lastName;

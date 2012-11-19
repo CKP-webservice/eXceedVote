@@ -3,12 +3,12 @@ package com.ckp.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name="vote")
 public class Vote {
 	private int questionID;
 	private int projectID;
 	private int userID;
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 	
 	public Vote()

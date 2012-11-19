@@ -56,7 +56,7 @@ $(document).ready(function() {
 function ajaxSendPost(selected, button)
 {
 	var data = $('#' + selected).val();
-    $.post('vote-servlet', {select:data}, voteSuccessed());
+    $.post('vote-servlet', {select:data, question:selected}, voteSuccessed());
 	voteSuccessed(button);
 	$('#' + selected).attr("disabled", "disabled");
 }

@@ -7,7 +7,6 @@ import javax.persistence.*;
  * @author Kanin Sirisith
  */
 @Entity
-@Table(name = "account")
 public class Account {
 	public enum AccountType{
 		VOTER,ADMIN;
@@ -18,6 +17,7 @@ public class Account {
 	private boolean isVote;
 	private boolean valid;
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 	
 	/*

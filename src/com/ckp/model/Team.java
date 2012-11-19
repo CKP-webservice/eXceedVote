@@ -3,10 +3,10 @@ package com.ckp.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name="team")
 public class Team {
 	private String name;
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 	
 	public Team()

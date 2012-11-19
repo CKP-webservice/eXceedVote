@@ -8,7 +8,6 @@ import javax.persistence.*;
  * Model from project
  */
 @Entity
-@Table(name="project")
 public class Project {
 	private String projectName;
 	private String projectDetail;
@@ -16,6 +15,7 @@ public class Project {
 	private String imgURL2;
 	private String imgURL3;
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 	
 	/*
