@@ -46,9 +46,9 @@ $(document).ready(function() {
   });*/
   $('button').click(function()
   {
-  	  var project = $('select').val();
+  	  var project = $('select option:selected').text();
 	  $('#example').modal();
-	  $('.modal-body p').text('Are you sure to vote ' + 'Project ' + project + '?');
+	  $('.modal-body p').text('Are you sure to vote ' + project + '?');
   });
   
 });
@@ -58,6 +58,7 @@ function ajaxSendPost(selected, button)
 	var data = $('#' + selected).val();
     $.post('vote-servlet', {select:data}, voteSuccessed());
 	voteSuccessed(button);
+	$('#' + selected).attr("disabled", "disabled");
 }
 
 function voteSuccessed(button)
