@@ -8,7 +8,7 @@ public class Vote {
 	private int projectID;
 	private int userID;
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
 	public Vote()

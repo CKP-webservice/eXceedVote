@@ -6,7 +6,7 @@ import javax.persistence.*;
 public class Team {
 	private String name;
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
 	public Team()

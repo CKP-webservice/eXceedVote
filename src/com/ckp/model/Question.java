@@ -11,7 +11,7 @@ import javax.persistence.*;
 public class Question {
 	private String title;
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
 	/**

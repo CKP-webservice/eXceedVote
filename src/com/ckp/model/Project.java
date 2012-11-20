@@ -15,7 +15,7 @@ public class Project {
 	private String imgURL2;
 	private String imgURL3;
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	private String shortProjectDetail;
 	

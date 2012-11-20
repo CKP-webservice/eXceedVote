@@ -7,7 +7,7 @@ public class TeamMember {
 	private int teamID;
 	private int userID;
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
 	public TeamMember()

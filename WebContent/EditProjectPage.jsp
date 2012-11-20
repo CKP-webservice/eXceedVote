@@ -3,6 +3,16 @@
     pageEncoding="windows-1256"
 %>
 
+<%
+	String s = (String)session.getAttribute("isLogin");
+	if(s == null || s == "" || s == "no")
+	{
+%>
+	<jsp:forward page="LoginPage.jsp"></jsp:forward>
+<%
+	}
+%>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -53,7 +63,7 @@
           <div class="nav-collapse collapse">
             <ul class="nav pull-right">
               <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><strong>${user.getName()} ${user.getLastName() }</strong></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><strong>${user.getName()} ${user.getLastName() }</strong><b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   <li><a href="#">Administrator Page</a></li>
                   <li><a href="#">Log out</a></li>
