@@ -17,6 +17,7 @@ public class Project {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
+	private String shortProjectDetail;
 	
 	/*
 	 * Constructor for Project class
@@ -26,10 +27,11 @@ public class Project {
 	{
 		
 	}
-	public Project(String projectName,String projectDetail, String imgURL1,String imgURL2,String imgURL3)
+	public Project(String projectName, String projectDetail,String shortProjectDetail, String imgURL1,String imgURL2,String imgURL3)
 	{
 		this.projectName = projectName;
 		this.projectDetail = projectDetail;
+		this.shortProjectDetail = shortProjectDetail;
 		this.setImgURL1(imgURL1);
 		this.setImgURL2(imgURL2);
 		this.setImgURL3(imgURL3);
@@ -62,6 +64,18 @@ public class Project {
 	public void setProjectDetail(String projectDetail) {
 		this.projectDetail = projectDetail;
 	}
+	
+	public String getShortProjectDetail() {
+		return shortProjectDetail;
+	}
+	
+	/*
+	 * @param string project details
+	 */
+	public void setShortProjectDetail(String shortProjectDetail) {
+		this.shortProjectDetail = shortProjectDetail;
+	}
+	
 	public String getImgURL1() {
 		return imgURL1;
 	}
