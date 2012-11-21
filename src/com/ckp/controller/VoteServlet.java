@@ -35,7 +35,13 @@ public class VoteServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//HttpSession session = request.getSession(true);
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession(true);
 		response.setHeader("Cache-Control", "no-cache");
 		response.setHeader("Pragma", "no-cache");
 		System.out.println("vote project: " + request.getParameter("select"));
@@ -44,17 +50,5 @@ public class VoteServlet extends HttpServlet {
 		Vote vote = new Vote(questionId, Integer.parseInt(request.getParameter("select")), 0);
 		VoteDAO votedao = DaoFactory.getInstance().getVoteDAO();
 		votedao.save(vote);
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
-		/*HttpSession session = request.getSession(true);
-		Account account = (Account) session.getAttribute("account");
-		StringBuilder sb = new StringBuilder();
-		sb.append(account.getName()).append(" ").append(account.getLastName()).append(" ").append("vote for project").append(" ").append(request.getParameter("question1-select"));
-		System.out.println(sb);*/
 	}
 }
