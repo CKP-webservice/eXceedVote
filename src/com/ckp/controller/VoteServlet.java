@@ -47,7 +47,9 @@ public class VoteServlet extends HttpServlet {
 		System.out.println("vote project: " + request.getParameter("select"));
 		System.out.println("test : " + request.getParameter("question"));
 		int questionId = Integer.parseInt(String.valueOf(request.getParameter("question").charAt(8)));
-		Vote vote = new Vote(questionId, Integer.parseInt(request.getParameter("select")), 0);
+		System.out.println(session.getAttribute("userID"));
+		int userID = (Integer)session.getAttribute("userID");	
+		Vote vote = new Vote(questionId, Integer.parseInt(request.getParameter("select")), userID);
 		VoteDAO votedao = DaoFactory.getInstance().getVoteDAO();
 		votedao.save(vote);
 	}

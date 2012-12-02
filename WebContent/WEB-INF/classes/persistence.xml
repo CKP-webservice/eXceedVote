@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+	<persistence-unit name="eXceedVote" transaction-type="RESOURCE_LOCAL">
+	 <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+	 	<class>com.ckp.model.User</class>
+	 	<class>com.ckp.model.Project</class>
+	 	<class>com.ckp.model.Question</class>
+	 	<class>com.ckp.model.Team</class>
+	 	<class>com.ckp.model.TeamMember</class>
+	 	<class>com.ckp.model.Vote</class>
+		<properties>
+			<property name="eclipselink.target-database" value="MYSQL" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/exceedvote" />
+			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
+			<property name="javax.persistence.jdbc.password" value="exceed9" />
+			<!-- Only enable on first time you run the program (create database tables from entity class) -->
+			<property name="eclipselink.ddl-generation" value="create-tables" />
+			<property name="eclipselink.ddl-generation.output-mode"
+				value="both" />
+			<property name="javax.persistence.jdbc.user" value="exceedapp"/>
+		</properties>
+	</persistence-unit>
+</persistence>

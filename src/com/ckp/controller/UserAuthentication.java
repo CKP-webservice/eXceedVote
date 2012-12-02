@@ -25,7 +25,6 @@ public class UserAuthentication {
 		try {
 			return (User) query.getSingleResult();
 		} catch (Exception e) {
-			//e.printStackTrace();
 			return null;
 		}
 	}

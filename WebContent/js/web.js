@@ -1,6 +1,6 @@
 $(document).ready(function() {
 	/*
-	 *  Barcamp Image Gallery Effect:Elastic	 
+	 *  Image Gallery Effect:Elastic	 
 	 */
 	$('.fancybox').fancybox({				
 		openEffect : 'elastic',

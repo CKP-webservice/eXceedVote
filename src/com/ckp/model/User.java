@@ -17,10 +17,10 @@ public class User {
 	{
 		
 	}
-	public User(String name,String lastname,String username, String password,String role)
+	public User(String name,String lastName,String username, String password,String role)
 	{
 		this.name = name;
-		this.password = password;
+		this.lastName = lastName;
 		this.username = username;
 		this.password = password;
 		this.role = role;
@@ -45,6 +45,10 @@ public class User {
 	}
 	public void setRole(String role) {
 		this.role = role;
+	}
+	
+	public int getId() {
+		return id;
 	}
 	
 }

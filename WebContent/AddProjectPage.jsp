@@ -123,24 +123,24 @@
 		  	<legend class="" id="t2">Screenshot</legend>
 		</div>
 		<div class="control-group">
-          <label class="control-label">Screenshot #1</label>
+          <label class="control-label">Screenshot Link #1</label>
           <!-- File Upload -->
           <div class="controls">
-            <input name="imageurl1" class="input-file" id="fileInput1" type="file">
+            <input name="imageurl1" class="input-xxlarge" id="fileInput1" type="text">
           </div>
         </div>
         <div class="control-group">
-          <label class="control-label">Screenshot #2</label>
+          <label class="control-label">Screenshot Link #2</label>
           <!-- File Upload -->
           <div class="controls">
-            <input name="imageurl2" class="input-file" id="fileInput2" type="file">
+            <input name="imageurl2" class="input-xxlarge" id="fileInput2" type="text">
           </div>
         </div>
         <div class="control-group">
-          <label class="control-label">Screenshot #3</label>
+          <label class="control-label">Screenshot Link #3</label>
           <!-- File Upload -->
           <div class="controls">
-            <input name="imageurl3" class="input-file" id="fileInput3" type="file">
+            <input name="imageurl3" class="input-xxlarge" id="fileInput3" type="text">
           </div>
         </div>
 	        <div class="form-actions">

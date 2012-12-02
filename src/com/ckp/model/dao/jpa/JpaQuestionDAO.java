@@ -39,7 +39,7 @@ public class JpaQuestionDAO implements QuestionDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Question> findAll() {
-		String query = "SELECT * FROM question";
+		String query = "SELECT q FROM Question q";
 		return em.createQuery(query).getResultList();
 	}
 

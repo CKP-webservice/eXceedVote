@@ -40,7 +40,7 @@ public class JpaProjectDAO implements ProjectDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Project> findAll() {
-		String query = "SELECT * FROM project";
+		String query = "SELECT p FROM Project p";
 		return em.createQuery(query).getResultList();
 	}
 

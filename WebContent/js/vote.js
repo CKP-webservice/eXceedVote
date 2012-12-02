@@ -1,8 +1,8 @@
 $(document).ready(function() {
   $('select').change(function() {
       var optionValue = $('select').val();
+      alert(optionValue);
     $('#project1, #project2, #project3, #project4, #project5, #project6, #project7, #project8, #project9, #project10').hide(400);
-    //alert(optionValue);
     switch(optionValue)
     {
     case "1":
@@ -37,26 +37,26 @@ $(document).ready(function() {
         break;
     }
   });
-  /*$('button').click(function() {
-    if(confirm('Are you sure?'))
-    {
-    	return true;
-    }
-    else return false;
-  });*/
+
   $('button').click(function()
-  {
-  	  var project = $('select option:selected').text();
-	  $('#example').modal();
-	  $('.modal-body p').text('Are you sure to vote ' + project + '?');
+  { 	  
+	  $('#modal1').modal();
   });
   
 });
 
+function callModal(modal)
+{
+	$('#' + modal).modal();
+}
+
 function ajaxSendPost(selected, button)
 {
 	var data = $('#' + selected).val();
+	alert(data);
+	alert(selected);
     $.post('vote-servlet', {select:data, question:selected}, voteSuccessed());
+    
 	voteSuccessed(button);
 	$('#' + selected).attr("disabled", "disabled");
 }

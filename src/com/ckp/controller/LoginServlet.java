@@ -62,6 +62,7 @@ public class LoginServlet extends HttpServlet {
 					System.out.println(session.toString());
 					session.setAttribute("user", user);
 					session.setAttribute("isLogin", "yes");
+					session.setAttribute("userID", user.getId());
 					response.sendRedirect("VotePage.jsp");
 				}
 				else {
