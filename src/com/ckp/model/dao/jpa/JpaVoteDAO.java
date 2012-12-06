@@ -50,8 +50,11 @@ public class JpaVoteDAO implements VoteDAO {
 	}
 	@Override
 	public List<Vote> findByQuestion(Question question) {
-		// TODO Auto-generated method stub
-		return null;
+		int qid = question.getId();
+		String query = "SELECT v from Vote v WHERE v.QUESTIONID = :id";
+		Query q = em.createQuery(query);
+		q.setParameter("id", qid);
+		return q.getResultList();
 	}
 
 }
