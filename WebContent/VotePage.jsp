@@ -78,7 +78,7 @@
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><strong>${user.getName()} ${user.getLastName() } </strong><b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                  <li><a href="#">Administrator Page</a></li>
+                  <li><a href="AdminAccountPage.jsp">Administrator Page</a></li>
                   <li><a href="#">Log out</a></li>
                 </ul>
               </li>
@@ -123,7 +123,7 @@
 	            	countProject++;
 	            }	
 	            out.println("</select>");
-	            out.println("<button class=\"btn btn-large btn-primary pull-right\" type=\"button\" id=\"question" + countid + "-vote\" style=\"margin-top: -15px\"><h2>Vote Project</h2></button>");
+	            out.println("<button class=\"btn btn-large btn-primary pull-right\" type=\"button\" id=\"question" + countid + "-vote\" onclick='showModal(\"" + countid + "\")' style=\"margin-top: -15px\"><h2>Vote Project</h2></button>");
   				out.println("<div id=\"modal" + countid + "\" class=\"modal hide fade in\" style=\"display: none;\">");  
 				out.println("<div class=\"modal-header\" id=\"modal-header" + countid + "\">");  
 				out.println("<a class=\"close\" data-dismiss=\"modal\">×</a>");  

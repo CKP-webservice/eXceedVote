@@ -39,7 +39,7 @@ public class JpaUserDAO implements UserDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<User> findAll() {
-		String query = "SELECT * FROM user";
+		String query = "SELECT p FROM User p";
 		return em.createQuery(query).getResultList();
 	}
 	

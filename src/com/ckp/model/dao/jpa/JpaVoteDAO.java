@@ -38,7 +38,7 @@ public class JpaVoteDAO implements VoteDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Vote> findAll() {
-		String query = "SELECT * FROM vote";
+		String query = "SELECT v FROM Vote v";
 		return em.createQuery(query).getResultList();
 	}
 

@@ -67,14 +67,14 @@
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <strong>${user.getName()} ${user.getLastName() }</strong><b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                  <li><a href="#">Administrator Page</a></li>
+                  <li><a href="AdminAccountPage.jsp">Administrator Page</a></li>
                   <li><a href="#">Log out</a></li>
                 </ul>
               </li>
             </ul>
             <ul class="nav">
               <li><a href="VotePage.jsp">Home</a></li>
-              <li class="active"><a href="ProjectDetails.jsp">Project Details</a></li>
+              <li><a href="ProjectDetails.jsp">Project Details</a></li>
               <li><a href="AddProjectPage.jsp">Add/Edit Project</a></li>
             </ul>
           </div><!--/.nav-collapse -->
@@ -87,11 +87,12 @@
         <div class="span3">
             <ul class="nav nav-list">
                 <li class="nav-header">Account Setting</li>
-                <li class="active"><a href="#">Manage Account</a></li>
+                <li class="active"><a href="AdminAccountPage.jsp">Manage Account</a></li>
                 <li><a href="#">Add Account</a></li>
                 <li class="nav-header">Vote Setting</li>
-                <li><a href="#">View Result</a></li>
-                <li><a href="#">Manage Question</a></li>
+                <li><a href="AdminShowRanking.jsp">Show Ranking</a></li>
+                <li><a href="AdminViewResult.jsp">View Vote Log</a></li>
+                <li><a href="AdminQuestionPage.jsp">Manage Question</a></li>
                 <li><a href="#">Add Question</a></li>
                 <li class="nav-header">Other Setting</li>
                 <li><a href="#">General Setting</a></li>
@@ -100,8 +101,9 @@
                 <li><a href="#">Log out</a></li>
             </ul>
         </div><!--/span-->
-        <div class="span9">
+        <div class="span9" id="panel">
           <div class="hero-unit" id="t1">
+          	<h1>Test Ajax load(Question Page)</h1>
           </div>
         </div><!--/span-->
       </div><!--/row-->

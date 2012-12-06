@@ -38,7 +38,7 @@ public class JpaTeamDAO implements TeamDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Team> findAll() {
-		String query = "SELECT * FROM team";
+		String query = "SELECT t FROM Team t";
 		return em.createQuery(query).getResultList();
 	}
 

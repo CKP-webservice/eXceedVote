@@ -3,6 +3,11 @@
     pageEncoding="windows-1256"
 %>
 
+<%@ page import="com.ckp.model.User" %>
+<%@ page import="com.ckp.model.dao.DaoFactory" %>
+<%@ page import="com.ckp.model.dao.UserDAO" %>
+<%@ page import="java.util.List" %>
+
 <%
 	String s = (String)session.getAttribute("isLogin");
 	if(s == null || s == "" || s == "no")
@@ -11,6 +16,8 @@
 	<jsp:forward page="LoginPage.jsp"></jsp:forward>
 <%
 	}
+	UserDAO userdao = DaoFactory.getInstance().getUserDAO();
+	List<User> users = userdao.findAll();
 %>
 
 <!DOCTYPE html>
@@ -46,9 +53,7 @@
 			box-shadow: 0 0 50px #222;
 		}
 	</style>
-	<script type="text/javascript" src="js/web.js"></script>
-	<script type="text/javascript" src="js/date_time.js"></script>
-    <script src="js/vote.js"></script>
+	<script type="text/javascript" src="js/admin.js"></script>
   </head>
 
   <body data-spy="scroll">
@@ -67,14 +72,14 @@
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <strong>${user.getName()} ${user.getLastName() }</strong><b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                  <li><a href="#">Administrator Page</a></li>
+                  <li><a href="AdminAccountPage.jsp">Administrator Page</a></li>
                   <li><a href="#">Log out</a></li>
                 </ul>
               </li>
             </ul>
             <ul class="nav">
               <li><a href="VotePage.jsp">Home</a></li>
-              <li class="active"><a href="ProjectDetails.jsp">Project Details</a></li>
+              <li><a href="ProjectDetails.jsp">Project Details</a></li>
               <li><a href="AddProjectPage.jsp">Add/Edit Project</a></li>
             </ul>
           </div><!--/.nav-collapse -->
@@ -87,11 +92,12 @@
         <div class="span3">
             <ul class="nav nav-list">
                 <li class="nav-header">Account Setting</li>
-                <li class="active"><a href="#">Manage Account</a></li>
+                <li class="active"><a href="#" onclick="loadAdminAccountPage()">Manage Account</a></li>
                 <li><a href="#">Add Account</a></li>
                 <li class="nav-header">Vote Setting</li>
-                <li><a href="#">View Result</a></li>
-                <li><a href="#">Manage Question</a></li>
+                <li><a href="#" onclick="loadAdminShowRanking()">Show Ranking</a></li>
+                <li><a href="#" onclick="loadAdminViewResult()">View Vote Log</a></li>
+                <li><a href="#" onclick="loadAdminQuestionPage()" >Manage Question</a></li>
                 <li><a href="#">Add Question</a></li>
                 <li class="nav-header">Other Setting</li>
                 <li><a href="#">General Setting</a></li>
@@ -100,8 +106,38 @@
                 <li><a href="#">Log out</a></li>
             </ul>
         </div><!--/span-->
-        <div class="span9">
+        <div class="span9" id="panel">
           <div class="hero-unit" id="t1">
+          <table class="table table-striped"> 
+          	<thead> 
+          		<tr> 
+          			<th>ID</th> 
+          			<th>Username</th> 
+          			<th>First Name</th> 
+          			<th>Last Name</th>
+          			<th>Role</th>
+          			<th>Delete</th>
+          		</tr> 
+          	</thead> 
+          	<tbody> 
+          		<%
+          			int countacc = 1;
+          			for(User user : users)
+         			{
+          				out.println("<tr>");
+          				out.println("<td>" + user.getId() + "</td>");
+          				out.println("<td>" + user.getUsername() + "</td>");
+          				out.println("<td>" + user.getName() + "</td>");
+          				out.println("<td>" + user.getLastName() + "</td>");
+        				out.println("<td>" + user.getRole() + "</td>");
+        				out.println("<td><button class=\"btn btn-danger\" id=\"" + countacc + "\">Delete</button></td>");
+          				out.println("</tr>");
+          				countacc++;
+          				
+          			}
+          		%> 
+          	</tbody> 
+          </table>
           </div>
         </div><!--/span-->
       </div><!--/row-->
