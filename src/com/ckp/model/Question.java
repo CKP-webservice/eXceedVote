@@ -35,4 +35,8 @@ public class Question {
 		this.title = title;
 	}
 
+	public int getId() {
+		return this.id;
+	}
+
 }
