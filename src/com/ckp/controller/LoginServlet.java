@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.ckp.controller.UserAuthentication;
+import com.ckp.model.Login_log;
 import com.ckp.model.User;
 /**
  * @author Kanin Sirisith
@@ -64,6 +65,7 @@ public class LoginServlet extends HttpServlet {
 					session.setAttribute("isLogin", "yes");
 					session.setAttribute("ip", request.getRemoteAddr());
 					session.setAttribute("userID", user.getId());
+					Login_log log = new Login_log(session);
 					response.sendRedirect("VotePage.jsp");
 				}
 				else {
