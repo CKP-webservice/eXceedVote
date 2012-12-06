@@ -34,16 +34,9 @@ public class Question {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-<<<<<<< HEAD
 
 	public int getId() {
 		return this.id;
 	}
 
-=======
-	
-	public int getId() {
-		return id;
-	}
->>>>>>> Fixed Bug in Delete button
 }
