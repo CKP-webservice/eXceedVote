@@ -106,7 +106,7 @@
                 <li><a href="#">Log out</a></li>
             </ul>
         </div><!--/span-->
-        <div class="span9">
+        <div class="span9" id="panel">
           <div class="hero-unit" id="t1">
           	<table class="table table-striped"> 
           	<thead> 

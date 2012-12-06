@@ -25,7 +25,6 @@ function deleteQuestion(id) {
 	$.post('deletequestion-servlet', {id:id}, function deleteQuestionSuccessed()
 	{
 		$('#panel').load('AdminQuestionPage.jsp #t1');
-		alert("test");
 	});
 }
 

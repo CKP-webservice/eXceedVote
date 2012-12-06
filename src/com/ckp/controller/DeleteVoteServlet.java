@@ -50,6 +50,5 @@ public class DeleteVoteServlet extends HttpServlet {
 		VoteDAO votedao = DaoFactory.getInstance().getVoteDAO();
 		Vote vote = votedao.find(id);
 		votedao.delete(vote);
-		response.sendRedirect("AdminViewResult");
 	}
 }

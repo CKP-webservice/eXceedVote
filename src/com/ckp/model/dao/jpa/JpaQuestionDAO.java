@@ -32,7 +32,7 @@ public class JpaQuestionDAO implements QuestionDAO {
 	public void delete(Question question) {
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
-		em.persist(question);
+		em.remove(question);
 		tx.commit();
 	}
 
