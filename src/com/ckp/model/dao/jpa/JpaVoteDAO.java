@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
+import com.ckp.model.Question;
 import com.ckp.model.Vote;
 import com.ckp.model.dao.VoteDAO;
 
@@ -44,6 +45,11 @@ public class JpaVoteDAO implements VoteDAO {
 
 	@Override
 	public List<Vote> query(String q) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public List<Vote> findByQuestion(Question question) {
 		// TODO Auto-generated method stub
 		return null;
 	}
