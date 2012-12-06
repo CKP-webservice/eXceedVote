@@ -9,7 +9,8 @@ public class Login_log {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date timestampField;
 	@Id
-	private int log_id;
+	private int id;
+	@Transient
 	private HttpSession session;
 	private String ip;
 	
