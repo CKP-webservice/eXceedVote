@@ -72,6 +72,7 @@ public class JpaDaoFactory extends DaoFactory{
 
 	@Override
 	public Login_logDAO getLogin_logDAO() {
+		if(login_logDAO == null) login_logDAO = new JpaLogin_logDAO(em);
 		return login_logDAO;
 	}
 

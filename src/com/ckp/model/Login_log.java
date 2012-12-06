@@ -9,6 +9,7 @@ public class Login_log {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date timestampField;
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	@Transient
 	private HttpSession session;

@@ -12,6 +12,7 @@ import com.ckp.controller.UserAuthentication;
 import com.ckp.model.Login_log;
 import com.ckp.model.User;
 import com.ckp.model.dao.DaoFactory;
+import com.ckp.model.dao.Login_logDAO;
 /**
  * @author Kanin Sirisith
  * Servlet implementation class LoginServlet
@@ -67,7 +68,8 @@ public class LoginServlet extends HttpServlet {
 					session.setAttribute("ip", request.getRemoteAddr());
 					session.setAttribute("userID", user.getId());
 					Login_log log = new Login_log(session);
-					DaoFactory.getInstance().getLogin_logDAO().save(log);
+					Login_logDAO loginlog = DaoFactory.getInstance().getLogin_logDAO();
+					loginlog.save(log);
 					response.sendRedirect("VotePage.jsp");
 				}
 				else {
