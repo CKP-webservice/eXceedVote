@@ -3,6 +3,11 @@
     pageEncoding="windows-1256"
 %>
 
+<%@ page import="com.ckp.model.Question" %>
+<%@ page import="com.ckp.model.dao.DaoFactory" %>
+<%@ page import="com.ckp.model.dao.QuestionDAO" %>
+<%@ page import="java.util.List" %>
+
 <%
 	String s = (String)session.getAttribute("isLogin");
 	if(s == null || s == "" || s == "no")
@@ -11,6 +16,8 @@
 	<jsp:forward page="LoginPage.jsp"></jsp:forward>
 <%
 	}
+	QuestionDAO questiondao = DaoFactory.getInstance().getQuestionDAO();
+	List<Question> questions = questiondao.findAll();
 %>
 
 <!DOCTYPE html>
@@ -103,7 +110,30 @@
         </div><!--/span-->
         <div class="span9" id="panel">
           <div class="hero-unit" id="t1">
-          	<h1>Test Ajax load(Question Page)</h1>
+          	<table class="table table-striped"> 
+          	<thead> 
+          		<tr> 
+          			<th>ID</th> 
+          			<th>Question Name</th>
+          			<th>Delete</th>
+          		</tr> 
+          	</thead> 
+          	<tbody> 
+          		<%
+          			int countacc = 1;
+          			for(Question question : questions)
+         			{
+          				out.println("<tr>");
+          				out.println("<td>" + countacc + "</td>");
+          				out.println("<td>" + question.getTitle() + "</td>");
+        				out.println("<td><button class=\"btn btn-danger\" id=\"" + countacc + "\">Delete</button></td>");
+          				out.println("</tr>");
+          				countacc++;
+          				
+          			}
+          		%> 
+          	</tbody> 
+          </table>
           </div>
         </div><!--/span-->
       </div><!--/row-->

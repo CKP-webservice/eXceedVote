@@ -3,6 +3,11 @@
     pageEncoding="windows-1256"
 %>
 
+<%@ page import="com.ckp.model.Vote" %>
+<%@ page import="com.ckp.model.dao.DaoFactory" %>
+<%@ page import="com.ckp.model.dao.VoteDAO" %>
+<%@ page import="java.util.List" %>
+
 <%
 	String s = (String)session.getAttribute("isLogin");
 	if(s == null || s == "" || s == "no")
@@ -11,6 +16,8 @@
 	<jsp:forward page="LoginPage.jsp"></jsp:forward>
 <%
 	}
+	VoteDAO votedao = DaoFactory.getInstance().getVoteDAO();
+	List<Vote> votes = votedao.findAll();
 %>
 
 <!DOCTYPE html>
@@ -103,7 +110,36 @@
         </div><!--/span-->
         <div class="span9">
           <div class="hero-unit" id="t1">
-          	<h1>Test Ajax load(View Result)</h1>
+          	<table class="table table-striped"> 
+          	<thead> 
+          		<tr> 
+          			<th>ID</th> 
+          			<th>Question ID</th>
+          			<th>Project ID</th>
+          			<th>User ID</th>
+          			<th>Vote Time</th>
+          			<th>Delete</th>
+          		</tr> 
+          	</thead> 
+          	<tbody> 
+          		<%
+          			int countacc = 1;
+          			for(Vote vote : votes)
+         			{
+          				out.println("<tr>");
+          				out.println("<td>" + countacc + "</td>");
+          				out.println("<td>" + vote.getQuestionID() + "</td>");
+          				out.println("<td>" + vote.getProjectID() + "</td>");
+          				out.println("<td>" + vote.getUserID() + "</td>");
+          				out.println("<td>" + vote.getTimestampField() + "</td>");
+        				out.println("<td><button class=\"btn btn-danger\" id=\"" + countacc + "\">Delete</button></td>");
+          				out.println("</tr>");
+          				countacc++;
+          				
+          			}
+          		%> 
+          	</tbody> 
+          </table>
           </div>
         </div><!--/span-->
       </div><!--/row-->

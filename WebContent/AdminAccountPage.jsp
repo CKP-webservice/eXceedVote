@@ -125,12 +125,12 @@
           			for(User user : users)
          			{
           				out.println("<tr>");
-          				out.println("<td>" + user.getId() + "</td>");
+          				out.println("<td>" + countacc + "</td>");
           				out.println("<td>" + user.getUsername() + "</td>");
           				out.println("<td>" + user.getName() + "</td>");
           				out.println("<td>" + user.getLastName() + "</td>");
         				out.println("<td>" + user.getRole() + "</td>");
-        				out.println("<td><button class=\"btn btn-danger\" id=\"" + countacc + "\">Delete</button></td>");
+        				out.println("<td><button class=\"btn btn-danger\" onclick='deleteUser(\"" + user.getId() +"\")'>Delete</button></td>");
           				out.println("</tr>");
           				countacc++;
           				

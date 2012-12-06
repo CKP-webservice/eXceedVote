@@ -1,5 +1,7 @@
 package com.ckp.model;
 
+import java.util.Date;
+
 import javax.persistence.*;
 
 @Entity
@@ -10,6 +12,8 @@ public class Vote {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date timestampField;
 	
 	public Vote()
 	{
@@ -20,6 +24,7 @@ public class Vote {
 		this.questionID = questionID;
 		this.projectID = projectID;
 		this.userID = userID;
+		this.timestampField = new Date();
 	}
 	
 	public void setQuestionID(int id)
@@ -50,5 +55,9 @@ public class Vote {
 	public int getUserID()
 	{
 		return userID;
+	}
+	
+	public Date getTimestampField() {
+		return timestampField;
 	}
 }

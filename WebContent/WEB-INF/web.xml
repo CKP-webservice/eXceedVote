@@ -39,4 +39,31 @@
   	<servlet-name>EditProjectServlet</servlet-name>
   	<url-pattern>/editproject-servlet</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>DeleteVoteServlet</servlet-name>
+  	<servlet-class>com.ckp.controller.DeleteVoteServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>DeleteVoteServlet</servlet-name>
+  	<url-pattern>/deletevote-servlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>DeleteQuestionServlet</servlet-name>
+  	<servlet-class>com.ckp.controller.DeleteQuestionServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>DeleteQuestionServlet</servlet-name>
+  	<url-pattern>/deletequestion-servlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>DeleteUserServlet</servlet-name>
+  	<servlet-class>com.ckp.controller.DeleteUserServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>DeleteUserServlet</servlet-name>
+  	<url-pattern>/deleteuser-servlet</url-pattern>
+  </servlet-mapping>
 </web-app>
