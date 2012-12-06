@@ -8,6 +8,7 @@
 	 	<class>com.ckp.model.Team</class>
 	 	<class>com.ckp.model.TeamMember</class>
 	 	<class>com.ckp.model.Vote</class>
+	 	<class>com.ckp.model.Login_log</class>
 		<properties>
 			<property name="eclipselink.target-database" value="MYSQL" />
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://158.108.235.180/exceedvote" />
