@@ -14,6 +14,8 @@ import org.apache.catalina.Session;
 
 import com.ckp.model.*;
 import com.ckp.model.dao.DaoFactory;
+import com.ckp.model.dao.QuestionDAO;
+import com.ckp.model.dao.UserDAO;
 import com.ckp.model.dao.VoteDAO;
 import com.ckp.controller.*;
 /**
@@ -45,13 +47,9 @@ public class DeleteQuestionServlet extends HttpServlet {
 		HttpSession session = request.getSession(true);
 		response.setHeader("Cache-Control", "no-cache");
 		response.setHeader("Pragma", "no-cache");
-		System.out.println("vote project: " + request.getParameter("select"));
-		System.out.println("test : " + request.getParameter("question"));
-		int questionId = Integer.parseInt(String.valueOf(request.getParameter("question").charAt(8)));
-		System.out.println(session.getAttribute("userID"));
-		int userID = (Integer)session.getAttribute("userID");	
-		Vote vote = new Vote(questionId, Integer.parseInt(request.getParameter("select")), userID);
-		VoteDAO votedao = DaoFactory.getInstance().getVoteDAO();
-		votedao.save(vote);
+		int id = Integer.parseInt(request.getParameter("id"));
+		QuestionDAO questiondao = DaoFactory.getInstance().getQuestionDAO();
+		Question question = questiondao.find(id);
+		questiondao.delete(question);
 	}
 }
