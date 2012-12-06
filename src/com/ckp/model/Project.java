@@ -94,5 +94,8 @@ public class Project {
 	public void setImgURL3(String imgURL3) {
 		this.imgURL3 = imgURL3;
 	}
+	public int getId() {
+		return id;
+	}
 	
 }
