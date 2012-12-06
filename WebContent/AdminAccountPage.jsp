@@ -95,9 +95,9 @@
                 <li class="active"><a href="#" onclick="loadAdminAccountPage()">Manage Account</a></li>
                 <li><a href="#">Add Account</a></li>
                 <li class="nav-header">Vote Setting</li>
-                <li><a href="#" onclick="loadAdminShowRanking()">Show Ranking</a></li>
-                <li><a href="#" onclick="loadAdminViewResult()">View Vote Log</a></li>
-                <li><a href="#" onclick="loadAdminQuestionPage()" >Manage Question</a></li>
+                <li><a href="AdminShowRanking.jsp">Show Ranking</a></li>
+                <li><a href="AdminViewResult.jsp">View Vote Log</a></li>
+                <li><a href="AdminQuestionPage.jsp">Manage Question</a></li>
                 <li><a href="#">Add Question</a></li>
                 <li class="nav-header">Other Setting</li>
                 <li><a href="#">General Setting</a></li>

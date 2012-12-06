@@ -53,9 +53,7 @@
 			box-shadow: 0 0 50px #222;
 		}
 	</style>
-	<script type="text/javascript" src="js/web.js"></script>
-	<script type="text/javascript" src="js/date_time.js"></script>
-    <script src="js/vote.js"></script>
+	<script type="text/javascript" src="js/admin.js"></script>
   </head>
 
   <body data-spy="scroll">
@@ -94,11 +92,11 @@
         <div class="span3">
             <ul class="nav nav-list">
                 <li class="nav-header">Account Setting</li>
-                <li class="active"><a href="AdminAccountPage.jsp">Manage Account</a></li>
+                <li><a href="AdminAccountPage.jsp">Manage Account</a></li>
                 <li><a href="#">Add Account</a></li>
                 <li class="nav-header">Vote Setting</li>
                 <li><a href="AdminShowRanking.jsp">Show Ranking</a></li>
-                <li><a href="AdminViewResult.jsp">View Vote Log</a></li>
+                <li class="active"><a href="AdminViewResult.jsp">View Vote Log</a></li>
                 <li><a href="AdminQuestionPage.jsp">Manage Question</a></li>
                 <li><a href="#">Add Question</a></li>
                 <li class="nav-header">Other Setting</li>
@@ -132,7 +130,7 @@
           				out.println("<td>" + vote.getProjectID() + "</td>");
           				out.println("<td>" + vote.getUserID() + "</td>");
           				out.println("<td>" + vote.getTimestampField() + "</td>");
-        				out.println("<td><button class=\"btn btn-danger\" id=\"" + countacc + "\">Delete</button></td>");
+        				out.println("<td><button class=\"btn btn-danger\" onclick='deleteVote(\"" + vote.getId() +"\")'>Delete</button></td>");
           				out.println("</tr>");
           				countacc++;
           				

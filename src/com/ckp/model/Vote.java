@@ -60,4 +60,8 @@ public class Vote {
 	public Date getTimestampField() {
 		return timestampField;
 	}
+	
+	public int getId() {
+		return id;
+	}
 }

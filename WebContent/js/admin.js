@@ -15,13 +15,23 @@ function loadAdminQuestionPage() {
 }
 
 function deleteUser(id) {
-	$('#panel').load('AdminAccountPage.jsp #t1');
+	$.post('deleteuser-servlet', {id:id}, function deleteUserSuccessed()
+	{
+		$('#panel').load('AdminAccountPage.jsp #t1');
+	});
 }
 
 function deleteQuestion(id) {
-	$('#panel').load('AdminQuestionPage.jsp #t1');
+	$.post('deletequestion-servlet', {id:id}, function deleteQuestionSuccessed()
+	{
+		$('#panel').load('AdminQuestionPage.jsp #t1');
+		alert("test");
+	});
 }
 
 function deleteVote(id) {
-	$('#panel').load('AdminViewResult.jsp #t1');
+	$.post('deletevote-servlet', {id:id}, function deleteVoteSuccessed()
+	{
+		$('#panel').load('AdminViewResult.jsp #t1');
+	});
 }
