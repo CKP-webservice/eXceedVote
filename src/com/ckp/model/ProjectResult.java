@@ -20,4 +20,8 @@ public class ProjectResult {
 		this.score++;
 	}
 	
+	public int getScore() {
+		return score;
+	}
+	
 }

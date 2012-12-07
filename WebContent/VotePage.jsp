@@ -119,8 +119,8 @@
 	            int countProject = 1;
 	           	for(Project project : projects)
 	            {
-	            	out.println("<option value=\"" + countProject + "\">" + project.getProjectName() + "</option>");
-	            	countProject++;
+	            	out.println("<option value=\"" + project.getId() + "\">" + project.getProjectName() + "</option>");
+	            	//countProject++;
 	            }	
 	            out.println("</select>");
 	            out.println("<button class=\"btn btn-large btn-primary pull-right\" type=\"button\" id=\"question" + countid + "-vote\" onclick='showModal(\"" + countid + "\")' style=\"margin-top: -15px\"><h2>Vote Project</h2></button>");

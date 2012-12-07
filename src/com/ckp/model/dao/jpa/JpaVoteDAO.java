@@ -52,7 +52,7 @@ public class JpaVoteDAO implements VoteDAO {
 	@Override
 	public List<Vote> findByQuestion(Question question) {
 		int qid = question.getId();
-		String query = "SELECT v from Vote v WHERE v.QUESTIONID = :id";
+		String query = "SELECT v from Vote v WHERE v.questionID = :id";
 		Query q = em.createQuery(query);
 		q.setParameter("id", qid);
 		return q.getResultList();

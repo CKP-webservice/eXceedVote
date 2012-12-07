@@ -32,6 +32,7 @@ public class Ranking {
 			{
 				for(int i = 0; i < projectResultList.size(); i++)
 				{
+					System.out.println(projectResultList.get(i).getProject().getId() + " " + v.getProjectID());
 					if(projectResultList.get(i).getProject().getId() == v.getProjectID())
 					{
 						projectResultList.get(i).increaseScore();

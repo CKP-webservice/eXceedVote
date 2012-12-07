@@ -17,8 +17,7 @@
 			<property name="eclipselink.ddl-generation" value="create-tables" />
 			<property name="eclipselink.ddl-generation.output-mode"
 				value="both" />
-			<property name="javax.persistence.jdbc.user" value="exceedapp"/>
-			<property name="javax.persistence.jdbc.password" value="exceed9"/>
+			<property name="javax.persistence.jdbc.user" value="root"/>
 		</properties>
 	</persistence-unit>
 </persistence>

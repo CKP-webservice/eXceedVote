@@ -3,6 +3,12 @@
     pageEncoding="windows-1256"
 %>
 
+<%@ page import="com.ckp.model.Ranking" %>
+<%@ page import="com.ckp.model.Question" %>
+<%@ page import="com.ckp.model.ProjectResult" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.HashMap" %>
+
 <%
 	String s = (String)session.getAttribute("isLogin");
 	if(s == null || s == "" || s == "no")
@@ -11,6 +17,8 @@
 	<jsp:forward page="LoginPage.jsp"></jsp:forward>
 <%
 	}
+	Ranking rank = new Ranking();
+	HashMap<Question, List<ProjectResult>> rankmap = rank.getRankMap();
 %>
 
 <!DOCTYPE html>
