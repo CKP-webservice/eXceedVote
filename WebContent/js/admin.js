@@ -34,3 +34,19 @@ function deleteVote(id) {
 		$('#panel').load('AdminViewResult.jsp #t1');
 	});
 }
+
+function showAddAccountModal() {
+	$('#account-modal').modal();
+}
+
+function showAddQuestionModal() {
+	$('#question-modal').modal();
+}
+
+function addAccount() {
+	
+}
+
+function addQuestion() {
+	
+}

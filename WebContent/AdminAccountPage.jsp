@@ -93,12 +93,12 @@
             <ul class="nav nav-list">
                 <li class="nav-header">Account Setting</li>
                 <li class="active"><a href="#" onclick="loadAdminAccountPage()">Manage Account</a></li>
-                <li><a href="#">Add Account</a></li>
+                <li><a href="#" onclick='showAddAccountModal()'>Add Account</a></li>
                 <li class="nav-header">Vote Setting</li>
                 <li><a href="AdminShowRanking.jsp">Show Ranking</a></li>
                 <li><a href="AdminViewResult.jsp">View Vote Log</a></li>
                 <li><a href="AdminQuestionPage.jsp">Manage Question</a></li>
-                <li><a href="#">Add Question</a></li>
+                <li><a href="#" onclick='showAddQuestionModal()'>Add Question</a></li>
                 <li class="nav-header">Other Setting</li>
                 <li><a href="#">General Setting</a></li>
                 <li><a href="#">Set Vote Time</a></li>
@@ -107,7 +107,74 @@
             </ul>
         </div><!--/span-->
         <div class="span9" id="panel">
-          <div class="hero-unit" id="t1">
+          <div class="hero-unit" id="t1">   	
+          	<div id="account-modal" class="modal hide fade in" style="display: none;">  
+				<div class="modal-header">  
+					<a class="close" data-dismiss="modal">×</a>  
+					<h3>Add Account</h3>  
+				</div>
+				<form class="form-horizontal">  
+				<div class="modal-body">       
+					<div class="control-group">
+		         		<label class="control-label">Username</label>
+		         		<div class="controls">
+		         			<input name="username" type="text" class="input-xlarge">
+		         		</div>
+		         	</div>
+		         	<div class="control-group">
+		         		<label class="control-label">Password</label>
+		         		<div class="controls">
+		         			<input name="password" type="password" class="input-xlarge">
+		         		</div>
+		         	</div>           
+		         	<div class="control-group">
+		         		<label class="control-label">First Name</label>
+		         		<div class="controls">
+		         			<input name="firstname" type="text" class="input-xlarge">
+		         		</div>
+		         	</div>
+		         	<div class="control-group">
+		         		<label class="control-label">Last Name</label>
+		         		<div class="controls">
+		         			<input name="lastname" type="text" class="input-xlarge">
+		         		</div>
+		         	</div>
+		         	<div class="control-group">
+		         		<label class="control-label">Role</label>
+		         		<div class="controls">
+		         			<div class="btn-group" data-toggle="buttons-radio">
+  								<button type="button" class="btn">Voter</button>
+  								<button type="button" class="btn">Admin</button>
+							</div>
+		         		</div>
+		         	</div>
+				</div>
+				<div class="modal-footer"> 
+					<button type="submit" id="submit-account" class="btn btn-primary" data-dismiss="modal">Save Changes</button>  
+					<button class="btn" data-dismiss="modal">Close</button>  
+				</div>
+				</form>
+          	</div>
+          	<div id="question-modal" class="modal hide fade in" style="display: none;">  
+				<div class="modal-header">  
+					<a class="close" data-dismiss="modal">×</a>  
+					<h3>Add Question</h3>  
+				</div>  
+				<form class="form-horizontal"> 
+				<div class="modal-body">
+					<div class="control-group">
+		         		<label class="control-label">Question</label>
+		         		<div class="controls">
+		         			<input name="questionname" type="text" class="input-xlarge">
+		         		</div>
+		         	</div>                
+				</div>
+				<div class="modal-footer"> 
+					<button type="submit" id="submit-question" class="btn btn-primary" data-dismiss="modal">Save Changes</button>  
+					<button class="btn" data-dismiss="modal">Close</button>  
+				</div>
+				</form>
+          	</div>
           <table class="table table-striped"> 
           	<thead> 
           		<tr> 
