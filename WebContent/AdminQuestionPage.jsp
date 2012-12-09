@@ -73,7 +73,7 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <strong>${user.getName()} ${user.getLastName() }</strong><b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   <li><a href="AdminAccountPage.jsp">Administrator Page</a></li>
-                  <li><a href="#">Log out</a></li>
+                  <li><a href="LogoutPage.jsp">Log out</a></li>
                 </ul>
               </li>
             </ul>
@@ -93,21 +93,89 @@
             <ul class="nav nav-list">
                 <li class="nav-header">Account Setting</li>
                 <li><a href="AdminAccountPage.jsp">Manage Account</a></li>
-                <li><a href="#">Add Account</a></li>
+                <li><a href="#" onclick='showAddAccountModal()'>Add Account</a></li>
                 <li class="nav-header">Vote Setting</li>
                 <li><a href="AdminShowRanking.jsp">Show Ranking</a></li>
                 <li><a href="AdminViewResult.jsp">View Vote Log</a></li>
                 <li class="active"><a href="AdminQuestionPage.jsp">Manage Question</a></li>
-                <li><a href="#">Add Question</a></li>
+                <li><a href="#" onclick='showAddQuestionModal()'>Add Question</a></li>
                 <li class="nav-header">Other Setting</li>
                 <li><a href="#">General Setting</a></li>
                 <li><a href="#">Set Vote Time</a></li>
                 <li class="divider"></li>
-                <li><a href="#">Log out</a></li>
+                <li><a href="LogoutPage.jsp">Log out</a></li>
             </ul>
         </div><!--/span-->
         <div class="span9" id="panel">
           <div class="hero-unit" id="t1">
+          <div id="account-modal" class="modal hide fade in" style="display: none;">  
+				<div class="modal-header">  
+					<a class="close" data-dismiss="modal">×</a>  
+					<h3>Add Account</h3>  
+				</div>
+				<form class="form-horizontal" id="account-form">  
+				<div class="modal-body">       
+					<div class="control-group">
+		         		<label class="control-label">Username</label>
+		         		<div class="controls">
+		         			<input name="username" id="username" type="text" class="input-xlarge">
+		         		</div>
+		         	</div>
+		         	<div class="control-group">
+		         		<label class="control-label">Password</label>
+		         		<div class="controls">
+		         			<input name="password" id="password" type="password" class="input-xlarge">
+		         		</div>
+		         	</div>           
+		         	<div class="control-group">
+		         		<label class="control-label">First Name</label>
+		         		<div class="controls">
+		         			<input name="firstname" id="firstname" type="text" class="input-xlarge">
+		         		</div>
+		         	</div>
+		         	<div class="control-group">
+		         		<label class="control-label">Last Name</label>
+		         		<div class="controls">
+		         			<input name="lastname" id="lastname" type="text" class="input-xlarge">
+		         		</div>
+		         	</div>
+		         	<div class="control-group">
+		         		<label class="control-label">Role</label>
+		         		<div class="controls">
+		         			<div class="btn-group" data-toggle="buttons-radio">
+  								<button type="button" onClick="$('#role').val('voter');" class="btn active" checked>Voter</button>
+  								<button type="button" onClick="$('#role').val('admin');" class="btn">Admin</button>
+							</div>
+							<input name="role" id="role" type="hidden" value="">
+		         		</div>
+		         	</div>
+				</div>
+				<div class="modal-footer"> 
+					<button type="button" id="submit-account" class="btn btn-primary" data-dismiss="modal" onclick='sendAddAccount()'>Save Changes</button>  
+					<button class="btn" data-dismiss="modal">Close</button>  
+				</div>
+				</form>
+          	</div>
+          	<div id="question-modal" class="modal hide fade in" style="display: none;">  
+				<div class="modal-header">  
+					<a class="close" data-dismiss="modal">×</a>  
+					<h3>Add Question</h3>  
+				</div>  
+				<form class="form-horizontal" id="question-form"> 
+				<div class="modal-body">
+					<div class="control-group">
+		         		<label class="control-label">Question</label>
+		         		<div class="controls">
+		         			<input name="questionname" id="questionname" type="text" class="input-xlarge">
+		         		</div>
+		         	</div>                
+				</div>
+				<div class="modal-footer"> 
+					<button type="button" id="submit-question" class="btn btn-primary" data-dismiss="modal" onclick='sendAddQuestion()'>Save Changes</button>  
+					<button class="btn" data-dismiss="modal">Close</button>  
+				</div>
+				</form>
+          	</div>
           	<table class="table table-striped"> 
           	<thead> 
           		<tr> 

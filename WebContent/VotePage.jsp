@@ -9,10 +9,12 @@
 <%@ page import="com.ckp.model.Question" %>
 <%@ page import="com.ckp.model.dao.QuestionDAO" %>
 <%@ page import="java.util.List" %>
+<%@ page import="java.util.Date" %>
+<%@ page import="java.text.SimpleDateFormat" %>
 
 <%
 	String s = (String)session.getAttribute("isLogin");
-	if(s == null || s == "" || s == "no")
+	if(s == null || s == "" || s == "no" || session == null)
 	{
 %>
 	<jsp:forward page="LoginPage.jsp"></jsp:forward>
@@ -59,7 +61,9 @@
 	</style>
 	<script type="text/javascript" src="js/web.js"></script>
 	<script type="text/javascript" src="js/date_time.js"></script>
+    <script src="js/moment.js"></script>
     <script src="js/vote.js"></script>
+    
   </head>
 
   <body data-spy="scroll">
@@ -79,7 +83,7 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><strong>${user.getName()} ${user.getLastName() } </strong><b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   <li><a href="AdminAccountPage.jsp">Administrator Page</a></li>
-                  <li><a href="#">Log out</a></li>
+                  <li><a href="LogoutPage.jsp">Log out</a></li>
                 </ul>
               </li>
             </ul>

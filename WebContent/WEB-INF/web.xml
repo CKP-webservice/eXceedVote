@@ -66,4 +66,23 @@
   	<servlet-name>DeleteUserServlet</servlet-name>
   	<url-pattern>/deleteuser-servlet</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>AddAccountServlet</servlet-name>
+  	<servlet-class>com.ckp.controller.AddAccountServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>AddAccountServlet</servlet-name>
+  	<url-pattern>/addaccount-servlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>AddQuestionServlet</servlet-name>
+  	<servlet-class>com.ckp.controller.AddQuestionServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>AddQuestionServlet</servlet-name>
+  	<url-pattern>/addquestion-servlet</url-pattern>
+  </servlet-mapping>
+
 </web-app>

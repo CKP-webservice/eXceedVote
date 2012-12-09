@@ -23,7 +23,7 @@ function showModal(number)
 function ajaxSendPost(selected, button)
 {
 	var data = $('#' + selected).val();
-    $.post('vote-servlet', {select:data, question:selected}, voteSuccessed());
+    $.post('vote-servlet', {select:data, question:selected});
     
 	voteSuccessed(button);
 	$('#' + selected).attr("disabled", "disabled");

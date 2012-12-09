@@ -24,7 +24,9 @@
 
     <!-- Le styles -->
     <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
  	<link href="css/style.css" rel="stylesheet">
+ 	<link href="css/formvalid.css" rel="stylesheet">
     <style type="text/css">
       body {
         padding-top: 60px;
@@ -46,7 +48,8 @@
 		}
 	</style>
 	<script src="bootstrap/js/bootstrap.js"></script>
-    <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+    <script src="js/jquery.validate.js"></script>
+    <script src="js/form-validate.js"></script>
   </head>
 
   <body data-spy="scroll">
@@ -66,7 +69,7 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><strong>${user.getName()} ${user.getLastName() }</strong><b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   <li><a href="AdminAccountPage.jsp">Administrator Page</a></li>
-                  <li><a href="#">Log out</a></li>
+                  <li><a href="LogoutPage.jsp">Log out</a></li>
                 </ul>
               </li>
             </ul>
@@ -89,58 +92,58 @@
             </ul>
         </div><!--/span-->
         <div class="span9">
-        	 <form class="form-horizontal" method="post" action="addproject-servlet">
+        	 <form class="form-horizontal" id="addproject-form" method="post" action="addproject-servlet">
 	        	 <fieldset>
 	        	 <div id="legend"class="">
-		        	 <legend class="" id="t1">Project Detail</legend>
+		        	 <legend id="t1">Project Detail</legend>
 		         </div>
 		         <div class="control-group">
 		         <!-- Text input-->
-		         	<label class="control-label" for="input01">Project Name</label>
+		         	<label class="control-label" for="name">Project Name</label>
 		         	<div class="controls">
-		         		<input name="name" type="text" placeholder="" class="input-xxlarge">
+		         		<input name="name" id="name" type="text" placeholder="" class="input-xxlarge">
 		         	</div>
 		         </div>
 		<div class="control-group">
           <!-- Textarea -->
-          <label class="control-label">Description</label>
+          <label class="control-label" for="description">Description</label>
           <div class="controls">
             <div class="textarea">
-                  <textarea name="description" rows="8" style="width: 530px"> </textarea>
+                  <textarea name="description" id="description" rows="8" style="width: 530px"> </textarea>
             </div>
           </div>
         </div>
         <div class="control-group">
           <!-- Textarea -->
-          <label class="control-label">Short Description</label>
+          <label class="control-label" for="short_description">Short Description</label>
           <div class="controls">
             <div class="textarea">
-                  <textarea name="short_description" rows="5" style="width: 530px"> </textarea>
+                  <textarea name="short_description" id="short_description" rows="5" style="width: 530px"> </textarea>
             </div>
           </div>
         </div>
         <div id="legend" class="">
-		  	<legend class="" id="t2">Screenshot</legend>
+		  	<legend id="t2">Screenshot</legend>
 		</div>
 		<div class="control-group">
-          <label class="control-label">Screenshot Link #1</label>
+          <label class="control-label" for="imageurl1">Screenshot Link #1</label>
           <!-- File Upload -->
           <div class="controls">
-            <input name="imageurl1" class="input-xxlarge" id="fileInput1" type="text">
+            <input name="imageurl1" id="imageurl1" class="input-xxlarge" id="fileInput1" type="text">
           </div>
         </div>
         <div class="control-group">
-          <label class="control-label">Screenshot Link #2</label>
+          <label class="control-label" for="imageurl2">Screenshot Link #2</label>
           <!-- File Upload -->
           <div class="controls">
-            <input name="imageurl2" class="input-xxlarge" id="fileInput2" type="text">
+            <input name="imageurl2" id="imageurl2" class="input-xxlarge" id="fileInput2" type="text">
           </div>
         </div>
         <div class="control-group">
-          <label class="control-label">Screenshot Link #3</label>
+          <label class="control-label" for="imageurl3">Screenshot Link #3</label>
           <!-- File Upload -->
           <div class="controls">
-            <input name="imageurl3" class="input-xxlarge" id="fileInput3" type="text">
+            <input name="imageurl3" id="imageurl3" class="input-xxlarge" id="fileInput3" type="text">
           </div>
         </div>
 	        <div class="form-actions">
