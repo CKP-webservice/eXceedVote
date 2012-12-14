@@ -57,5 +57,13 @@ public class JpaVoteDAO implements VoteDAO {
 		q.setParameter("id", qid);
 		return q.getResultList();
 	}
+	@Override
+	public List<Vote> findByQuestionIdAndUserId(int q_id, int u_id) {
+		String query = "SELECT v from Vote v Where v.question_id = :qid and v.user_id = uid";
+		Query q = em.createQuery(query);
+		q.setParameter("qid", q_id);
+		q.setParameter("uid", u_id);
+		return q.getResultList();
+	}
 
 }

@@ -12,4 +12,5 @@ public interface VoteDAO {
 	public List<Vote> findAll();
 	public List<Vote> findByQuestion(Question question);
 	public List<Vote> query(String q);
+	public List<Vote> findByQuestionIdAndUserId(int q_id,int u_id);
 }
