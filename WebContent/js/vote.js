@@ -1,19 +1,3 @@
-$(document).ready(function() {
-  $('select').change(function() {
-      var optionValue = $('select').val();
-    $('#project1, #project2').hide(400);
-    switch(optionValue)
-    {
-    case "1":
-      $("#project1").show(400);
-      break;
-    case "2":
-      $("#project2").show(400);
-      break;
-    }
-  });
-
-});
 
 function showModal(number)
 {
@@ -22,11 +6,17 @@ function showModal(number)
 
 function ajaxSendPost(selected, button)
 {
-	var data = $('#' + selected).val();
-    $.post('vote-servlet', {select:data, question:selected});
-    
-	voteSuccessed(button);
-	$('#' + selected).attr("disabled", "disabled");
+	var data = $('#question' + selected + '-select').val();
+    $.post('vote-servlet', {select:data, question:selected}, function(result)
+    {
+    	var remain = "#remain" + selected;
+    	$(remain).text('Ballot Remaining : ' + result);
+    	if(result == 0)
+    	{
+    		voteSuccessed(button);
+    		$('#' + selected).attr("disabled", "disabled");
+    	}
+    });
 }
 
 function voteSuccessed(button)

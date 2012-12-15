@@ -4,11 +4,14 @@
 %>
 
 <%@ page import="com.ckp.model.Project" %>
+<%@ page import="com.ckp.model.Vote" %>
 <%@ page import="com.ckp.model.dao.DaoFactory" %>
 <%@ page import="com.ckp.model.dao.ProjectDAO" %>
 <%@ page import="com.ckp.model.Question" %>
 <%@ page import="com.ckp.model.dao.QuestionDAO" %>
+<%@ page import="com.ckp.model.dao.VoteDAO" %>
 <%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.Date" %>
 <%@ page import="java.text.SimpleDateFormat" %>
 
@@ -20,10 +23,14 @@
 	<jsp:forward page="LoginPage.jsp"></jsp:forward>
 <%
 	}
+	int userid = (Integer)session.getAttribute("userID");
 	ProjectDAO projectdao = DaoFactory.getInstance().getProjectDAO();
 	List<Project> projects = projectdao.findAll();
 	QuestionDAO questiondao = DaoFactory.getInstance().getQuestionDAO();
 	List<Question> questions = questiondao.findAll();
+	VoteDAO votedao = DaoFactory.getInstance().getVoteDAO();
+	List<Integer> remains = new ArrayList<Integer>();
+	int limit = 5;
 %>
 
 <!DOCTYPE html>
@@ -63,6 +70,36 @@
 	<script type="text/javascript" src="js/date_time.js"></script>
     <script src="js/moment.js"></script>
     <script src="js/vote.js"></script>
+    <script>
+    	$(document).ready(function() {
+    	<%
+    		for(Question question : questions)
+    		{
+    			out.println("$('#question" + question.getId() +"-select').change(function() {");
+    			out.println("var optionValue = $('#question" + question.getId() +"-select').val();");
+    			String hide = "";
+    			int countproject = 1;
+    			for(Project project : projects)
+    			{
+    				if(countproject == projects.size()) hide += "#project" + question.getId() + "" + project.getId();
+    				else hide += "#project" + question.getId() + "" + project.getId() + ", ";
+    				countproject++;
+    			}
+    			out.println("$('" + hide + "').hide(400);");
+    			out.println("switch(optionValue)");
+    			out.println("{");
+    			for(Project project : projects)
+    			{
+    				out.println("case \"" + project.getId() + "\":");
+    				out.println("$('#project" + question.getId() + "" + project.getId() + "').show(400);");
+    				out.println("break;");
+    			}
+    			out.println("}");
+    			out.println("});");
+    		}
+    	%>
+    	});
+    </script>
     
   </head>
 
@@ -117,9 +154,17 @@
         	for(Question question : questions)
         	{
           		out.println("<div class=\"hero-unit\" id=\"t" + countid + "\">");
-            	out.println("<div class=\"row-fluid\"><h1>" + question.getTitle() + "</h1></div><br><br>");
+            	out.println("<div class=\"row-fluid\"><div class=\"span6\"><h1>" + question.getTitle() + "</h1></div>");
+            	out.println("<div class=\"span6\" id=\"xxx\">");
+            	List<Vote> temp = votedao.findByQuestionIdAndUserId(question.getId(), userid);
+            	int remaining = limit - temp.size();
+            	out.println("<h3 id=\"remain" + question.getId() + "\" style=\"float: right; margin-top: 30px;\">Ballot Remaining : " + remaining + "</h3></div>");
+            	out.println("</div>");
+            	out.println("<br>");
+            	out.println("<br>");
             	out.println("<div class=\"row-fluid\">");	
-	           	out.println("<select name=\"question" + countid + "-select\" id=\"question" + countid + "-select\" class=\"span5\">");
+	           	if(remaining == 0) out.println("<select disabled=\"disabled\" name=\"question" + question.getId() + "-select\" id=\"question" + question.getId() + "-select\" class=\"span5\">");
+	           	else out.println("<select name=\"question" + question.getId() + "-select\" id=\"question" + question.getId() + "-select\" class=\"span5\">");
 	            int countProject = 1;
 	           	for(Project project : projects)
 	            {
@@ -127,7 +172,8 @@
 	            	//countProject++;
 	            }	
 	            out.println("</select>");
-	            out.println("<button class=\"btn btn-large btn-primary pull-right\" type=\"button\" id=\"question" + countid + "-vote\" onclick='showModal(\"" + countid + "\")' style=\"margin-top: -15px\"><h2>Vote Project</h2></button>");
+	            if(remaining == 0) out.println("<button disabled=\"\" class=\"btn btn-large btn-danger pull-right\" type=\"button\" id=\"question" + countid + "-vote\" onclick='showModal(\"" + countid + "\")' style=\"margin-top: -15px\"><h2>Vote Successed</h2></button>");
+	            else out.println("<button class=\"btn btn-large btn-primary pull-right\" type=\"button\" id=\"question" + countid + "-vote\" onclick='showModal(\"" + countid + "\")' style=\"margin-top: -15px\"><h2>Vote Project</h2></button>");
   				out.println("<div id=\"modal" + countid + "\" class=\"modal hide fade in\" style=\"display: none;\">");  
 				out.println("<div class=\"modal-header\" id=\"modal-header" + countid + "\">");  
 				out.println("<a class=\"close\" data-dismiss=\"modal\">×</a>");  
@@ -137,15 +183,15 @@
 				out.println("<p>Are you sure?</p>");                
 				out.println("</div>");  
 				out.println("<div class=\"modal-footer\" id=\"modal-footer" + countid + "\">");  
-				out.println("<button type=\"submit\" class=\"btn btn-primary\" onclick='ajaxSendPost(\"question" + countid + "-select\", \"question" + countid + "-vote\")' data-dismiss=\"modal\">Save Changes</button>");  
+				out.println("<button type=\"submit\" class=\"btn btn-primary\" onclick='ajaxSendPost(\"" + question.getId() + "\", \"question" + countid + "-vote\")' data-dismiss=\"modal\">Save Changes</button>");  
 				out.println("<button class=\"btn\" data-dismiss=\"modal\">Close</button>");  
 				out.println("</div>");
             	out.println("</div>");
             	int countProject2 = 1;
             	for(Project project : projects)
             	{
-            		if(countProject2 == 1) out.println("<div id=\"project" + countProject2 + "\">");
-            		else out.println("<div id=\"project" + countProject2 + "\" style=\"display: none;\">");
+            		if(countProject2 == 1) out.println("<div id=\"project" + question.getId() + "" + project.getId() + "\">");
+            		else out.println("<div id=\"project" + question.getId() + "" + project.getId() + "\" style=\"display: none;\">");
             		out.println("<h2>" + project.getProjectName() + "</h2>");
 	        		out.println("<br>");
 	        		out.println("<a class=\"fancybox\" href=\"" + project.getImgURL1() + "\"" + "data-fancybox-group=\"gallery"+ countProject2 +"\"><img src=\"" + project.getImgURL1() + "\" alt=\"\" width=\"240px\" height=\"160px\" style=\"border-radius: 7px; margin: 10px\" /></a>");

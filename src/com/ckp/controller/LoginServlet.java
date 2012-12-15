@@ -54,7 +54,7 @@ public class LoginServlet extends HttpServlet {
 		String password = request.getParameter("password");
 		if (username == null || username == "" || password == null
 				|| password == "") {
-			request.setAttribute("message","Please enter Username and password");
+			request.setAttribute("message","Please enter Username and Password");
 			request.getRequestDispatcher("LoginPage.jsp").forward(request,
 					response);
 		} else {

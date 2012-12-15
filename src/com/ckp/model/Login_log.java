@@ -29,6 +29,7 @@ public class Login_log {
 	}
 	
 	public Login_log(HttpSession session) {
+		
 		this.session = session;
 		this.ip = (String) session.getAttribute("ip");
 		this.timestampField = new Date();

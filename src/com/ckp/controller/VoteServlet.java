@@ -1,7 +1,9 @@
 package com.ckp.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Enumeration;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -45,10 +47,15 @@ public class VoteServlet extends HttpServlet {
 		HttpSession session = request.getSession(true);
 		response.setHeader("Cache-Control", "no-cache");
 		response.setHeader("Pragma", "no-cache");
-		int questionId = Integer.parseInt(String.valueOf(request.getParameter("question").charAt(8)));
+		int questionId = Integer.parseInt(request.getParameter("question"));
 		int userID = (Integer)session.getAttribute("userID");	
 		Vote vote = new Vote(questionId, Integer.parseInt(request.getParameter("select")), userID);
 		VoteDAO votedao = DaoFactory.getInstance().getVoteDAO();
 		votedao.save(vote);
+		PrintWriter out = response.getWriter();
+		List<Vote> tempvote = votedao.findByQuestionIdAndUserId(questionId, userID);
+		int limit = 5;
+		int tempre = limit - tempvote.size();
+		out.print(tempre);
 	}
 }
