@@ -54,6 +54,12 @@
 		}
 	</style>
 	<script type="text/javascript" src="js/admin.js"></script>
+	<script>
+			var auto_refresh = setInterval(
+			function (){
+				$('#panel').load('AdminViewResult.jsp #t1');
+			}, 1000);
+	</script>
   </head>
 
   <body data-spy="scroll">

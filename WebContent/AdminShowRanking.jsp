@@ -55,6 +55,13 @@
 		}
 	</style>
 	<script type="text/javascript" src="js/admin.js"></script>
+	<script>
+		function showModal() {
+			$('#myModal').modal();
+		}
+		
+		
+	</script>
   </head>
 
   <body data-spy="scroll">
@@ -107,7 +114,7 @@
                 <li><a href="LogoutPage.jsp">Log out</a></li>
             </ul>
         </div><!--/span-->
-        <div class="span9">
+        <div class="span9" id="panel">
           <div class="hero-unit" id="t1">
           <div id="account-modal" class="modal hide fade in" style="display: none;">  
 				<div class="modal-header">  
@@ -177,7 +184,84 @@
 				</div>
 				</form>
           	</div>
-          	<h1>Test Ajax load(Show Ranking)</h1>
+          	<table class="table table-bordered"> 
+          	<thead> 
+          		<tr> 
+          			<th>Question</th> 
+          			<th>Ranking#1</th>
+          			<th>Ranking#2</th>
+          			<th>Ranking#3</th>
+          			<th>See more</th>
+          		</tr> 
+          	</thead> 
+          	<tbody> 
+          		<%
+          			//int countacc = 1;
+          			/*for(Vote vote : votes)
+         			{
+          				out.println("<tr>");
+          				out.println("<td>" + countacc + "</td>");
+          				out.println("<td>" + vote.getQuestionID() + "</td>");
+          				out.println("<td>" + vote.getProjectID() + "</td>");
+          				out.println("<td>" + vote.getUserID() + "</td>");
+          				out.println("<td>" + vote.getTimestampField() + "</td>");
+        				out.println("<td><button class=\"btn btn-danger\" onclick='deleteVote(\"" + vote.getId() +"\")'>Delete</button></td>");
+          				out.println("</tr>");
+          				countacc++;
+          				
+          			}*/
+          		%>
+          		<tr>
+          			<td rowspan="2">Popular Vote</td>
+          			<td>WorldNote</td>
+          			<td>Panda Server</td>
+          			<td>Physic Works</td>
+          			<td rowspan="2"><a href="#" onclick='showModal()'>See more ranking</a></td>
+          		</tr>
+          		<tr>
+          			<td>Score: 100</td>
+          			<td>Score: 70</td>
+          			<td>Score: 60</td>
+          		</tr>
+          	</tbody> 
+          </table>
+          <div class="modal hide fade" id="myModal">
+  			<div class="modal-header">
+    		<a class="close" data-dismiss="modal">×</a>
+    		<h3>Popular Vote</h3>
+ 			 </div>
+ 			 <div class="modal-body">
+  				<table class="table table-bordered">
+  					<thead>
+  						<tr>
+  							<th>Ranking</th>
+  							<th>Project</th>
+  							<th>Score</th>
+  						</tr>
+  					</thead>
+  					<tbody>
+  						<tr>
+  							<td>1</td>
+  							<td>WorldNote</td>
+  							<td>100</td>
+  						<tr>
+  						<tr>
+  							<td>2</td>
+  							<td>Panda Server</td>
+  							<td>70</td>
+  						<tr>
+  						<tr>
+  							<td>2</td>
+  							<td>Physic Works</td>
+  							<td>60</td>
+  						<tr>
+  					</tbody>
+  				</table>
+ 		 </div>
+  			<div class="modal-footer">
+    		<a href="#" class="btn" data-dismiss="modal">Close</a>
+  		</div>
+		</div>
           </div>
         </div><!--/span-->
       </div><!--/row-->

@@ -14,7 +14,7 @@ function ajaxSendPost(selected, button)
     	if(result == 0)
     	{
     		voteSuccessed(button);
-    		$('#' + selected).attr("disabled", "disabled");
+    		$('#question' + selected + '-select').attr("disabled", "disabled");
     	}
     });
 }
