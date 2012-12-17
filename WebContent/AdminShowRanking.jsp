@@ -60,8 +60,9 @@
 	</style>
 	<script type="text/javascript" src="js/admin.js"></script>
 	<script>
-		function showModal() {
-			$('#myModal').modal();
+		function showModal(questionid) {
+			var modal = '#modal' + questionid; 
+			$(modal).modal();
 		}
 		
 		
@@ -227,43 +228,39 @@
         <%
         	for(Question question : questions)
         	{
-        		out.println("<div class='modal hide fade' id='myModal'>");
-      			<div class="modal-header">
-        		<a class="close" data-dismiss="modal">×</a>
-        		<h3>Popular Vote</h3>
-     			 </div>
-     			 <div class="modal-body">
-      				<table class="table table-bordered">
-      					<thead>
-      						<tr>
-      							<th>Ranking</th>
-      							<th>Project</th>
-      							<th>Score</th>
-      						</tr>
-      					</thead>
-      					<tbody>
-      						<tr>
-      							<td>1</td>
-      							<td>WorldNote</td>
-      							<td>100</td>
-      						<tr>
-      						<tr>
-      							<td>2</td>
-      							<td>Panda Server</td>
-      							<td>70</td>
-      						<tr>
-      						<tr>
-      							<td>2</td>
-      							<td>Physic Works</td>
-      							<td>60</td>
-      						<tr>
-      					</tbody>
-      				</table>
-     		 </div>
-      			<div class="modal-footer">
-        		<a href="#" class="btn" data-dismiss="modal">Close</a>
-      			</div>
-    		</div>
+        		List<ProjectResult> prs = rankmap.get(question);
+        		out.println("<div class='modal hide fade' id='modal" + question.getId() + "'>");
+      			out.println("<div class='modal-header'>");
+        		out.println("<a class='close' data-dismiss='modal'>×</a>");
+        		out.println("<h3>" + question.getTitle() + "</h3>");
+     			out.println("</div>");
+     			out.println("<div class='modal-body'>");
+      			out.println("<table class='table table-bordered'>");
+      			out.println("<thead>");
+      			out.println("<tr>");
+      			out.println("<th>Ranking</th>");
+      			out.println("<th>Project</th>");
+      			out.println("<th>Score</th>");
+      			out.println("</tr>");
+      			out.println("</thead>");
+      			out.println("<tbody>"); 
+      			int rankcount = 1;
+      			for(ProjectResult pr : prs)
+      			{
+      				out.println("<tr>");
+      				out.println("<td>" + rankcount + "</td>");
+					out.println("<td>" + pr.getProject().getProjectName() + "</td>");
+					out.println("<td>" + pr.getScore() + "</td>");
+					out.println("</tr>");
+					rankcount++;
+      			}	
+      			out.println("</tbody>");
+      			out.println("</table>");
+     		 	out.println("</div>");
+      			out.println("<div class='modal-footer'>");
+        		out.println("<a href='#' class='btn' data-dismiss='modal'>Close</a>");
+      			out.println("</div>");
+    			out.println("</div>");
         	}
         %>
       </div><!--/row-->
