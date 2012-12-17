@@ -4,6 +4,7 @@ import com.ckp.model.dao.DaoFactory;
 import com.ckp.model.dao.Login_logDAO;
 import com.ckp.model.dao.ProjectDAO;
 import com.ckp.model.dao.QuestionDAO;
+import com.ckp.model.dao.RoleDAO;
 import com.ckp.model.dao.TeamDAO;
 import com.ckp.model.dao.TeamMemberDAO;
 import com.ckp.model.dao.TimeDAO;
@@ -25,7 +26,11 @@ public class JpaDaoFactory extends DaoFactory{
 	private JpaUserDAO userDAO;
 	private JpaVoteDAO voteDAO;
 	private Login_logDAO login_logDAO;
+<<<<<<< HEAD
 	private TimeDAO timeDAO;
+=======
+	private RoleDAO roleDAO;
+>>>>>>> Add Role RoldDAO class
 	
 	public JpaDaoFactory()
 	{
@@ -82,6 +87,13 @@ public class JpaDaoFactory extends DaoFactory{
 	public TimeDAO getTimeDAO() {
 		if(timeDAO == null) timeDAO = new JpaTimeDAO(em);
 		return timeDAO;
+	}
+
+
+	@Override
+	public RoleDAO getRoleDAO() {
+		if(roleDAO == null) roleDAO = new JpaRoleDAO(em);
+		return roleDAO;
 	}
 
 }

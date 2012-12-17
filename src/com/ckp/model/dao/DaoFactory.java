@@ -19,5 +19,9 @@ public abstract class DaoFactory {
 	public abstract UserDAO getUserDAO();
 	public abstract VoteDAO getVoteDAO();
 	public abstract Login_logDAO getLogin_logDAO();
+<<<<<<< HEAD
 	public abstract TimeDAO getTimeDAO();
+=======
+	public abstract RoleDAO getRoleDAO();
+>>>>>>> Add Role RoldDAO class
 }
