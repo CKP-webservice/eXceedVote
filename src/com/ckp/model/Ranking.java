@@ -10,7 +10,6 @@ import com.ckp.model.dao.DaoFactory;
 import com.ckp.model.dao.ProjectDAO;
 import com.ckp.model.dao.QuestionDAO;
 import com.ckp.model.dao.VoteDAO;
-import com.sun.java.swing.plaf.windows.WindowsTreeUI.CollapsedIcon;
 
 public class Ranking {
 	
@@ -35,7 +34,6 @@ public class Ranking {
 			{
 				for(int i = 0; i < projectResultList.size(); i++)
 				{
-					System.out.println(projectResultList.get(i).getProject().getId() + " " + v.getProjectID());
 					if(projectResultList.get(i).getProject().getId() == v.getProjectID())
 					{
 						projectResultList.get(i).increaseScore();
@@ -70,7 +68,7 @@ public class Ranking {
 
 		@Override
 		public int compare(ProjectResult o1, ProjectResult o2) {
-			return o1.getScore() - o2.getScore();
+			return o2.getScore() - o1.getScore();
 		}
 		
 	}

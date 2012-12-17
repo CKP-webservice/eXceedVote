@@ -6,6 +6,8 @@
 <%@ page import="com.ckp.model.Ranking" %>
 <%@ page import="com.ckp.model.Question" %>
 <%@ page import="com.ckp.model.ProjectResult" %>
+<%@ page import="com.ckp.model.dao.DaoFactory" %>
+<%@ page import="com.ckp.model.dao.QuestionDAO" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.HashMap" %>
 
@@ -17,6 +19,8 @@
 	<jsp:forward page="LoginPage.jsp"></jsp:forward>
 <%
 	}
+	QuestionDAO questiondao = DaoFactory.getInstance().getQuestionDAO();
+	List<Question> questions = questiondao.findAll();
 	Ranking rank = new Ranking();
 	HashMap<Question, List<ProjectResult>> rankmap = rank.getRankMap();
 %>
@@ -196,74 +200,72 @@
           	</thead> 
           	<tbody> 
           		<%
-          			//int countacc = 1;
-          			/*for(Vote vote : votes)
-         			{
+          			for(Question question : questions)
+          			{
+          				List<ProjectResult> prs = rankmap.get(question);
           				out.println("<tr>");
-          				out.println("<td>" + countacc + "</td>");
-          				out.println("<td>" + vote.getQuestionID() + "</td>");
-          				out.println("<td>" + vote.getProjectID() + "</td>");
-          				out.println("<td>" + vote.getUserID() + "</td>");
-          				out.println("<td>" + vote.getTimestampField() + "</td>");
-        				out.println("<td><button class=\"btn btn-danger\" onclick='deleteVote(\"" + vote.getId() +"\")'>Delete</button></td>");
+          				out.println("<td rowspan='2'>" + question.getTitle() + "</td>");
+          				for(ProjectResult pr : prs)
+          				{
+          					out.println("<td>" + pr.getProject().getProjectName() + "</td>");
+          				}
+          				out.println("<td rowspan='2'><a href='#' onclick='showModal(" + question.getId() + ")'>See more ranking</a></td>");
           				out.println("</tr>");
-          				countacc++;
-          				
-          			}*/
+          				out.println("<tr>");
+          				for(ProjectResult pr : prs)
+          				{
+          					out.println("<td>Score: " + pr.getScore() + "</td>");
+          				}
+          				out.println("</tr>");
+          			}
           		%>
-          		<tr>
-          			<td rowspan="2">Popular Vote</td>
-          			<td>WorldNote</td>
-          			<td>Panda Server</td>
-          			<td>Physic Works</td>
-          			<td rowspan="2"><a href="#" onclick='showModal()'>See more ranking</a></td>
-          		</tr>
-          		<tr>
-          			<td>Score: 100</td>
-          			<td>Score: 70</td>
-          			<td>Score: 60</td>
-          		</tr>
           	</tbody> 
           </table>
-          <div class="modal hide fade" id="myModal">
-  			<div class="modal-header">
-    		<a class="close" data-dismiss="modal">×</a>
-    		<h3>Popular Vote</h3>
- 			 </div>
- 			 <div class="modal-body">
-  				<table class="table table-bordered">
-  					<thead>
-  						<tr>
-  							<th>Ranking</th>
-  							<th>Project</th>
-  							<th>Score</th>
-  						</tr>
-  					</thead>
-  					<tbody>
-  						<tr>
-  							<td>1</td>
-  							<td>WorldNote</td>
-  							<td>100</td>
-  						<tr>
-  						<tr>
-  							<td>2</td>
-  							<td>Panda Server</td>
-  							<td>70</td>
-  						<tr>
-  						<tr>
-  							<td>2</td>
-  							<td>Physic Works</td>
-  							<td>60</td>
-  						<tr>
-  					</tbody>
-  				</table>
- 		 </div>
-  			<div class="modal-footer">
-    		<a href="#" class="btn" data-dismiss="modal">Close</a>
-  		</div>
-		</div>
+          
           </div>
         </div><!--/span-->
+        <%
+        	for(Question question : questions)
+        	{
+        		out.println("<div class='modal hide fade' id='myModal'>");
+      			<div class="modal-header">
+        		<a class="close" data-dismiss="modal">×</a>
+        		<h3>Popular Vote</h3>
+     			 </div>
+     			 <div class="modal-body">
+      				<table class="table table-bordered">
+      					<thead>
+      						<tr>
+      							<th>Ranking</th>
+      							<th>Project</th>
+      							<th>Score</th>
+      						</tr>
+      					</thead>
+      					<tbody>
+      						<tr>
+      							<td>1</td>
+      							<td>WorldNote</td>
+      							<td>100</td>
+      						<tr>
+      						<tr>
+      							<td>2</td>
+      							<td>Panda Server</td>
+      							<td>70</td>
+      						<tr>
+      						<tr>
+      							<td>2</td>
+      							<td>Physic Works</td>
+      							<td>60</td>
+      						<tr>
+      					</tbody>
+      				</table>
+     		 </div>
+      			<div class="modal-footer">
+        		<a href="#" class="btn" data-dismiss="modal">Close</a>
+      			</div>
+    		</div>
+        	}
+        %>
       </div><!--/row-->
 
       <hr>

@@ -1,5 +1,7 @@
 package com.ckp.model.dao;
 
+import com.ckp.model.dao.TimeDAO;
+
 import com.ckp.model.dao.jpa.JpaDaoFactory;
 
 
@@ -17,4 +19,5 @@ public abstract class DaoFactory {
 	public abstract UserDAO getUserDAO();
 	public abstract VoteDAO getVoteDAO();
 	public abstract Login_logDAO getLogin_logDAO();
+	public abstract TimeDAO getTimeDAO();
 }

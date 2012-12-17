@@ -6,6 +6,7 @@ import com.ckp.model.dao.ProjectDAO;
 import com.ckp.model.dao.QuestionDAO;
 import com.ckp.model.dao.TeamDAO;
 import com.ckp.model.dao.TeamMemberDAO;
+import com.ckp.model.dao.TimeDAO;
 import com.ckp.model.dao.UserDAO;
 import com.ckp.model.dao.VoteDAO;
 
@@ -24,6 +25,7 @@ public class JpaDaoFactory extends DaoFactory{
 	private JpaUserDAO userDAO;
 	private JpaVoteDAO voteDAO;
 	private Login_logDAO login_logDAO;
+	private TimeDAO timeDAO;
 	
 	public JpaDaoFactory()
 	{
@@ -74,6 +76,12 @@ public class JpaDaoFactory extends DaoFactory{
 	public Login_logDAO getLogin_logDAO() {
 		if(login_logDAO == null) login_logDAO = new JpaLogin_logDAO(em);
 		return login_logDAO;
+	}
+	
+	@Override
+	public TimeDAO getTimeDAO() {
+		if(timeDAO == null) timeDAO = new JpaTimeDAO(em);
+		return timeDAO;
 	}
 
 }
