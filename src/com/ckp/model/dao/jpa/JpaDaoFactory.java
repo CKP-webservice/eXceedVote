@@ -26,11 +26,8 @@ public class JpaDaoFactory extends DaoFactory{
 	private JpaUserDAO userDAO;
 	private JpaVoteDAO voteDAO;
 	private Login_logDAO login_logDAO;
-<<<<<<< HEAD
 	private TimeDAO timeDAO;
-=======
 	private RoleDAO roleDAO;
->>>>>>> Add Role RoldDAO class
 	
 	public JpaDaoFactory()
 	{

@@ -9,11 +9,8 @@
 	 	<class>com.ckp.model.TeamMember</class>
 	 	<class>com.ckp.model.Vote</class>
 	 	<class>com.ckp.model.Login_log</class>
-<<<<<<< HEAD
 	 	<class>com.ckp.model.Time</class>
-=======
 	 	<class>com.ckp.model.Role</class>
->>>>>>> Add Role RoldDAO class
 		<properties>
 			<property name="eclipselink.target-database" value="MYSQL" />
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/exceedvote" />
