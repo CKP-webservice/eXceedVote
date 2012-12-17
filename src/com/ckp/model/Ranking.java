@@ -1,6 +1,8 @@
 package com.ckp.model;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 
@@ -8,6 +10,7 @@ import com.ckp.model.dao.DaoFactory;
 import com.ckp.model.dao.ProjectDAO;
 import com.ckp.model.dao.QuestionDAO;
 import com.ckp.model.dao.VoteDAO;
+import com.sun.java.swing.plaf.windows.WindowsTreeUI.CollapsedIcon;
 
 public class Ranking {
 	
@@ -40,6 +43,7 @@ public class Ranking {
 					}
 				}
 			}
+			Collections.sort(projectResultList, new ProjectResultCompare());
 			this.rankingMap.put(q, projectResultList);
 			
 		}
@@ -59,5 +63,15 @@ public class Ranking {
 	public HashMap<Question,List<ProjectResult>> getRankMap()
 	{
 		return this.rankingMap;
+	}
+	
+	public class ProjectResultCompare implements Comparator<ProjectResult>
+	{
+
+		@Override
+		public int compare(ProjectResult o1, ProjectResult o2) {
+			return o1.getScore() - o2.getScore();
+		}
+		
 	}
 }
