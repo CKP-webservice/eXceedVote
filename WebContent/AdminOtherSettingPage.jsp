@@ -3,37 +3,36 @@
     pageEncoding="windows-1256"
 %>
 
-<%@ page import="com.ckp.model.Ranking" %>
-<%@ page import="com.ckp.model.Question" %>
-<%@ page import="com.ckp.model.Project" %>
+<%@ page import="com.ckp.model.Vote" %>
+<%@ page import="com.ckp.model.Role" %>
 <%@ page import="com.ckp.model.Theme" %>
-<%@ page import="com.ckp.model.ProjectResult" %>
+<%@ page import="com.ckp.model.Project" %>
 <%@ page import="com.ckp.model.dao.DaoFactory" %>
-<%@ page import="com.ckp.model.dao.QuestionDAO" %>
+<%@ page import="com.ckp.model.dao.VoteDAO" %>
+<%@ page import="com.ckp.model.dao.RoleDAO" %>
 <%@ page import="com.ckp.model.dao.ProjectDAO" %>
 <%@ page import="java.util.List" %>
-<%@ page import="java.util.HashMap" %>
 
 <%
 	String s = (String)session.getAttribute("isLogin");
-	int roleId = (Integer)session.getAttribute("userRole");
-	int teamId = (Integer)session.getAttribute("userTeam");
 	if(s == null || s == "" || s == "no")
 	{
 %>
 	<jsp:forward page="LoginPage.jsp"></jsp:forward>
 <%
 	}
+	int roleId = (Integer)session.getAttribute("userRole");
+	int teamId = (Integer)session.getAttribute("userTeam");
 	if(roleId != 1)
 	{
 %>
 	<jsp:forward page="VotePage.jsp"></jsp:forward>
 <%
 	}
-	QuestionDAO questiondao = DaoFactory.getInstance().getQuestionDAO();
-	List<Question> questions = questiondao.findAll();
-	Ranking rank = new Ranking();
-	HashMap<Question, List<ProjectResult>> rankmap = rank.getRankMap();
+	VoteDAO votedao = DaoFactory.getInstance().getVoteDAO();
+	List<Vote> votes = votedao.findAll();
+	RoleDAO roledao = DaoFactory.getInstance().getRoleDAO();
+	List<Role> roles = roledao.findAll();
 	ProjectDAO projectdao = DaoFactory.getInstance().getProjectDAO();
 	List<Project> projects = projectdao.findAll();
 %>
@@ -59,7 +58,7 @@
         padding: 9px 0;
       }
     </style>
-    <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+    <% out.println(Theme.getInstance().getTheme()); %>
     <!-- Add jQuery library -->
 	<script type="text/javascript" src="fancybox/lib/jquery-1.8.2.min.js"></script>
 
@@ -73,24 +72,31 @@
 	</style>
 	<script type="text/javascript" src="js/admin.js"></script>
 	<script>
-		var auto_refresh = setInterval(
-		function (){
-			$('#panel').load('AdminShowRanking.jsp #t1');
-		}, 1000);
-	
-		function showModal(questionid) {
-			var modal = '#modal' + questionid;
-			var table = '#table-modal' + questionid;
-			<%
-				out.println("$(table).html(");
-				
-				out.println(");");
-			%>
-			$(modal).modal();
-		}
-		
-		
-		
+		$(document).ready(function() {
+			$('#day').change(function() {
+				$.post('settime-servlet', {day:$('#day').val(), month:$('#month').val(), year:$('#year').val(), hour:$('#hour').val(), minute:$('#minute').val(), second:$('#second').val()});
+			});
+			
+			$('#month').change(function() {
+				$.post('settime-servlet', {day:$('#day').val(), month:$('#month').val(), year:$('#year').val(), hour:$('#hour').val(), minute:$('#minute').val(), second:$('#second').val()});
+			});
+			
+			$('#year').change(function() {
+				$.post('settime-servlet', {day:$('#day').val(), month:$('#month').val(), year:$('#year').val(), hour:$('#hour').val(), minute:$('#minute').val(), second:$('#second').val()});
+			});
+			
+			$('#hour').change(function() {
+				$.post('settime-servlet', {day:$('#day').val(), month:$('#month').val(), year:$('#year').val(), hour:$('#hour').val(), minute:$('#minute').val(), second:$('#second').val()});
+			});
+			
+			$('#minute').change(function() {
+				$.post('settime-servlet', {day:$('#day').val(), month:$('#month').val(), year:$('#year').val(), hour:$('#hour').val(), minute:$('#minute').val(), second:$('#second').val()});
+			});
+			
+			$('#second').change(function() {
+				$.post('settime-servlet', {day:$('#day').val(), month:$('#month').val(), year:$('#year').val(), hour:$('#hour').val(), minute:$('#minute').val(), second:$('#second').val()});
+			});
+		});
 	</script>
   </head>
 
@@ -133,99 +139,180 @@
                 <li><a href="AdminAccountPage.jsp">Manage Account</a></li>
                 <li><a href="#" onclick='showAddAccountModal()'>Add Account</a></li>
                 <li class="nav-header">Vote Setting</li>
-                <li class="active"><a href="AdminShowRanking.jsp">Show Ranking</a></li>
+                <li><a href="AdminShowRanking.jsp">Show Ranking</a></li>
                 <li><a href="AdminViewResult.jsp">View Vote Log</a></li>
                 <li><a href="AdminQuestionPage.jsp">Manage Question</a></li>
                 <li><a href="#" onclick='showAddQuestionModal()'>Add Question</a></li>
                 <li class="nav-header">Other Setting</li>
-                <li><a href="AdminOtherSettingPage.jsp">General Setting</a></li>
+                <li class="active"><a href="AdminOtherSettingPage.jsp">General Setting</a></li>
                 <li class="divider"></li>
                 <li><a href="LogoutPage.jsp">Log out</a></li>
             </ul>
         </div><!--/span-->
         <div class="span9" id="panel">
           <div class="hero-unit" id="t1">
-          
-          	<table class="table table-bordered"> 
-          	<thead> 
-          		<tr> 
-          			<th>Question</th> 
-          			<th>Ranking#1</th>
-          			<th>Ranking#2</th>
-          			<th>Ranking#3</th>
-          			<th>See more</th>
-          		</tr> 
-          	</thead> 
-          	<tbody> 
-          		<%
-          			for(Question question : questions)
-          			{
-          				List<ProjectResult> prs = rankmap.get(question);
-          				out.println("<tr>");
-          				out.println("<td rowspan='2'>" + question.getTitle() + "</td>");
-          				int check = 0;
-          				for(ProjectResult pr : prs)
-          				{
-          					if(check == 3) break;
-          					out.println("<td>" + pr.getProject().getProjectName() + "</td>");
-          					check++;
-          				}
-          				out.println("<td rowspan='2'><a href='#' onclick='showModal(" + question.getId() + ")'>See more ranking</a></td>");
-          				out.println("</tr>");
-          				out.println("<tr>");
-          				check = 0;
-          				for(ProjectResult pr : prs)
-          				{
-          					if(check == 3) break;
-          					out.println("<td>Score: " + pr.getScore() + "</td>");
-          					check++;
-          				}
-          				out.println("</tr>");
-          			}
-          		%>
-          	</tbody> 
-          </table>
-          
+          	<div id="legend"class="">
+		    	<legend id="l1">VOTE END TIME</legend>
+		    </div>
+		    <div class="row">
+		    	<div class="span4">
+		    		<p class="offset4">Day</p>
+		    	</div>
+		    	<div class="span4">
+		    		<p class="offset4">Month</p>
+		    	</div>
+		    	<div class="span4">
+		    		<p class="offset4">Year</p>
+		    	</div>
+		    </div>
+		    <div class="row">
+		    	<div class="span4">
+		    		<select id="day" name="day">
+		    			<%
+		    				for(int i = 1; i <= 31; i++)
+		    				{
+		    					out.println("<option value='" + i + "'>" + i +"</option>");
+		    				}
+		    			%>
+		    		</select>
+		    	</div>
+		    	<div class="span4">
+		    		<select id="month">
+		    			<%
+		    				for(int i = 1; i <= 12; i++)
+		    				{
+		    					out.println("<option value='" + i + "'>" + i +"</option>");
+		    				}
+		    			%>
+		    		</select>
+		    	</div>
+		    	<div class="span4">
+		    		<select id="year">
+		    			<%
+		    				for(int i = 2012; i <= 2020; i++)
+		    				{
+		    					out.println("<option value='" + i + "'>" + i +"</option>");
+		    				}
+		    			%>
+		    		</select>
+		    	</div>
+		    </div>
+		    <div class="row">
+		    	<div class="span4">
+		    		<p class="offset4">Hour</p>
+		    	</div>
+		    	<div class="span4">
+		    		<p class="offset4">Minute</p>
+		    	</div>
+		    	<div class="span4">
+		    		<p class="offset4">Second</p>
+		    	</div>
+		    </div>
+		    <div class="row">
+		    	<div class="span4">
+		    		<select id="hour">
+		    			<%
+		    				for(int i = 0; i <= 23; i++)
+		    				{
+		    					out.println("<option value='" + i + "'>" + i +"</option>");
+		    				}
+		    			%>
+		    		</select>
+		    	</div>
+		    	<div class="span4">
+		    		<select id="minute">
+		    			<%
+		    				for(int i = 0; i <= 59; i++)
+		    				{
+		    					out.println("<option value='" + i + "'>" + i +"</option>");
+		    				}
+		    			%>
+		    		</select>
+		    	</div>
+		    	<div class="span4">
+		    		<select id="second">
+		    			<%
+		    				for(int i = 0; i <= 59; i++)
+		    				{
+		    					out.println("<option value='" + i + "'>" + i +"</option>");
+		    				}
+		    			%>
+		    		</select>
+		    	</div>
+		    </div>
+		    
+		    <div id="legend"class="">
+		        <legend id="l2">TEAM</legend>
+		    </div>
+		    <% out.println("<p>All Team : " + projects.size() + "</p>"); %>
+		    <div class="control-group">
+		    	<div class="controls">
+		    		<form method="post" action="setteam-servlet">
+		    			<input id="team" name="team" type="text"></input>
+		    			<input type="submit" class="btn btn-primary" style="margin-top: -9px; margin-left: 10px"></input>
+		    		</form>
+		    	</div>
+		    </div>
+		    
+		    <div id="legend"class="">
+		        <legend id="l3">BALLOT LIMIT</legend>
+		    </div>
+		    <table class="table table-bordered table-hover">
+		    	<thead>
+		    		<tr>
+		    			<th>ID</th>
+		    			<th>Role</th>
+		    			<th>Ballot Limit</th>
+		    			<th>New Ballot Limit</th>
+		    			<th>Submit</th>
+		    		</tr>
+		    	</thead>
+		    	<tbody>
+		    		<%
+		    			int countrole = 1;
+		    			for(Role role : roles)
+		    			{
+		    				out.println("<tr>");
+		    				out.println("<td>" + role.getId() + "</td>");
+		    				out.println("<td>" + role.getRole() + "</td>");
+		    				out.println("<td id='ballot" + role.getId() + "'>" + role.getVoteLimit() + "</td>");
+		    				out.println("<td><input type='text' id='role" + role.getId() + "'></input></td>");
+		    				out.println("<td><button class=\"btn btn-primary\" onclick='setRole(\"" + role.getId() +"\")'>Submit</button></td>");
+		    				out.println("</tr>");
+		    			}
+		    			countrole++;
+		    		%>
+		    	</tbody>
+		    </table>
+		    
+		    <div id="legend"class="">
+		        <legend id="l4">THEME</legend>
+		    </div>
+		    <p>Theme: Default</p>
+		    <form method="post" action="settheme-servlet">
+		    <div class="control-group">
+		    	<div class="controls">
+			    	<select id="theme" name="theme">
+			    		<option value="1">Default</option>
+			    		<option value="2">Amelia</option>
+			    		<option value="3">Cerulean</option>
+			    		<option value="4">Cosmo</option>
+			    		<option value="5">Cyborg</option>
+			    		<option value="6">Journal</option>
+			    		<option value="7">Readable</option>
+			    		<option value="8">Simplex</option>
+			    		<option value="9">Slate</option>
+			    		<option value="10">Spacelab</option>
+			    		<option value="11">Spruce</option>
+			    		<option value="12">Superhero</option>
+			    		<option value="13">United</option>
+			    	</select>
+		    		<input type="submit" class="btn btn-primary" style="margin-top: -9px; margin-left: 10px">
+		    	</div>
+		    </div>
+          	</form>
           </div>
         </div><!--/span-->
-        <%
-        	for(Question question : questions)
-        	{
-        		List<ProjectResult> prs = rankmap.get(question);
-        		out.println("<div class='modal hide fade' id='modal" + question.getId() + "'>");
-      			out.println("<div class='modal-header'>");
-        		out.println("<a class='close' data-dismiss='modal'>×</a>");
-        		out.println("<h3>" + question.getTitle() + "</h3>");
-     			out.println("</div>");
-     			out.println("<div class='modal-body' id='modal-body" + question.getId() + "'>");
-      			out.println("<table class='table table-bordered' id='table-modal" + question.getId() + "'>");
-      			out.println("<thead>");
-      			out.println("<tr>");
-      			out.println("<th>Ranking</th>");
-      			out.println("<th>Project</th>");
-      			out.println("<th>Score</th>");
-      			out.println("</tr>");
-      			out.println("</thead>");
-      			out.println("<tbody>"); 
-      			int rankcount = 1;
-      			for(ProjectResult pr : prs)
-      			{
-      				out.println("<tr>");
-      				out.println("<td>" + rankcount + "</td>");
-					out.println("<td>" + pr.getProject().getProjectName() + "</td>");
-					out.println("<td>" + pr.getScore() + "</td>");
-					out.println("</tr>");
-					rankcount++;
-      			}	
-      			out.println("</tbody>");
-      			out.println("</table>");
-     		 	out.println("</div>");
-      			out.println("<div class='modal-footer'>");
-        		out.println("<a href='#' class='btn' data-dismiss='modal'>Close</a>");
-      			out.println("</div>");
-    			out.println("</div>");
-        	}
-        %>
         <div id="account-modal" class="modal hide fade in" style="display: none;">  
 				<div class="modal-header">  
 					<a class="close" data-dismiss="modal">×</a>  

@@ -11,44 +11,69 @@ public class User {
 	private String password;
 	private String name;
 	private String lastName;
-	private String role;
+	private int roleId;
+	private int projectId;
 	
 	public User()
 	{
 		
 	}
-	public User(String name,String lastName,String username, String password,String role)
+	
+	public User(String name, String lastName, String username, String password, int roleId, int projectId)
 	{
 		this.name = name;
 		this.lastName = lastName;
 		this.username = username;
 		this.password = password;
-		this.role = role;
+		this.roleId = roleId;
+		this.projectId = projectId;
 	}
+	
 	public String getName() {
 		return name;
 	}
+	
 	public void setName(String name) {
 		this.name = name;
 	}
+	
 	public String getLastName() {
 		return lastName;
 	}
+	
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
+	
 	public String getUsername() {
 		return username;
 	}
-	public String getRole() {
-		return role;
+	
+	public int getRoleId() {
+		return roleId;
 	}
-	public void setRole(String role) {
-		this.role = role;
+	
+	public void setRoleId(int roleId) {
+		this.roleId = roleId;
+	}
+	
+	public String getRole() {
+		if(roleId == 1) return "admin";
+		else if(roleId == 2) return "guest";
+		else if(roleId == 3) return "staff";
+		else return "student";
 	}
 	
 	public int getId() {
 		return id;
+	}
+	
+	public int getProjectId() {
+		return projectId;
+	}
+	
+	public void setProjectId(int projectId) {
+		this.projectId = projectId;
 	}
 	
 }

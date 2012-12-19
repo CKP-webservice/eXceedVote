@@ -49,10 +49,11 @@ function sendAddAccount() {
 	var password = $('#password').val();
 	var firstname = $('#firstname').val();
 	var lastname = $('#lastname').val();
+	var team = $('#team-select').val();
 	var role = '';
-	if($('#role').val() == '') role = 'voter';
+	if($('#role').val() == '') role = '4';
 	else role = $('#role').val();
-	$.post('addaccount-servlet', {username:username, password:password, firstname:firstname, lastname:lastname, role:role}, function addAccountSuccessed()
+	$.post('addaccount-servlet', {username:username, password:password, firstname:firstname, lastname:lastname, team:team, role:role}, function addAccountSuccessed()
 	{
 		$('#panel').load('AdminAccountPage.jsp #t1');
 		$('#account-modal').load('AdminAccountPage.jsp #account-modal');
@@ -65,5 +66,13 @@ function sendAddQuestion() {
 	{
 		$('#panel').load('AdminQuestionPage.jsp #t1');
 		$('#question-modal').load('AdminAccountPage.jsp #question-modal');
+	});
+}
+
+function setRole(id) {
+	var input = $('#role' + id).val();
+	$.post('setrole-servlet', {roleid:id, limit:input}, function(result)
+	{
+		$('#ballot' + id).text(result);
 	});
 }

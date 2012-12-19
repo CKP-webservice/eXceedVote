@@ -5,11 +5,16 @@
 
 <%@ page import="com.ckp.model.Project" %>
 <%@ page import="com.ckp.model.Vote" %>
+<%@ page import="com.ckp.model.Role" %>
+<%@ page import="com.ckp.model.Time" %>
+<%@ page import="com.ckp.model.Theme" %>
 <%@ page import="com.ckp.model.dao.DaoFactory" %>
 <%@ page import="com.ckp.model.dao.ProjectDAO" %>
 <%@ page import="com.ckp.model.Question" %>
 <%@ page import="com.ckp.model.dao.QuestionDAO" %>
 <%@ page import="com.ckp.model.dao.VoteDAO" %>
+<%@ page import="com.ckp.model.dao.RoleDAO" %>
+<%@ page import="com.ckp.model.dao.TimeDAO" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.Date" %>
@@ -17,7 +22,7 @@
 
 <%
 	String s = (String)session.getAttribute("isLogin");
-	if(s == null || s == "" || s == "no" || session == null)
+	if(s == null || s.equals("") || s.equals("no") || session == null)
 	{
 %>
 	<jsp:forward page="LoginPage.jsp"></jsp:forward>
@@ -30,7 +35,13 @@
 	List<Question> questions = questiondao.findAll();
 	VoteDAO votedao = DaoFactory.getInstance().getVoteDAO();
 	List<Integer> remains = new ArrayList<Integer>();
-	int limit = 5;
+	int roleId = (Integer)session.getAttribute("userRole");
+	int teamId = (Integer)session.getAttribute("userTeam");
+	RoleDAO roledao = DaoFactory.getInstance().getRoleDAO();
+	Role role = roledao.find(roleId);
+	int limit = role.getVoteLimit();
+	TimeDAO timedao = DaoFactory.getInstance().getTimeDAO();
+	Time time = timedao.find(1);
 %>
 
 <!DOCTYPE html>
@@ -43,7 +54,7 @@
     <meta name="author" content="">
     
     <!-- Le styles -->
-    <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+    <% out.println(Theme.getInstance().getTheme()); %>
     <link href="css/style.css" rel="stylesheet">
     <style type="text/css">
       body {
@@ -55,8 +66,10 @@
       }
     </style>
     <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="css/jquery.countdown.css" rel="stylesheet">
     <!-- Add jQuery library -->
-	<script type="text/javascript" src="fancybox/lib/jquery-1.8.2.min.js"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+	<script type="text/javascript" src="js/jquery.countdown.js"></script>
 
 	<!-- Add fancyBox main JS and CSS files -->
 	<script type="text/javascript" src="fancybox/source/jquery.fancybox.js?v=2.0.6"></script>
@@ -67,9 +80,15 @@
 		}
 	</style>
 	<script type="text/javascript" src="js/web.js"></script>
-	<script type="text/javascript" src="js/date_time.js"></script>
-    <script src="js/moment.js"></script>
     <script src="js/vote.js"></script>
+    <script>
+    $(function () {
+    	var austDay = new Date();
+    	//austDay = new Date(austDay.getFullYear() + 1, 1 - 1, 26);
+    	<% out.println("austDay = new Date(" + time.getYear() + ", " + time.getMonth() + ", " + time.getDay() + ", " + time.getHour() + ", " + time.getMin() + ", " + time.getSec() + ", 0);"); %>
+    	$('#defaultCountdown').countdown({until: austDay});
+    });
+    </script>
     <script>
     	$(document).ready(function() {
     	<%
@@ -97,8 +116,13 @@
     			out.println("}");
     			out.println("});");
     		}
+    		//out.println("var countdown = new Date(" + time.getYear() + ", " + time.getMonth() + ", " + time.getDay() + ", " + time.getHour() + ", " + time.getMin() + ", " + time.getSec() + ", 0);"); 
+    		//out.println("var newYear = new Date();");
+    		//out.println("newYear = new Date(2012, 12-1, 25, 21, 00, 00, 00);");
+    		//out.println("$('#countdown').countdown({until: newYear});");
     	%>
     	});
+    	
     </script>
     
   </head>
@@ -119,7 +143,7 @@
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><strong>${user.getName()} ${user.getLastName() } </strong><b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                  <li><a href="AdminAccountPage.jsp">Administrator Page</a></li>
+                  <% if(roleId == 1) out.println("<li><a href=\"AdminAccountPage.jsp\">Administrator Page</a></li>"); %>
                   <li><a href="LogoutPage.jsp">Log out</a></li>
                 </ul>
               </li>
@@ -127,7 +151,7 @@
             <ul class="nav">
               <li class="active"><a href="VotePage.jsp">Home</a></li>
               <li><a href="ProjectDetails.jsp">Project Details</a></li>
-              <li><a href="AddProjectPage.jsp">Add/Edit Project</a></li>
+              <% if(teamId != 0) out.println("<li><a href=\"AddProjectPage.jsp\">Add/Edit Project</a></li>"); %>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -149,6 +173,13 @@
             </ul>
         </div><!--/span-->
         <div class="span9">
+        <div class="hero-unit">
+        	
+        	<div class="row">
+        		<div class="span4"><h2>Time Remaining : </h2></div>
+        		<div class="span8"><div id="defaultCountdown" style="width: 500px; height: 55px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 36px;"></div></div>
+        	</div>
+        </div>
         <% 
         	int countid = 1;
         	for(Question question : questions)
@@ -198,7 +229,7 @@
 					out.println("<a class=\"fancybox\" href=\"" + project.getImgURL2() + "\"" + "data-fancybox-group=\"gallery"+ countProject2 +"\"><img src=\"" + project.getImgURL2() + "\" alt=\"\" width=\"240px\" height=\"160px\" style=\"border-radius: 7px; margin: 10px\" /></a>");
 					out.println("<a class=\"fancybox\" href=\"" + project.getImgURL3() + "\"" + "data-fancybox-group=\"gallery"+ countProject2 +"\"><img src=\"" + project.getImgURL3() + "\" alt=\"\" width=\"240px\" height=\"160px\" style=\"border-radius: 7px; margin: 10px\" /></a>");	
 	        		out.println("<br><br>");
-	        		out.println("<p>" + project.getProjectDetail() + "</p>");
+	        		out.println("<p>" + project.getShortProjectDetail() + "</p>");
             		out.println("</div>");
 	        		countProject2++;
             	}	        

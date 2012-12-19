@@ -1,6 +1,8 @@
 package com.ckp.controller;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,6 +15,11 @@ import com.ckp.model.Login_log;
 import com.ckp.model.User;
 import com.ckp.model.dao.DaoFactory;
 import com.ckp.model.dao.Login_logDAO;
+import com.ckp.model.Role;
+import com.ckp.model.dao.RoleDAO;
+import com.ckp.model.User;
+import com.ckp.model.dao.UserDAO;
+
 /**
  * @author Kanin Sirisith
  * Servlet implementation class LoginServlet
@@ -50,6 +57,22 @@ public class LoginServlet extends HttpServlet {
 	 *      response)
 	 */
 	protected void doPost(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
+		RoleDAO roledao = DaoFactory.getInstance().getRoleDAO();
+		List<Role> roles = roledao.findAll();
+		if(roles.size() == 0)
+		{
+			Role roleAdmin = new Role("admin", 0);
+			Role roleGuest = new Role("guest", 1);
+			Role roleStaff = new Role("staff", 10);
+			Role roleStudent = new Role("student", 5);
+			roledao.save(roleAdmin);
+			roledao.save(roleGuest);
+			roledao.save(roleStaff);
+			roledao.save(roleStudent);
+			UserDAO userdao = DaoFactory.getInstance().getUserDAO();
+			User admin = new User("eXceedVote", "Administrator", "admin", "admin", 1, 0);
+			userdao.save(admin);
+		}
 		String username = request.getParameter("uname");
 		String password = request.getParameter("password");
 		if (username == null || username == "" || password == null
@@ -67,6 +90,8 @@ public class LoginServlet extends HttpServlet {
 					session.setAttribute("isLogin", "yes");
 					session.setAttribute("ip", request.getRemoteAddr());
 					session.setAttribute("userID", user.getId());
+					session.setAttribute("userRole", user.getRoleId());
+					session.setAttribute("userTeam", user.getProjectId());
 					Login_log log = new Login_log(session);
 					Login_logDAO loginlog = DaoFactory.getInstance().getLogin_logDAO();
 					loginlog.save(log);

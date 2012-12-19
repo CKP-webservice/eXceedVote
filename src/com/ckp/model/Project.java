@@ -10,18 +10,13 @@ import javax.persistence.*;
 @Entity
 public class Project {
 	private String projectName;
-	@Column(length=2000)
 	private String projectDetail;
-	@Column(length=1000)
 	private String imgURL1;
-	@Column(length=1000)
 	private String imgURL2;
-	@Column(length=1000)
 	private String imgURL3;
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
-	@Column(length=2000)
 	private String shortProjectDetail;
 	
 	/*
@@ -102,5 +97,4 @@ public class Project {
 	public int getId() {
 		return id;
 	}
-	
 }

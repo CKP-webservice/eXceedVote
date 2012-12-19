@@ -49,8 +49,9 @@ public class AddAccountServlet extends HttpServlet {
 		String password = request.getParameter("password");
 		String firstname = request.getParameter("firstname");
 		String lastname = request.getParameter("lastname");
-		String role = request.getParameter("role");
-		User user = new User(firstname, lastname, username, password, role);
+		int role = Integer.parseInt(request.getParameter("role"));
+		int teamId = Integer.parseInt(request.getParameter("team"));
+		User user = new User(firstname, lastname, username, password, role, teamId);
 		UserDAO userdao = DaoFactory.getInstance().getUserDAO();
 		userdao.save(user);
 	}

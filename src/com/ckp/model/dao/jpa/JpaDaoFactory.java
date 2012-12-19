@@ -5,8 +5,6 @@ import com.ckp.model.dao.Login_logDAO;
 import com.ckp.model.dao.ProjectDAO;
 import com.ckp.model.dao.QuestionDAO;
 import com.ckp.model.dao.RoleDAO;
-import com.ckp.model.dao.TeamDAO;
-import com.ckp.model.dao.TeamMemberDAO;
 import com.ckp.model.dao.TimeDAO;
 import com.ckp.model.dao.UserDAO;
 import com.ckp.model.dao.VoteDAO;
@@ -21,8 +19,6 @@ public class JpaDaoFactory extends DaoFactory{
 	private EntityManagerFactory emf;
 	private JpaProjectDAO projectDAO;
 	private JpaQuestionDAO questionDAO;
-	private JpaTeamDAO teamDAO;
-	private JpaTeamMemberDAO teamMemberDAO;
 	private JpaUserDAO userDAO;
 	private JpaVoteDAO voteDAO;
 	private Login_logDAO login_logDAO;
@@ -50,18 +46,6 @@ public class JpaDaoFactory extends DaoFactory{
 	}
 
 	@Override
-	public TeamDAO getTeamDAO() {
-		if(teamDAO == null) teamDAO = new JpaTeamDAO(em);
-		return teamDAO;
-	}
-
-	@Override
-	public TeamMemberDAO getTeamMemberDAO() {
-		if(teamMemberDAO == null) teamMemberDAO = new JpaTeamMemberDAO(em);
-		return teamMemberDAO;
-	}
-
-	@Override
 	public UserDAO getUserDAO() {
 		if(userDAO == null) userDAO = new JpaUserDAO(em);
 		return userDAO;
@@ -85,8 +69,7 @@ public class JpaDaoFactory extends DaoFactory{
 		if(timeDAO == null) timeDAO = new JpaTimeDAO(em);
 		return timeDAO;
 	}
-
-
+	
 	@Override
 	public RoleDAO getRoleDAO() {
 		if(roleDAO == null) roleDAO = new JpaRoleDAO(em);

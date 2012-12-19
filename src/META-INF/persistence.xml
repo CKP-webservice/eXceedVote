@@ -5,8 +5,6 @@
 	 	<class>com.ckp.model.User</class>
 	 	<class>com.ckp.model.Project</class>
 	 	<class>com.ckp.model.Question</class>
-	 	<class>com.ckp.model.Team</class>
-	 	<class>com.ckp.model.TeamMember</class>
 	 	<class>com.ckp.model.Vote</class>
 	 	<class>com.ckp.model.Login_log</class>
 	 	<class>com.ckp.model.Time</class>

@@ -14,8 +14,6 @@ public abstract class DaoFactory {
 	}
 	public abstract ProjectDAO getProjectDAO();
 	public abstract QuestionDAO getQuestionDAO();
-	public abstract TeamDAO getTeamDAO();
-	public abstract TeamMemberDAO getTeamMemberDAO();
 	public abstract UserDAO getUserDAO();
 	public abstract VoteDAO getVoteDAO();
 	public abstract Login_logDAO getLogin_logDAO();

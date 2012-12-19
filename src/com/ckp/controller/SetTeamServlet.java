@@ -2,6 +2,7 @@ package com.ckp.controller;
 
 import java.io.IOException;
 import java.util.Enumeration;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,18 +14,20 @@ import javax.servlet.http.HttpSession;
 import org.apache.catalina.Session;
 
 import com.ckp.model.Project;
+import com.ckp.model.User;
 import com.ckp.model.dao.DaoFactory;
 import com.ckp.model.dao.ProjectDAO;
+import com.ckp.model.dao.UserDAO;
 /**
  * Servlet implementation class VoteServlet
  */
-public class AddProjectServlet extends HttpServlet {
+public class SetTeamServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AddProjectServlet() {
+    public SetTeamServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -40,23 +43,37 @@ public class AddProjectServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession(true);
-		int teamId = (Integer)session.getAttribute("userTeam");
-		String name = request.getParameter("name");
-		String description = request.getParameter("description");
-		String short_description = request.getParameter("short_description");
-		String imageurl1 = request.getParameter("imageurl1");
-		String imageurl2 = request.getParameter("imageurl2");
-		String imageurl3 = request.getParameter("imageurl3");
-		response.sendRedirect("EditProjectPage.jsp");
+		int team = Integer.parseInt(request.getParameter("team"));
 		ProjectDAO projectdao = DaoFactory.getInstance().getProjectDAO();
-		Project project = projectdao.find(teamId);
-		project.setProjectName(name);
-		project.setProjectDetail(description);
-		project.setShortProjectDetail(short_description);
-		project.setImgURL1(imageurl1);
-		project.setImgURL2(imageurl2);
-		project.setImgURL3(imageurl3);
-		projectdao.save(project);
+		List<Project> projects = projectdao.findAll();
+		if(projects.size() == 0)
+		{
+			for(int i = 0; i < team; i++)
+			{
+				Project project = new Project(null, null, null, null, null, null);
+				projectdao.save(project);
+			}
+		}
+		else
+		{
+			if(team > projects.size())
+			{
+				for(int i = 0; i < team - projects.size(); i++)
+				{
+					Project project = new Project(null, null, null, null, null, null);
+					projectdao.save(project);
+				}
+			}
+			else if(team < projects.size())
+			{
+				for(int i = 0; i < projects.size() - team; i++)
+				{
+					Project project = projectdao.find(projects.size() - i);
+					projectdao.delete(project);
+				}
+			}
+			else;
+		}
+		response.sendRedirect("AdminOtherSettingPage.jsp");
 	}
 }

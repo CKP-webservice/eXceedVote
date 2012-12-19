@@ -1,6 +1,7 @@
 package com.ckp.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Enumeration;
 
 import javax.servlet.ServletException;
@@ -13,18 +14,22 @@ import javax.servlet.http.HttpSession;
 import org.apache.catalina.Session;
 
 import com.ckp.model.Project;
+import com.ckp.model.Role;
+import com.ckp.model.User;
 import com.ckp.model.dao.DaoFactory;
 import com.ckp.model.dao.ProjectDAO;
+import com.ckp.model.dao.RoleDAO;
+import com.ckp.model.dao.UserDAO;
 /**
  * Servlet implementation class VoteServlet
  */
-public class AddProjectServlet extends HttpServlet {
+public class SetRoleServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AddProjectServlet() {
+    public SetRoleServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -41,22 +46,15 @@ public class AddProjectServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession(true);
-		int teamId = (Integer)session.getAttribute("userTeam");
-		String name = request.getParameter("name");
-		String description = request.getParameter("description");
-		String short_description = request.getParameter("short_description");
-		String imageurl1 = request.getParameter("imageurl1");
-		String imageurl2 = request.getParameter("imageurl2");
-		String imageurl3 = request.getParameter("imageurl3");
-		response.sendRedirect("EditProjectPage.jsp");
-		ProjectDAO projectdao = DaoFactory.getInstance().getProjectDAO();
-		Project project = projectdao.find(teamId);
-		project.setProjectName(name);
-		project.setProjectDetail(description);
-		project.setShortProjectDetail(short_description);
-		project.setImgURL1(imageurl1);
-		project.setImgURL2(imageurl2);
-		project.setImgURL3(imageurl3);
-		projectdao.save(project);
+		PrintWriter out = response.getWriter();
+		response.setHeader("Cache-Control", "no-cache");
+		response.setHeader("Pragma", "no-cache");
+		int roleid = Integer.parseInt(request.getParameter("roleid"));
+		int limit = Integer.parseInt(request.getParameter("limit"));
+		RoleDAO roledao = DaoFactory.getInstance().getRoleDAO();
+		Role role = roledao.find(roleid);
+		role.setVoteLimit(limit);
+		roledao.save(role);
+		out.print(limit);
 	}
 }

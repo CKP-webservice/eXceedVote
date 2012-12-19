@@ -3,12 +3,27 @@
     pageEncoding="windows-1256"
 %>
 
+<%@ page import="com.ckp.model.Project" %>
+<%@ page import="com.ckp.model.Theme" %>
+<%@ page import="com.ckp.model.dao.DaoFactory" %>
+<%@ page import="com.ckp.model.dao.ProjectDAO" %>
+
 <%
 	String s = (String)session.getAttribute("isLogin");
-	if(s == null || s == "" || s == "no")
+	if(s == null || s.equals("") || s == "no")
 	{
 %>
 	<jsp:forward page="LoginPage.jsp"></jsp:forward>
+<%
+	}
+	int roleId = (Integer)session.getAttribute("userRole");
+	int teamId = (Integer)session.getAttribute("userTeam");
+	ProjectDAO projectdao = DaoFactory.getInstance().getProjectDAO();
+	Project project = projectdao.find(teamId);
+	if(project.getProjectName() != null)
+	{
+%>
+	<jsp:forward page="EditProjectPage.jsp"></jsp:forward>
 <%
 	}
 %>
@@ -23,7 +38,7 @@
     <meta name="author" content="">
 
     <!-- Le styles -->
-    <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+    <% out.println(Theme.getInstance().getTheme()); %>
     <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
  	<link href="css/style.css" rel="stylesheet">
  	<link href="css/formvalid.css" rel="stylesheet">
@@ -68,7 +83,7 @@
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><strong>${user.getName()} ${user.getLastName() }</strong><b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                  <li><a href="AdminAccountPage.jsp">Administrator Page</a></li>
+                 <% if(roleId == 1) out.println("<li><a href=\"AdminAccountPage.jsp\">Administrator Page</a></li>"); %>
                   <li><a href="LogoutPage.jsp">Log out</a></li>
                 </ul>
               </li>
@@ -76,7 +91,7 @@
             <ul class="nav">
               <li><a href="VotePage.jsp">Home</a></li>
               <li><a href="ProjectDetails.jsp">Project Details</a></li>
-              <li class="active"><a href="AddProjectPage.jsp">Add/Edit Project</a></li>
+              <% if(teamId != 0) out.println("<li class=\"active\"><a href=\"AddProjectPage.jsp\">Add/Edit Project</a></li>"); %>
             </ul>
           </div><!--/.nav-collapse -->
         </div>

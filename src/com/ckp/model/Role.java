@@ -42,4 +42,8 @@ public class Role {
 		this.voteLimit = voteLimit;
 	}
 	
+	public int getId() {
+		return id;
+	}
+	
 }

@@ -14,15 +14,12 @@ $(document).ready(function(){
 	      },
 	      imageurl1: {
 	    	url: true,
-	        required: true
 	      },
 	      imageurl2: {
 	    	url: true,
-	    	required: true
 		  },
 		  imageurl3: {
 			url: true,
-			required: true
 		  }
 	    },
 	    highlight: function(label) {

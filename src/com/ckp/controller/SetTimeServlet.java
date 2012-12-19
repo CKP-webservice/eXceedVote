@@ -2,6 +2,7 @@ package com.ckp.controller;
 
 import java.io.IOException;
 import java.util.Enumeration;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,18 +14,22 @@ import javax.servlet.http.HttpSession;
 import org.apache.catalina.Session;
 
 import com.ckp.model.Project;
+import com.ckp.model.Time;
+import com.ckp.model.User;
 import com.ckp.model.dao.DaoFactory;
 import com.ckp.model.dao.ProjectDAO;
+import com.ckp.model.dao.TimeDAO;
+import com.ckp.model.dao.UserDAO;
 /**
  * Servlet implementation class VoteServlet
  */
-public class AddProjectServlet extends HttpServlet {
+public class SetTimeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AddProjectServlet() {
+    public SetTimeServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -41,22 +46,28 @@ public class AddProjectServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession(true);
-		int teamId = (Integer)session.getAttribute("userTeam");
-		String name = request.getParameter("name");
-		String description = request.getParameter("description");
-		String short_description = request.getParameter("short_description");
-		String imageurl1 = request.getParameter("imageurl1");
-		String imageurl2 = request.getParameter("imageurl2");
-		String imageurl3 = request.getParameter("imageurl3");
-		response.sendRedirect("EditProjectPage.jsp");
-		ProjectDAO projectdao = DaoFactory.getInstance().getProjectDAO();
-		Project project = projectdao.find(teamId);
-		project.setProjectName(name);
-		project.setProjectDetail(description);
-		project.setShortProjectDetail(short_description);
-		project.setImgURL1(imageurl1);
-		project.setImgURL2(imageurl2);
-		project.setImgURL3(imageurl3);
-		projectdao.save(project);
+		int day = Integer.parseInt(request.getParameter("day"));
+		int month = Integer.parseInt(request.getParameter("month")) - 1;
+		int year = Integer.parseInt(request.getParameter("year"));
+		int hour = Integer.parseInt(request.getParameter("hour"));
+		int minute = Integer.parseInt(request.getParameter("minute"));
+		int second = Integer.parseInt(request.getParameter("second"));
+		TimeDAO timedao = DaoFactory.getInstance().getTimeDAO();
+		List<Time> times = timedao.findAll();
+		if(times.size() == 0)
+		{
+			Time time = new Time(year, month, day, hour, minute, second);
+			timedao.save(time);
+		}
+		else
+		{
+			times.get(0).setDay(day);
+			times.get(0).setMonth(month);
+			times.get(0).setYear(year);
+			times.get(0).setHour(hour);
+			times.get(0).setMin(minute);
+			times.get(0).setSec(second);
+			timedao.save(times.get(0));
+		}
 	}
 }

@@ -14,6 +14,7 @@ public class Login_log {
 	@Transient
 	private HttpSession session;
 	private String ip;
+	private String who;
 	
 	public Date getTimestampField() {
 		return timestampField;
@@ -29,9 +30,10 @@ public class Login_log {
 	}
 	
 	public Login_log(HttpSession session) {
-		
 		this.session = session;
 		this.ip = (String) session.getAttribute("ip");
+		User u = (User) session.getAttribute("user");
+		this.who = u.getUsername();
 		this.timestampField = new Date();
 	}
 }

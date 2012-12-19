@@ -3,6 +3,7 @@
     pageEncoding="windows-1256"
 %>
 <%@ page import="com.ckp.model.Project" %>
+<%@ page import="com.ckp.model.Theme" %>
 <%@ page import="com.ckp.model.dao.DaoFactory" %>
 <%@ page import="com.ckp.model.dao.ProjectDAO" %>
 <%@ page import="java.util.List" %>
@@ -10,6 +11,8 @@
 <%
 	
 	String s = (String)session.getAttribute("isLogin");
+	int roleId = (Integer)session.getAttribute("userRole");
+	int teamId = (Integer)session.getAttribute("userTeam");
 	if(s == null || s == "" || s == "no")
 	{
 %>
@@ -30,7 +33,7 @@
     <meta name="author" content="">
     
     <!-- Le styles -->
-    <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+    <% out.println(Theme.getInstance().getTheme()); %>
     <link href="css/style.css" rel="stylesheet">
     <style type="text/css">
       body {
@@ -74,7 +77,7 @@
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <strong>${user.getName()} ${user.getLastName() }</strong><b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                  <li><a href="AdminAccountPage.jsp">Administrator Page</a></li>
+                  <% if(roleId == 1) out.println("<li><a href=\"AdminAccountPage.jsp\">Administrator Page</a></li>"); %>
                   <li><a href="LogoutPage.jsp">Log out</a></li>
                 </ul>
               </li>
@@ -82,7 +85,7 @@
             <ul class="nav">
               <li><a href="VotePage.jsp">Home</a></li>
               <li class="active"><a href="ProjectDetails.jsp">Project Details</a></li>
-              <li><a href="AddProjectPage.jsp">Add/Edit Project</a></li>
+              <% if(teamId != 0) out.println("<li><a href=\"AddProjectPage.jsp\">Add/Edit Project</a></li>"); %>
             </ul>
           </div><!--/.nav-collapse -->
         </div>

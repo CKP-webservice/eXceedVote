@@ -84,5 +84,41 @@
   	<servlet-name>AddQuestionServlet</servlet-name>
   	<url-pattern>/addquestion-servlet</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>SetRoleServlet</servlet-name>
+  	<servlet-class>com.ckp.controller.SetRoleServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>SetRoleServlet</servlet-name>
+  	<url-pattern>/setrole-servlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>SetTeamServlet</servlet-name>
+  	<servlet-class>com.ckp.controller.SetTeamServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>SetTeamServlet</servlet-name>
+  	<url-pattern>/setteam-servlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>SetThemeServlet</servlet-name>
+  	<servlet-class>com.ckp.controller.SetThemeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>SetThemeServlet</servlet-name>
+  	<url-pattern>/settheme-servlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>SetTimeServlet</servlet-name>
+  	<servlet-class>com.ckp.controller.SetTimeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>SetTimeServlet</servlet-name>
+  	<url-pattern>/settime-servlet</url-pattern>
+  </servlet-mapping>
 
 </web-app>
