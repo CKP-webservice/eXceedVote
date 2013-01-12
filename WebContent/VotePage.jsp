@@ -68,7 +68,7 @@
     <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
     <link href="css/jquery.countdown.css" rel="stylesheet">
     <!-- Add jQuery library -->
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+	<script type="text/javascript" src="fancybox/lib/jquery-1.8.2.min.js"></script>
 	<script type="text/javascript" src="js/jquery.countdown.js"></script>
 
 	<!-- Add fancyBox main JS and CSS files -->
@@ -86,7 +86,11 @@
     	var austDay = new Date();
     	//austDay = new Date(austDay.getFullYear() + 1, 1 - 1, 26);
     	<% out.println("austDay = new Date(" + time.getYear() + ", " + time.getMonth() + ", " + time.getDay() + ", " + time.getHour() + ", " + time.getMin() + ", " + time.getSec() + ", 0);"); %>
-    	$('#defaultCountdown').countdown({until: austDay});
+    	$('#defaultCountdown').countdown({until: austDay, onExpiry : function(){
+    		$('button').attr("disabled", "disabled");
+    		$('button').removeClass("btn btn-large btn-primary").addClass("btn btn-large btn-danger");
+    		$('button').html("<h2>Time out</h2>");
+    	}});
     });
     </script>
     <script>
@@ -204,6 +208,7 @@
 	            }	
 	            out.println("</select>");
 	            if(remaining == 0) out.println("<button disabled=\"\" class=\"btn btn-large btn-danger pull-right\" type=\"button\" id=\"question" + countid + "-vote\" onclick='showModal(\"" + countid + "\")' style=\"margin-top: -15px\"><h2>Vote Successed</h2></button>");
+	            else if(time.checkTimeout()) out.println("<button disabled=\"\" class=\"btn btn-large btn-danger pull-right\" type=\"button\" id=\"question" + countid + "-vote\" onclick='showModal(\"" + countid + "\")' style=\"margin-top: -15px\"><h2>Time out</h2></button>");
 	            else out.println("<button class=\"btn btn-large btn-primary pull-right\" type=\"button\" id=\"question" + countid + "-vote\" onclick='showModal(\"" + countid + "\")' style=\"margin-top: -15px\"><h2>Vote Project</h2></button>");
   				out.println("<div id=\"modal" + countid + "\" class=\"modal hide fade in\" style=\"display: none;\">");  
 				out.println("<div class=\"modal-header\" id=\"modal-header" + countid + "\">");  

@@ -11,14 +11,14 @@
 	 	<class>com.ckp.model.Role</class>
 		<properties>
 			<property name="eclipselink.target-database" value="MYSQL" />
-			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/exceedvote" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://se.cpe.ku.ac.th/ckp" />
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
 			<!-- Only enable on first time you run the program (create database tables from entity class) -->
 			<property name="eclipselink.ddl-generation" value="create-tables" />
 			<property name="eclipselink.ddl-generation.output-mode"
 				value="both" />
-			<property name="javax.persistence.jdbc.user" value="exceedapp"/>
-			<property name="javax.persistence.jdbc.password" value="exceed9"/>
+			<property name="javax.persistence.jdbc.user" value="ckp"/>
+			<property name="javax.persistence.jdbc.password" value="ckpadmin"/>
 		</properties>
 	</persistence-unit>
 </persistence>

@@ -36,4 +36,8 @@ public class Login_log {
 		this.who = u.getUsername();
 		this.timestampField = new Date();
 	}
+	
+	public String getWho() {
+		return who;
+	}
 }

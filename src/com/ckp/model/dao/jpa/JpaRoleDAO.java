@@ -5,7 +5,6 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
-import com.ckp.model.Question;
 import com.ckp.model.Role;
 import com.ckp.model.dao.RoleDAO;
 

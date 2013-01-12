@@ -8,6 +8,7 @@ public class User {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	private String username;
+	@SuppressWarnings("unused")
 	private String password;
 	private String name;
 	private String lastName;
@@ -53,8 +54,8 @@ public class User {
 		return roleId;
 	}
 	
-	public void setRoleId(int roleId) {
-		this.roleId = roleId;
+	public void setRoleId(int id) {
+		this.roleId = id;
 	}
 	
 	public String getRole() {
@@ -74,6 +75,19 @@ public class User {
 	
 	public void setProjectId(int projectId) {
 		this.projectId = projectId;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+		
 	}
 	
 }

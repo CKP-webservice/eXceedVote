@@ -6,9 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
 import com.ckp.model.Login_log;
-import com.ckp.model.Project;
 import com.ckp.model.dao.Login_logDAO;
-import com.ckp.model.dao.ProjectDAO;
 
 public class JpaLogin_logDAO implements Login_logDAO {
 

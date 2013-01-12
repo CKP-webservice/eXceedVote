@@ -5,12 +5,14 @@
 
 <%@ page import="com.ckp.model.Vote" %>
 <%@ page import="com.ckp.model.Role" %>
+<%@ page import="com.ckp.model.Time" %>
 <%@ page import="com.ckp.model.Theme" %>
 <%@ page import="com.ckp.model.Project" %>
 <%@ page import="com.ckp.model.dao.DaoFactory" %>
 <%@ page import="com.ckp.model.dao.VoteDAO" %>
 <%@ page import="com.ckp.model.dao.RoleDAO" %>
 <%@ page import="com.ckp.model.dao.ProjectDAO" %>
+<%@ page import="com.ckp.model.dao.TimeDAO" %>
 <%@ page import="java.util.List" %>
 
 <%
@@ -35,6 +37,8 @@
 	List<Role> roles = roledao.findAll();
 	ProjectDAO projectdao = DaoFactory.getInstance().getProjectDAO();
 	List<Project> projects = projectdao.findAll();
+	TimeDAO timedao = DaoFactory.getInstance().getTimeDAO();
+	List<Time> times = timedao.findAll();
 %>
 
 <!DOCTYPE html>
@@ -71,6 +75,19 @@
 		}
 	</style>
 	<script type="text/javascript" src="js/admin.js"></script>
+		<script>
+		$(document).ready(function() {
+			<%
+				out.println("$('#day').val(" + times.get(0).getDay() + ");");
+				out.println("$('#month').val(" + (times.get(0).getMonth() + 1) + ");");
+				out.println("$('#year').val(" + times.get(0).getYear() + ");");
+				out.println("$('#hour').val(" + times.get(0).getHour() + ");");
+				out.println("$('#minute').val(" + times.get(0).getMin() + ");");
+				out.println("$('#second').val(" + times.get(0).getSec() + ");");
+				out.println("$('#theme').val(" + Theme.getInstance().getId() + ");");
+			%>
+		});
+	</script>
 	<script>
 		$(document).ready(function() {
 			$('#day').change(function() {

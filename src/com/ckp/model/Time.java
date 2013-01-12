@@ -1,6 +1,11 @@
 
 package com.ckp.model;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -77,5 +82,31 @@ public class Time {
 
 	public void setSec(int sec) {
 		this.sec = sec;
+	}
+	
+	public boolean checkTimeout() {
+		Date now = new Date();
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		String monthf = "", dayf = "", hourf = "", minf = "", secf = "";
+		if(this.month + 1 < 10) monthf = "0" + this.month;
+		else monthf = this.month + "";
+		if(this.day < 10) dayf = "0" + this.day;
+		else dayf = this.day + "";
+		if(this.hour < 10) hourf = "0" + this.hour;
+		else hourf = this.hour + "";
+		if(this.min < 10) minf = "0" + this.min;
+		else minf = this.min + "";
+		if(this.sec < 10) secf = "0" + this.sec;
+		else secf = this.sec + "";
+		String timeFormat = this.year + "/" + monthf + "/" + dayf + " " + hourf + ":" + minf + ":" + secf;
+		try {
+			Date countdown = dateFormat.parse(timeFormat);
+			if(countdown.getTime() < now.getTime() || countdown.equals(now)) return true;
+			else return false;
+		} catch (ParseException e) {
+			e.printStackTrace();
+			return false;
+		}
+
 	}
 }

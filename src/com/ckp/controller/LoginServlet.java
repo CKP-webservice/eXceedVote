@@ -12,12 +12,15 @@ import javax.servlet.http.HttpSession;
 
 import com.ckp.controller.UserAuthentication;
 import com.ckp.model.Login_log;
+import com.ckp.model.Question;
+import com.ckp.model.Time;
 import com.ckp.model.User;
 import com.ckp.model.dao.DaoFactory;
 import com.ckp.model.dao.Login_logDAO;
+import com.ckp.model.dao.QuestionDAO;
+import com.ckp.model.dao.TimeDAO;
 import com.ckp.model.Role;
 import com.ckp.model.dao.RoleDAO;
-import com.ckp.model.User;
 import com.ckp.model.dao.UserDAO;
 
 /**
@@ -70,11 +73,18 @@ public class LoginServlet extends HttpServlet {
 			roledao.save(roleStaff);
 			roledao.save(roleStudent);
 			UserDAO userdao = DaoFactory.getInstance().getUserDAO();
-			User admin = new User("eXceedVote", "Administrator", "admin", "admin", 1, 0);
+			User admin = new User("eXceedVote", "Administrator", "admin", Encryptor.encryptMessageMD5("admin"), 1, 0);
+			QuestionDAO questiondao = DaoFactory.getInstance().getQuestionDAO();
+			Question question = new Question("Popular Vote");
+			TimeDAO timedao = DaoFactory.getInstance().getTimeDAO();
+			Time time = new Time();
+			timedao.save(time);
+			questiondao.save(question);
 			userdao.save(admin);
 		}
 		String username = request.getParameter("uname");
 		String password = request.getParameter("password");
+		String digestPassword = Encryptor.encryptMessageMD5(password);
 		if (username == null || username == "" || password == null
 				|| password == "") {
 			request.setAttribute("message","Please enter Username and Password");
@@ -82,7 +92,7 @@ public class LoginServlet extends HttpServlet {
 					response);
 		} else {
 			try {
-				User user = UserAuthentication.login(username,password);
+				User user = UserAuthentication.login(username,digestPassword);
 				if (user != null) {
 					HttpSession session = request.getSession(true);
 					System.out.println(session.toString());

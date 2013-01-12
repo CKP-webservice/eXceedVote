@@ -1,23 +1,14 @@
 package com.ckp.controller;
 
 import java.io.IOException;
-import java.util.Enumeration;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import org.apache.catalina.Session;
-
-import com.ckp.model.Project;
 import com.ckp.model.Theme;
-import com.ckp.model.User;
-import com.ckp.model.dao.DaoFactory;
-import com.ckp.model.dao.ProjectDAO;
-import com.ckp.model.dao.UserDAO;
+
 /**
  * Servlet implementation class VoteServlet
  */
@@ -73,6 +64,7 @@ public class SetThemeServlet extends HttpServlet {
 			case 13: Theme.getInstance().setTheme("<link href=\"css/United.css\" rel=\"stylesheet\">");
 			break;
 		}
+		Theme.getInstance().setId(theme+"");
 		response.sendRedirect("AdminOtherSettingPage.jsp");
 	}
 }

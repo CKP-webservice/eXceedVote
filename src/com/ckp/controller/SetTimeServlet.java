@@ -1,25 +1,16 @@
 package com.ckp.controller;
 
 import java.io.IOException;
-import java.util.Enumeration;
 import java.util.List;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import org.apache.catalina.Session;
-
-import com.ckp.model.Project;
 import com.ckp.model.Time;
-import com.ckp.model.User;
 import com.ckp.model.dao.DaoFactory;
-import com.ckp.model.dao.ProjectDAO;
 import com.ckp.model.dao.TimeDAO;
-import com.ckp.model.dao.UserDAO;
 /**
  * Servlet implementation class VoteServlet
  */
@@ -45,7 +36,6 @@ public class SetTimeServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession(true);
 		int day = Integer.parseInt(request.getParameter("day"));
 		int month = Integer.parseInt(request.getParameter("month")) - 1;
 		int year = Integer.parseInt(request.getParameter("year"));

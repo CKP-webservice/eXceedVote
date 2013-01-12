@@ -1,5 +1,5 @@
 package com.ckp.test;
-import com.ckp.model.*;
+
 public class TestClass extends junit.framework.TestCase {
 	public void testAccount()
 	{

@@ -49,6 +49,7 @@ public class JpaVoteDAO implements VoteDAO {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Vote> findByQuestion(Question question) {
 		int qid = question.getId();
@@ -57,6 +58,7 @@ public class JpaVoteDAO implements VoteDAO {
 		q.setParameter("id", qid);
 		return q.getResultList();
 	}
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Vote> findByQuestionIdAndUserId(int q_id, int u_id) {
 		String query = "SELECT v from Vote v Where v.questionID = :qid and v.userID = :uid";

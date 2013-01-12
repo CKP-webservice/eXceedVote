@@ -37,6 +37,7 @@ public class JpaTimeDAO implements TimeDAO {
 		tx.commit();
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Time> findAll() {
 		String query = "SELECT t FROM Time t";

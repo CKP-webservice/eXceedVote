@@ -2,7 +2,6 @@ package com.ckp.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Enumeration;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -12,12 +11,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.catalina.Session;
-
 import com.ckp.model.*;
 import com.ckp.model.dao.DaoFactory;
 import com.ckp.model.dao.VoteDAO;
-import com.ckp.controller.*;
+
 /**
  * Servlet implementation class VoteServlet
  */
